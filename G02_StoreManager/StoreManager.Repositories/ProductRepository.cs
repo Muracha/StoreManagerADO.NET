@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace StoreManager.Repositories
 {
-    public class Class1
-    {
-    }
+	public class ProductRepository
+	{
+	}
 }
