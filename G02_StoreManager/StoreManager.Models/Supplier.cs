@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace StoreManager.Models
 {
-	class Supplier
+	public class Supplier
 	{
+		public int ID { get; set; }
 	}
 }
