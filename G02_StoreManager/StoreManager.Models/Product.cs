@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace StoreManager.Models
 {
-    public class Product
-    {
-    }
+	public class Product
+	{
+		public int ID { get; set; }
+		public decimal Price { get; set; }
+	}
 }
