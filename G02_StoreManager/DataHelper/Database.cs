@@ -8,10 +8,11 @@ using System.Data;
 
 namespace DataHelper
 {
-	public class Database
+	public class Database : IDisposable
 	{
 		private readonly bool _useSingletone;
 		private SqlConnection _connection;
+		private SqlTransaction _transaction;
 
 		public Database(string connectionString, bool useSingletone = false)
 		{
@@ -21,6 +22,7 @@ namespace DataHelper
 
 		public string ConnectionString { get; private set; }
 
+		#region Connection
 		public SqlConnection GetConnection()
 		{
 			if (_connection == null || !_useSingletone)
@@ -40,6 +42,8 @@ namespace DataHelper
 			GetConnection().Close();
 		}
 
+		#endregion
+
 		#region GetCommand
 		public SqlCommand GetCommand(string commandText, CommandType commandType, params SqlParameter[] parameters)
 		{
@@ -47,6 +51,7 @@ namespace DataHelper
 			command.Connection = GetConnection();
 			command.CommandText = commandText;
 			command.CommandType = commandType;
+			command.Transaction = _transaction;
 			command.Parameters.AddRange(parameters);
 			return command;
 		}
@@ -63,12 +68,18 @@ namespace DataHelper
 			SqlCommand command = GetCommand(commandText, commandType, parameters);
 			try
 			{
-				command.Connection.Open();
+				if (command.Connection.State != ConnectionState.Open)
+				{
+					command.Connection.Open();
+				}
 				return command.ExecuteNonQuery();
 			}
 			finally
 			{
-				command.Connection.Close();
+				if (_transaction == null)
+				{
+					command.Connection.Close();
+				}
 			}
 		}
 
@@ -79,6 +90,20 @@ namespace DataHelper
 		#endregion
 
 		#region ExecuteScalar
+		public object ExecuteScalar(string commandText, CommandType commandType, bool transaction, params SqlParameter[] parameters)
+		{
+			SqlCommand command = GetCommand(commandText, commandType, parameters);
+			if (transaction == false)
+			{
+				return ExecuteScalar(commandText, commandType, parameters);
+			}
+			else
+			{
+				command.Connection.Open();
+				return command.ExecuteScalar();
+			}
+		}
+
 		public object ExecuteScalar(string commandText, CommandType commandType, params SqlParameter[] parameters)
 		{
 			SqlCommand command = GetCommand(commandText, commandType, parameters);
@@ -113,6 +138,45 @@ namespace DataHelper
 		}
 		#endregion
 
+		#region Transaction
+
+		public void BeginTransaction()
+		{
+			if (!_useSingletone)
+			{
+				throw new NotSupportedException("Singletone is not enabled.");
+			}
+			var connection = GetConnection();
+			if (connection.State != ConnectionState.Open)
+			{
+				connection.Open();
+			}
+			_transaction = connection.BeginTransaction();
+		}
+
+		public void CommitTransaction()
+		{
+			if (_transaction == null)
+			{
+				throw new Exception("Transaction hasn't started");
+			}
+			_transaction.Commit();
+			_transaction = null;
+		}
+
+		public void RollBack()
+		{
+			if (_transaction == null)
+			{
+				throw new Exception("Transaction hasn't started");
+			}
+			_transaction.Rollback();
+			_transaction = null;
+		}
+
+		#endregion
+
+		#region IDisposable
 		public void Dispose()
 		{
 			if (_connection != null && _connection.State == ConnectionState.Open)
@@ -121,5 +185,6 @@ namespace DataHelper
 			}
 			GC.SuppressFinalize(this);
 		}
+		#endregion
 	}
 }

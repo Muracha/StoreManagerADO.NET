@@ -8,5 +8,6 @@ namespace StoreManager.Models
 {
     public class User
     {
+
     }
 }
