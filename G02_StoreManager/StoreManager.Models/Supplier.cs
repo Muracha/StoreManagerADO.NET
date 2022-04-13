@@ -9,5 +9,6 @@ namespace StoreManager.Models
 	public class Supplier
 	{
 		public int ID { get; set; }
+
 	}
 }
