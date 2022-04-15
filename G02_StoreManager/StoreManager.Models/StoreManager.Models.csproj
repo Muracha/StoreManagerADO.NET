@@ -47,6 +47,7 @@
     <Compile Include="Permission.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="Role.cs" />
+    <Compile Include="RolePermissions.cs" />
     <Compile Include="Supplier.cs" />
     <Compile Include="Transaction.cs" />
     <Compile Include="TransactionDetails.cs" />
