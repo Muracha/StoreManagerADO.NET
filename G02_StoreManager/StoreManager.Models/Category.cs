@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace StoreManager.Models
 {
-	class Category
+	public class Category
 	{
-	}
+        public int ID { get; set; }
+    }
 }
