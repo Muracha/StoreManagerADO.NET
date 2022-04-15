@@ -8,5 +8,11 @@ namespace StoreManager.Models
 {
     public class Permission
     {
+        public int ID { get; set; }
+        public string Name { get; set; }
+        public int Code { get; set; }
+        public string CreateDate { get; set; }
+        public string Description { get; set; }
+
     }
 }
