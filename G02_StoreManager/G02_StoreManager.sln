@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.1.32228.430
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32228.343
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoreManager.App", "StoreManager.App\StoreManager.App.csproj", "{DBE54A51-3220-4C68-9C64-8C6CD685BE2D}"
 EndProject
@@ -14,6 +14,14 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoreManager.Tests", "StoreManager.Tests\StoreManager.Tests.csproj", "{AB26FE1F-87E5-4669-B5D9-2826B40CCB88}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataHelper", "DataHelper\DataHelper.csproj", "{685A714E-ECE0-4068-9AEB-70B7D6FF6962}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Addons", "Addons", "{C9B8C59C-B5E9-4A5E-AE3B-441395BDA6AA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "App", "App", "{A8C1E05A-EB7B-47E7-93FE-AD5726C6F858}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{F97D7925-FB3C-42B6-AB63-2E566A47A5A6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{9A55923A-5C8F-4638-85CD-72C802E14549}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -48,6 +56,14 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DBE54A51-3220-4C68-9C64-8C6CD685BE2D} = {A8C1E05A-EB7B-47E7-93FE-AD5726C6F858}
+		{E33176FC-8872-45A9-B060-5FBBF99BA726} = {F97D7925-FB3C-42B6-AB63-2E566A47A5A6}
+		{E3D9CB80-67C1-428E-BE69-AF0A9ACB9326} = {F97D7925-FB3C-42B6-AB63-2E566A47A5A6}
+		{A28D5DAB-025E-40AC-81B0-60DA2FCE9DB2} = {F97D7925-FB3C-42B6-AB63-2E566A47A5A6}
+		{AB26FE1F-87E5-4669-B5D9-2826B40CCB88} = {9A55923A-5C8F-4638-85CD-72C802E14549}
+		{685A714E-ECE0-4068-9AEB-70B7D6FF6962} = {C9B8C59C-B5E9-4A5E-AE3B-441395BDA6AA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {51484138-FDE5-463C-88F0-B8A9A52260EA}
