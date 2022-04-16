@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace StoreManager.Models
 {
-    class Contact
+    public class Contact
     {
         public int ID { get; set; }
         public string Type { get; set; }
