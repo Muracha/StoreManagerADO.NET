@@ -47,6 +47,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DataHelper\DataHelper.csproj">
+      <Project>{685a714e-ece0-4068-9aeb-70b7d6ff6962}</Project>
+      <Name>DataHelper</Name>
+    </ProjectReference>
     <ProjectReference Include="..\StoreManager.Models\StoreManager.Models.csproj">
       <Project>{a28d5dab-025e-40ac-81b0-60da2fce9db2}</Project>
       <Name>StoreManager.Models</Name>
