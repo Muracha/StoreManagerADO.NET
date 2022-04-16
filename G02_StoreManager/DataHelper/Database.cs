@@ -10,7 +10,6 @@ namespace DataHelper
 {
 	public class Database : IDisposable
 	{
-		// Testing changes
 		private readonly bool _useSingletone;
 		private SqlConnection _connection;
 		private SqlTransaction _transaction;
