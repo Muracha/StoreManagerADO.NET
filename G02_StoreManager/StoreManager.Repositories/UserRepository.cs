@@ -1,38 +1,120 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DataHelper;
 using StoreManager.Models;
-using DataHelper;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace StoreManager.Repositories
 {
-	public class UserRepository
-	{
-		public User Get(int id)
-		{
-			throw new NotImplementedException();
-		}
+    public class UserRepository
+    {
+        public User Get(int id)
+        {
+            using (Database _database = new Database(@"server = DESKTOP-GGJH7CA; database = G02_Store; integrated security = true"))
+            {
+                try
+                {
+                    User user = new User();
+                    var reader = _database.ExecuteReader("SelectUser_SP", CommandType.StoredProcedure, new SqlParameter("@id", id));
+                    foreach (IDataRecord record in reader)
+                    {
+                        user.ID = record.GetInt32(0);
+                        user.Username = record.GetString(1);
+                        user.Password = record.GetString(2);
+                        user.CreateDate = record.GetDateTime(3).ToString(); 
+                        user.IsActive = record.GetBoolean(4);
+                        user.IsDeleted = record.GetBoolean(5);
+                    }
+                    return user;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
 
-		public IEnumerable<User> Select()
-		{
-			throw new NotImplementedException();
-		}
+        public IEnumerable<User> Select()
+        {
+            using (Database _database = new Database(@"server = DESKTOP-GGJH7CA; database = G02_Store; integrated security = true"))
+            {
+                var reader = _database.ExecuteReader("SelectUsers_SP", CommandType.StoredProcedure);
+                foreach (IDataRecord record in reader)
+                {
+                    User user = new User();
+                    user.ID = record.GetInt32(0);
+                    user.Username = record.GetString(1);
+                    user.Password = record.GetString(2);
+                    user.CreateDate = record.GetDateTime(3).ToString(); //record.GetDateTime(3).ToString("dd/MM/yyyy")
+                    user.IsActive = record.GetBoolean(4);
+                    user.IsDeleted = record.GetBoolean(5);
+                    yield return user;
+                }
+            }
+        }
 
-		public int Insert(User record)
-		{
-			throw new NotImplementedException();
-		}
+        public int Insert(User record)
+        {
+            using (Database _database = new Database(@"server = DESKTOP-GGJH7CA; database = G02_Store; integrated security = true", true))
+            {
+                try
+                {
+                    _database.BeginTransaction();
+                    _database.ExecuteNonQuery("InsertUser_SP", CommandType.StoredProcedure,
+                                           new SqlParameter("@ID", record.ID),
+                                           new SqlParameter("@Username", record.Username),
+                                           new SqlParameter("@Password", record.Password)
+                                           );
+                    _database.CommitTransaction();
+                }
+                catch (Exception ex)
+                {
+                    _database.RollBack();
+                    throw ex;
+                }
+                return record.ID;
+            }
+        }
 
-		public void Update(User record)
-		{
-			throw new NotImplementedException();
-		}
+        public void Update(User record)
+        {
+            using (Database _database = new Database(@"server = DESKTOP-GGJH7CA; database = G02_Store; integrated security = true", true))
+            {
+                try
+                {
+                    _database.BeginTransaction();
+                    _database.ExecuteNonQuery("UpdateUser_SP", CommandType.StoredProcedure,
+                                           new SqlParameter("@ID", record.ID),
+                                           new SqlParameter("@Username", record.Username),
+                                           new SqlParameter("@IsActive", record.IsActive)
+                                           );
+                    _database.CommitTransaction();
+                }
+                catch (Exception ex)
+                {
+                    _database.RollBack();
+                    throw ex;
+                }
+            }
+        }
 
-		public void Delete(int id)
-		{
-			throw new NotImplementedException();
-		}
-	}
+        public void Delete(int id)
+        {
+            using (Database _database = new Database(@"server = DESKTOP-GGJH7CA; database = G02_Store; integrated security = true", true))
+            {
+                try
+                {
+                    _database.BeginTransaction();
+                    _database.ExecuteNonQuery("DeleteUser_SP", CommandType.StoredProcedure, new SqlParameter("@ID", id));
+                    _database.CommitTransaction();
+                }
+                catch (Exception ex)
+                {
+                    _database.RollBack();
+                    throw ex;
+                }
+            }
+        }
+    }
 }

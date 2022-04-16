@@ -9,11 +9,11 @@ namespace StoreManager.Tests
 		[TestMethod]
 		public void TestMethod1()
 		{
-			int x = 5;
-			int y = 10;
-			int actualResult = x + y;
-			int expectedResult = 15; 
-			Assert.AreEqual(expectedResult, actualResult);
+			//int x = 5;
+			//int y = 10;
+			//int actualResult = x + y;
+			//int expectedResult = 15; 
+			//Assert.AreEqual(expectedResult, actualResult);
 		}
 	}
 }
