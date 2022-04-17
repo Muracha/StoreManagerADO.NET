@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Category.cs" />
     <Compile Include="Contact.cs" />
+    <Compile Include="ContactInfo.cs" />
     <Compile Include="Employee.cs" />
     <Compile Include="Permission.cs" />
     <Compile Include="Product.cs" />
