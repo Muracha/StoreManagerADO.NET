@@ -2,6 +2,7 @@
 using StoreManager.Models;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -9,9 +10,11 @@ namespace StoreManager.Repositories
 {
     public class UserRepository
     {
+        private string _connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+
         public User Get(int id)
         {
-            using (Database _database = new Database(@"server = DESKTOP-GGJH7CA; database = G02_Store; integrated security = true"))
+            using (Database _database = new Database(_connectionString))
             {
                 try
                 {
@@ -37,7 +40,7 @@ namespace StoreManager.Repositories
 
         public IEnumerable<User> Select()
         {
-            using (Database _database = new Database(@"server = DESKTOP-GGJH7CA; database = G02_Store; integrated security = true"))
+            using (Database _database = new Database(_connectionString))
             {
                 var reader = _database.ExecuteReader("SelectUsers_SP", CommandType.StoredProcedure);
                 foreach (IDataRecord record in reader)
@@ -56,7 +59,7 @@ namespace StoreManager.Repositories
 
         public int Insert(User record)
         {
-            using (Database _database = new Database(@"server = DESKTOP-GGJH7CA; database = G02_Store; integrated security = true", true))
+            using (Database _database = new Database(_connectionString, true))
             {
                 try
                 {
@@ -79,7 +82,7 @@ namespace StoreManager.Repositories
 
         public void Update(User record)
         {
-            using (Database _database = new Database(@"server = DESKTOP-GGJH7CA; database = G02_Store; integrated security = true", true))
+            using (Database _database = new Database(_connectionString, true))
             {
                 try
                 {
@@ -101,7 +104,7 @@ namespace StoreManager.Repositories
 
         public void Delete(int id)
         {
-            using (Database _database = new Database(@"server = DESKTOP-GGJH7CA; database = G02_Store; integrated security = true", true))
+            using (Database _database = new Database(_connectionString, true))
             {
                 try
                 {

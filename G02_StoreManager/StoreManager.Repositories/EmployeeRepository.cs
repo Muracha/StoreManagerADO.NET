@@ -2,6 +2,7 @@
 using StoreManager.Models;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -10,9 +11,10 @@ namespace StoreManager.Repositories
 {
     public class EmployeeRepository
     {
+        private string _connectionString = ConfigurationManager.ConnectionStrings["ConectionString"].ToString();
         public Employee Get(int id)
         {
-            using (Database _database = new Database(@"server = DESKTOP-GGJH7CA; database = G02_Store; integrated security = true"))
+            using (Database _database = new Database(_connectionString))
             {
                 try
                 {
@@ -38,7 +40,7 @@ namespace StoreManager.Repositories
 
         public IEnumerable<Employee> Select()
         {
-            using (Database _database = new Database(@"server = DESKTOP-GGJH7CA; database = G02_Store; integrated security = true"))
+            using (Database _database = new Database(_connectionString))
             {
                 var reader = _database.ExecuteReader("SelectEmployees_SP", CommandType.StoredProcedure);
                 foreach (IDataRecord record in reader)
@@ -57,7 +59,7 @@ namespace StoreManager.Repositories
 
         public int Insert(Employee record)
         {
-            using (Database _database = new Database(@"server = DESKTOP-GGJH7CA; database = G02_Store; integrated security = true", true))
+            using (Database _database = new Database(_connectionString, true))
             {
                 int outPutID=0;
                 try
@@ -89,7 +91,7 @@ namespace StoreManager.Repositories
 
         public void Update(Employee record)
         {
-            using (Database _database = new Database(@"server = DESKTOP-GGJH7CA; database = G02_Store; integrated security = true", true))
+            using (Database _database = new Database(_connectionString, true))
             {
                 try
                 {
@@ -113,7 +115,7 @@ namespace StoreManager.Repositories
 
         public void Delete(int id)
         {
-            using (Database _database = new Database(@"server = DESKTOP-GGJH7CA; database = G02_Store; integrated security = true", true))
+            using (Database _database = new Database(_connectionString, true))
             {
                 try
                 {
