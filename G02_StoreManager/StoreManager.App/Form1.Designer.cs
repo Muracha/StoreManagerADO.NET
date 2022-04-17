@@ -43,7 +43,7 @@ namespace StoreManager.App
 
 		}
 
-		#endregion
-	}
+        #endregion
+    }
 }
 
