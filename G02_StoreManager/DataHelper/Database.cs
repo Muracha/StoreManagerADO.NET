@@ -139,6 +139,21 @@ namespace DataHelper
 		}
 		#endregion
 
+		#region GetTable
+		//todo: დაასრულეთ ეს მეთოდი!
+		public DataTable GetTable(string commandText, CommandType commandType, params SqlParameter[] parameters)
+		{
+			SqlCommand command = GetCommand(commandText, commandType, parameters);
+			command.Connection.Open();
+			return null;
+		}
+
+		public DataTable GetTable(string commandText, params SqlParameter[] parameters)
+		{
+			return GetTable(commandText, CommandType.Text, parameters);
+		}
+		#endregion
+
 		#region Transaction
 
 		public void BeginTransaction()
