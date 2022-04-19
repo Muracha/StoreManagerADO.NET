@@ -10,7 +10,7 @@ namespace StoreManager.Repositories
 {
     public class ContactInfoRepository
     {
-        private string _connectionString = ConfigurationManager.ConnectionStrings["ConectionString"].ToString();
+        private string _connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
         public void Insert(ContactInfo record)
         {
             using (Database _database = new Database(_connectionString, true))

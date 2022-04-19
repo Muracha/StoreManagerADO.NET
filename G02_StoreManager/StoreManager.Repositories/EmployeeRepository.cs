@@ -11,7 +11,7 @@ namespace StoreManager.Repositories
 {
     public class EmployeeRepository
     {
-        private string _connectionString = ConfigurationManager.ConnectionStrings["ConectionString"].ToString();
+        private string _connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
         public Employee Get(int id)
         {
             using (Database _database = new Database(_connectionString))
@@ -61,7 +61,7 @@ namespace StoreManager.Repositories
         {
             using (Database _database = new Database(_connectionString, true))
             {
-                int outPutID=0;
+                int outPutID = 0;
                 try
                 {
                     _database.BeginTransaction();
@@ -76,7 +76,7 @@ namespace StoreManager.Repositories
                     outParn.Direction = ParameterDirection.Output;
                     list.Add(outParn);
                     _database.ExecuteNonQuery("InsertEmployee_SP", CommandType.StoredProcedure, list.ToArray());
-                   
+
                     _database.CommitTransaction();
                     outPutID = (int)outParn.Value;
                 }
@@ -87,6 +87,8 @@ namespace StoreManager.Repositories
                 }
                 return outPutID;
             }
+
+
         }
 
         public void Update(Employee record)
@@ -130,6 +132,6 @@ namespace StoreManager.Repositories
                 }
             }
         }
-  
+
     }
 }

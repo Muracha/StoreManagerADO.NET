@@ -143,9 +143,10 @@ namespace DataHelper
 		//todo: დაასრულეთ ეს მეთოდი!
 		public DataTable GetTable(string commandText, CommandType commandType, params SqlParameter[] parameters)
 		{
-			SqlCommand command = GetCommand(commandText, commandType, parameters);
-			command.Connection.Open();
-			return null;
+			SqlDataReader reader = ExecuteReader(commandText, commandType, parameters);
+			DataTable table = new DataTable();
+			table.Load(reader);
+			return table;
 		}
 
 		public DataTable GetTable(string commandText, params SqlParameter[] parameters)

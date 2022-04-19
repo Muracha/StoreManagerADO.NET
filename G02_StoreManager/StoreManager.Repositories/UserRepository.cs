@@ -12,31 +12,32 @@ namespace StoreManager.Repositories
 	{
 		private readonly string _connectionString;
 
+
 		public UserRepository()
 		{
 			_connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
 		}
 
-		public User Get(int id)
-		{
-			var user = new User();
-			using (var database = new Database(_connectionString))
-			{
-				var reader = database.ExecuteReader("SelectUser_SP", CommandType.StoredProcedure, new SqlParameter("@ID", id));
-				foreach (IDataRecord record in reader)
-				{
-					user.ID = record.GetInt32(0);
-					user.Username = record.GetString(1);
-					user.Password = record.GetString(2);
-					user.CreateDate = record.GetDateTime(3);
-					user.IsActive = record.GetBoolean(4);
-					user.IsDeleted = record.GetBoolean(5);
-				}
-			}
-			return user;
-		}
+        public User Get(int id)
+        {
+            var user = new User();
+            using (var database = new Database(_connectionString))
+            {
+                var reader = database.ExecuteReader("SelectUser_SP", CommandType.StoredProcedure, new SqlParameter("@ID", id));
+                foreach (IDataRecord record in reader)
+                {
+                    user.ID = record.GetInt32(0);
+                    user.Username = record.GetString(1);
+                    user.Password = record.GetString(2);
+                    user.CreateDate = record.GetDateTime(3);
+                    user.IsActive = record.GetBoolean(4);
+                    user.IsDeleted = record.GetBoolean(5);
+                }
+            }
+            return user;
+        }
 
-		public IEnumerable<User> Select()
+        public IEnumerable<User> Select()
 		{
 			using (var database = new Database(_connectionString))
 			{

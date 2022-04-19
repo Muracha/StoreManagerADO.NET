@@ -2,7 +2,6 @@
 using StoreManager.Repositories;
 using System;
 using System.Windows.Forms;
-using System.Configuration;
 
 namespace StoreManager.App
 {
@@ -15,10 +14,15 @@ namespace StoreManager.App
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            UserRepository d = new UserRepository();
-            User user = new User();
-            user.CreateDate = "sasaas";
-            d.Insert(user);
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            UserRepository userRepository = new UserRepository();
+            var user = new User();
+            var d = userRepository.Get(5);
+
         }
     }
 }
