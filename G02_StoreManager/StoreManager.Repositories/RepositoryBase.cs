@@ -54,19 +54,18 @@ namespace StoreManager.Repositories
                 {
                     database.BeginTransaction();
 
-                    list = GetParametrs(record);
-
-                    var outParn = new SqlParameter("@Iddentity", SqlDbType.Int);
-                    outParn.Direction = ParameterDirection.Output;
-                    list.Add(outParn);
+                        list = GetParametrs(record);
+                        var outParn = new SqlParameter("@Iddentity", SqlDbType.Int);
+                        outParn.Direction = ParameterDirection.Output;
+                        list.Add(outParn);
 
                     database.ExecuteNonQuery(_commandText, CommandType.StoredProcedure, list.ToArray());
 
                     database.CommitTransaction();
-                    outPutID = (int)outParn.Value;
+                 outPutID = (int)outParn.Value;
                 }
                 catch (Exception ex)
-                {
+                {  
                     database.RollBack();
                     throw ex;
                 }
@@ -76,17 +75,17 @@ namespace StoreManager.Repositories
 
         public virtual void Update(T record)
         {
-            using (Database _database = new Database(_connectionString, true))
+            using (var database = new Database(_connectionString, true))
             {
                 try
                 {
-                    _database.BeginTransaction();
-                    _database.ExecuteNonQuery(_commandText, CommandType.StoredProcedure, GetParametrs(record).ToArray());
-                    _database.CommitTransaction();
+                    database.BeginTransaction();
+                    database.ExecuteNonQuery(_commandText, CommandType.StoredProcedure, GetParametrs(record).ToArray());
+                    database.CommitTransaction();
                 }
                 catch (Exception ex)
                 {
-                    _database.RollBack();
+                    database.RollBack();
                     throw ex;
                 }
             }
@@ -111,6 +110,7 @@ namespace StoreManager.Repositories
         }
 
         #region Methods Helper
+
         private IList<SqlParameter> GetParametrs(T record)
         {
             Type temp = typeof(T);
@@ -120,9 +120,18 @@ namespace StoreManager.Repositories
             {
                 list.Add(new SqlParameter($"@{pro.Name}", pro.GetValue(record, null)));
             }
+
+            for (int i = 0; i < list.Count; i++)
+            {
+                if (list[i].SqlValue==null)
+                {
+                    list.RemoveAt(i);
+                    i--;
+                }
+            }
             return list;
         }
-    
+
         private T GetItem(DataRow dr)
         {
             Type temp = typeof(T);
@@ -137,11 +146,14 @@ namespace StoreManager.Repositories
                         pro.SetValue(obj, dr[column.ColumnName], null);
                     }
                     else
+                    {
                         continue;
+                    }
                 }
             }
             return obj;
         }
+
         #endregion
     }
 }
