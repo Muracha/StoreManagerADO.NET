@@ -19,6 +19,7 @@ namespace StoreManager.App
             User user = new User();
             user.ID = 1;
             user.Username = "giorgi";
+            user.IsActive = true;
             d.Insert(user);
         }
     }

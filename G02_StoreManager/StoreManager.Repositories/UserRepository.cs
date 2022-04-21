@@ -16,6 +16,6 @@ namespace StoreManager.Repositories
         {
             _connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
             _commandText = commandText;
-        }       
+        }
     }
 }

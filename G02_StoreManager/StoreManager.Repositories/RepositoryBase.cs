@@ -54,18 +54,18 @@ namespace StoreManager.Repositories
                 {
                     database.BeginTransaction();
 
-                        list = GetParametrs(record);
-                        var outParn = new SqlParameter("@Iddentity", SqlDbType.Int);
-                        outParn.Direction = ParameterDirection.Output;
-                        list.Add(outParn);
+                    list = GetParametrs(record);
+                    var outParn = new SqlParameter("@Iddentity", SqlDbType.Int);
+                    outParn.Direction = ParameterDirection.Output;
+                    list.Add(outParn);
 
                     database.ExecuteNonQuery(_commandText, CommandType.StoredProcedure, list.ToArray());
 
                     database.CommitTransaction();
-                 outPutID = (int)outParn.Value;
+                    outPutID = (int)outParn.Value;
                 }
                 catch (Exception ex)
-                {  
+                {
                     database.RollBack();
                     throw ex;
                 }
@@ -114,19 +114,13 @@ namespace StoreManager.Repositories
         private IList<SqlParameter> GetParametrs(T record)
         {
             Type temp = typeof(T);
-            IList<SqlParameter> list = new List<SqlParameter>();
+            var list = new List<SqlParameter>();
 
             foreach (PropertyInfo pro in temp.GetProperties())
             {
-                list.Add(new SqlParameter($"@{pro.Name}", pro.GetValue(record, null)));
-            }
-
-            for (int i = 0; i < list.Count; i++)
-            {
-                if (list[i].SqlValue==null)
+                if (pro.GetValue(record) != null)
                 {
-                    list.RemoveAt(i);
-                    i--;
+                    list.Add(new SqlParameter($"@{pro.Name}", pro.GetValue(record)));
                 }
             }
             return list;
