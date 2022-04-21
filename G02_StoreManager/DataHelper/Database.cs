@@ -139,6 +139,24 @@ namespace DataHelper
 		}
 		#endregion
 
+
+		#region GetSqlDataAdapter
+
+		public SqlDataAdapter GetSqlDataAdapter(string commandText, CommandType commandType, params SqlParameter[] parameters)
+		{
+			SqlDataAdapter sqlDataAdapter =  new SqlDataAdapter();
+			sqlDataAdapter.SelectCommand = GetCommand(commandText, commandType, parameters);
+
+			return sqlDataAdapter;
+		}
+
+		public SqlDataAdapter GetSqlDataAdapter(string commandText, params SqlParameter[] parameters)
+		{
+			return GetSqlDataAdapter(commandText, CommandType.Text, parameters);
+		}
+
+		#endregion
+
 		#region GetTable
 		//todo: დაასრულეთ ეს მეთოდი!
 		public DataTable GetTable(string commandText, CommandType commandType, params SqlParameter[] parameters)
@@ -148,7 +166,6 @@ namespace DataHelper
 			table.Load(reader);
 			return table;
 		}
-
 		public DataTable GetTable(string commandText, params SqlParameter[] parameters)
 		{
 			return GetTable(commandText, CommandType.Text, parameters);

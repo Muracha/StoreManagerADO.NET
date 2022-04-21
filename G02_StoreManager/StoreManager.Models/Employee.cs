@@ -11,8 +11,8 @@ namespace StoreManager.Models
         public int ID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string BirthDate { get; set; }
-        public string HireDate { get; set; }
-        public string CreateDate { get; set; }
+        public DateTime BirthDate { get; set; }
+        public DateTime HireDate { get; set; }
+        public DateTime CreateDate { get; set; }
     }
 }
