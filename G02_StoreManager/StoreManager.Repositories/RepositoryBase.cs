@@ -48,21 +48,12 @@ namespace StoreManager.Repositories
         {
             using (var database = new Database(_connectionString, true))
             {
-                IList<SqlParameter> list = new List<SqlParameter>();
                 int outPutID = 0;
                 try
                 {
                     database.BeginTransaction();
-
-                    list = GetParametrs(record);
-                    var outParn = new SqlParameter("@Iddentity", SqlDbType.Int);
-                    outParn.Direction = ParameterDirection.Output;
-                    list.Add(outParn);
-
-                    database.ExecuteNonQuery(_commandText, CommandType.StoredProcedure, list.ToArray());
-
+                    outPutID = (int)database.ExecuteScalar(_commandText, CommandType.StoredProcedure, GetParametrs(record).ToArray());
                     database.CommitTransaction();
-                    outPutID = (int)outParn.Value;
                 }
                 catch (Exception ex)
                 {
@@ -71,6 +62,33 @@ namespace StoreManager.Repositories
                 }
                 return outPutID;
             }
+            #region Insert version old
+            //using (var database = new Database(_connectionString, true))
+            //{
+            //    IList<SqlParameter> list = new List<SqlParameter>();
+            //    int outPutID = 0;
+            //    try
+            //    {
+            //        database.BeginTransaction();
+
+            //        list = GetParametrs(record);
+            //        var outParn = new SqlParameter("@Iddentity", SqlDbType.Int);
+            //        outParn.Direction = ParameterDirection.Output;
+            //        list.Add(outParn);
+
+            //        database.ExecuteNonQuery(_commandText, CommandType.StoredProcedure, list.ToArray());
+
+            //        database.CommitTransaction();
+            //        outPutID = (int)outParn.Value;
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        database.RollBack();
+            //        throw ex;
+            //    }
+            //    return outPutID;
+            //}
+            #endregion
         }
 
         public virtual void Update(T record)

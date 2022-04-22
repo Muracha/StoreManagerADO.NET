@@ -14,13 +14,6 @@ namespace StoreManager.App
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
-            UserRepository d = new UserRepository();
-            User user = new User();
-            user.ID = 1;
-            user.Username = "giorgi";
-            user.IsActive = true;
-            d.Insert(user);
         }
     }
 }
