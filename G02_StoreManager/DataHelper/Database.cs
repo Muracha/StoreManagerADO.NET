@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Data.Common;
 using System.Data.SqlClient;
 
 
@@ -13,6 +14,7 @@ namespace DataHelper
 
         public Database(string connectionString, bool useSingletone = false)
         {
+
             _useSingletone = useSingletone;
             ConnectionString = connectionString ?? throw new ArgumentNullException(nameof(connectionString));
         }
