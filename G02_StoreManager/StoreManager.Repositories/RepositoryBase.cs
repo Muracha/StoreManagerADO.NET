@@ -9,23 +9,24 @@ using System.Reflection;
 
 namespace StoreManager.Repositories
 {
-    public abstract class RepositoryBase<T> where T : class
+    public abstract class RepositoryBase<T> where T : class, new()
     {
-        private readonly string _connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
-        public string _commandText { get; set; }
+        protected readonly string _connectionString;
+        protected string _commandText; //todo: ეს ველი როგორმე უნდა ამოვაგდოთ!
+
+        public RepositoryBase()
+        {
+            _connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+        }
 
         public virtual T Get(int id)
         {
-            T obj = null;
             using (var database = new Database(_connectionString))
             {
                 var table = database.GetTable(_commandText, CommandType.StoredProcedure, new SqlParameter("@ID", id));
-
-                foreach (DataRow row in table.Rows)
-                {
-                    obj = GetItem(row);
-                }
-                return obj;
+                if (table.Rows.Count > 0)
+                    return GetItem(table.Rows[0]);
+                return null;
             }
         }
 
@@ -118,24 +119,18 @@ namespace StoreManager.Repositories
 
         private T GetItem(DataRow dr)
         {
-            Type temp = typeof(T);
-            T obj = Activator.CreateInstance<T>();
+            T item = new T();
 
             foreach (DataColumn column in dr.Table.Columns)
             {
-                foreach (PropertyInfo pro in temp.GetProperties())
+                foreach (PropertyInfo property in item.GetType().GetProperties())
                 {
-                    if (pro.Name == column.ColumnName)
-                    {
-                        pro.SetValue(obj, dr[column.ColumnName], null);
-                    }
-                    else
-                    {
-                        continue;
-                    }
+                    if (property.Name == column.ColumnName)
+                        property.SetValue(item, dr[column.ColumnName], null);
                 }
             }
-            return obj;
+
+            return item;
         }
 
         #endregion
