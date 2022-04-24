@@ -12,18 +12,20 @@ namespace StoreManager.Repositories
     public abstract class RepositoryBase<T> where T : class, new()
     {
         protected readonly string _connectionString;
-        protected string _commandText; //todo: ეს ველი როგორმე უნდა ამოვაგდოთ!
+        private readonly string _commandText;
 
         public RepositoryBase()
         {
             _connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+            _commandText = GetTypeNameOf(typeof(T));
+
         }
 
         public virtual T Get(int id)
         {
             using (var database = new Database(_connectionString))
             {
-                var table = database.GetTable(_commandText, CommandType.StoredProcedure, new SqlParameter("@ID", id));
+                var table = database.GetTable($"Select{_commandText}_SP", CommandType.StoredProcedure, new SqlParameter("@ID", id));
                 if (table.Rows.Count > 0)
                     return GetItem(table.Rows[0]);
                 return null;
@@ -53,7 +55,7 @@ namespace StoreManager.Repositories
                 try
                 {
                     database.BeginTransaction();
-                    outPutID = (int)database.ExecuteScalar(_commandText, CommandType.StoredProcedure, GetParametrs(record).ToArray());
+                    outPutID = (int)database.ExecuteScalar($"Insert{_commandText}_SP", CommandType.StoredProcedure, GetParametrs(record).ToArray());
                     database.CommitTransaction();
                 }
                 catch (Exception ex)
@@ -102,16 +104,23 @@ namespace StoreManager.Repositories
         }
 
         #region Methods Helper
+
+        private string GetTypeNameOf(Type obj)
+        {
+            Type type = obj;
+            return type.Name.ToString();
+        }
+
         private IList<SqlParameter> GetParametrs(T record)
         {
-            Type temp = typeof(T);
+            T temp = new T();
             var list = new List<SqlParameter>();
 
-            foreach (PropertyInfo pro in temp.GetProperties())
+            foreach (var property in temp.GetType().GetProperties())
             {
-                if (pro.GetValue(record) != null)
+                if (property.GetValue(record) != null)
                 {
-                    list.Add(new SqlParameter($"@{pro.Name}", pro.GetValue(record)));
+                    list.Add(new SqlParameter($"@{property.Name}", property.GetValue(record)));
                 }
             }
             return list;

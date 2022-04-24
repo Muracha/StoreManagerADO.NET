@@ -10,12 +10,9 @@ namespace StoreManager.Repositories
 {
     public class UserRepository : RepositoryBase<User>
     {
-        private readonly string _connectionString;
-     
-        public UserRepository(string commandText= null)
+        public UserRepository()
         {
-            _connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
-            _commandText = commandText;
+            
         }
     }
 }

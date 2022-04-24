@@ -14,7 +14,9 @@ namespace StoreManager.App
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+            UserRepository userRepository = new UserRepository();
+            User user = new User();
+            userRepository.Insert(user);
         }
     }
 }

@@ -11,11 +11,9 @@ namespace StoreManager.Repositories
 {
     public class EmployeeRepository : RepositoryBase<Employee>
     {
-        private string _connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
-
-        public EmployeeRepository(string commandText = null)
+        public EmployeeRepository()
         {
-            _commandText = commandText;
+            
         }
     }
 }
