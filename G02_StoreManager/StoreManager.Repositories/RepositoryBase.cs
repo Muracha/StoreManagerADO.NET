@@ -12,19 +12,19 @@ namespace StoreManager.Repositories
     public abstract class RepositoryBase<T> where T : class, new()
     {
         protected readonly string _connectionString;
-        private readonly string _commandText;
+        private readonly string _objectName;
 
         public RepositoryBase()
         {
             _connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
-            _commandText = GetTypeNameOf(typeof(T));
+            _objectName = typeof(T).Name;
         }
 
         public virtual T Get(int id)
         {
             using (var database = new Database(_connectionString))
             {
-                var table = database.GetTable($"Select{_commandText}_SP", CommandType.StoredProcedure, new SqlParameter("@ID", id));
+                var table = database.GetTable($"Select{_objectName}_SP", CommandType.StoredProcedure, new SqlParameter("@ID", id));
                 if (table.Rows.Count > 0)
                     return GetItem(table.Rows[0]);
                 return null;
@@ -33,15 +33,14 @@ namespace StoreManager.Repositories
 
         public virtual IEnumerable<T> Select()
         {
-            T obj;
             using (var database = new Database(_connectionString))
             {
-                var data = database.GetTable($"Select{_commandText}_SP", CommandType.StoredProcedure);
+                //todo: გადავიყვანოთ _objectName მრავლობითში (მოძებნეთ შესაბამისი პაკეტი).
+                var data = database.GetTable($"Select{_objectName}_SP", CommandType.StoredProcedure);
 
                 foreach (DataRow row in data.Rows)
                 {
-                    obj = GetItem(row);
-                    yield return obj;
+                    yield return GetItem(row);
                 }
             }
         }
@@ -50,11 +49,11 @@ namespace StoreManager.Repositories
         {
             using (var database = new Database(_connectionString, true))
             {
-                int outPutID;
+                int id;
                 try
                 {
                     database.BeginTransaction();
-                    outPutID = (int)database.ExecuteScalar($"Insert{_commandText}_SP", CommandType.StoredProcedure, GetParametrs(record).ToArray());
+                    id = (int)database.ExecuteScalar($"Insert{_objectName}_SP", CommandType.StoredProcedure, GetParametrs(record).ToArray());
                     database.CommitTransaction();
                 }
                 catch (Exception ex)
@@ -62,7 +61,7 @@ namespace StoreManager.Repositories
                     database.RollBack();
                     throw ex;
                 }
-                return outPutID;
+                return id;
             }
         }
 
@@ -73,7 +72,7 @@ namespace StoreManager.Repositories
                 try
                 {
                     database.BeginTransaction();
-                    database.ExecuteNonQuery($"Update{_commandText}_SP", CommandType.StoredProcedure, GetParametrs(record).ToArray());
+                    database.ExecuteNonQuery($"Update{_objectName}_SP", CommandType.StoredProcedure, GetParametrs(record).ToArray());
                     database.CommitTransaction();
                 }
                 catch (Exception ex)
@@ -91,7 +90,7 @@ namespace StoreManager.Repositories
                 try
                 {
                     database.BeginTransaction();
-                    database.ExecuteNonQuery($"Delete{_commandText}_SP", CommandType.StoredProcedure, new SqlParameter("@ID", id));
+                    database.ExecuteNonQuery($"Delete{_objectName}_SP", CommandType.StoredProcedure, new SqlParameter("@ID", id));
                     database.CommitTransaction();
                 }
                 catch
@@ -104,25 +103,15 @@ namespace StoreManager.Repositories
 
         #region Methods Helper
 
-        private string GetTypeNameOf(Type obj)
+        private IEnumerable<SqlParameter> GetParametrs(T record)
         {
-            Type type = obj;
-            return type.Name.ToString();
-        }
-
-        private IList<SqlParameter> GetParametrs(T record)
-        {
-            T temp = new T();
-            var list = new List<SqlParameter>();
-
-            foreach (var property in temp.GetType().GetProperties())
+            foreach (var property in typeof(T).GetType().GetProperties())
             {
                 if (property.GetValue(record) != null)
                 {
-                    list.Add(new SqlParameter($"@{property.Name}", property.GetValue(record)));
+                    yield return new SqlParameter($"@{property.Name}", property.GetValue(record));
                 }
             }
-            return list;
         }
 
         private T GetItem(DataRow dr)
