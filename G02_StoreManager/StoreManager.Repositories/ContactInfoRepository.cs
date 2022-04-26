@@ -10,9 +10,9 @@ namespace StoreManager.Repositories
 {
     public class ContactInfoRepository : RepositoryBase<ContactInfo>
     {
-        public ContactInfoRepository(string commandText = null) 
+        public ContactInfoRepository() 
         {
-            _commandText = commandText;
+           
         }
 
     }

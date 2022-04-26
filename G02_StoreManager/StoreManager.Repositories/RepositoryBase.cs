@@ -18,7 +18,6 @@ namespace StoreManager.Repositories
         {
             _connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
             _commandText = GetTypeNameOf(typeof(T));
-
         }
 
         public virtual T Get(int id)
@@ -37,7 +36,7 @@ namespace StoreManager.Repositories
             T obj;
             using (var database = new Database(_connectionString))
             {
-                var data = database.GetTable(_commandText, CommandType.StoredProcedure);
+                var data = database.GetTable($"Select{_commandText}_SP", CommandType.StoredProcedure);
 
                 foreach (DataRow row in data.Rows)
                 {
@@ -74,7 +73,7 @@ namespace StoreManager.Repositories
                 try
                 {
                     database.BeginTransaction();
-                    database.ExecuteNonQuery(_commandText, CommandType.StoredProcedure, GetParametrs(record).ToArray());
+                    database.ExecuteNonQuery($"Update{_commandText}_SP", CommandType.StoredProcedure, GetParametrs(record).ToArray());
                     database.CommitTransaction();
                 }
                 catch (Exception ex)
@@ -92,7 +91,7 @@ namespace StoreManager.Repositories
                 try
                 {
                     database.BeginTransaction();
-                    database.ExecuteNonQuery(_commandText, CommandType.StoredProcedure, new SqlParameter("@ID", id));
+                    database.ExecuteNonQuery($"Delete{_commandText}_SP", CommandType.StoredProcedure, new SqlParameter("@ID", id));
                     database.CommitTransaction();
                 }
                 catch
@@ -141,7 +140,6 @@ namespace StoreManager.Repositories
 
             return item;
         }
-
         #endregion
     }
 }

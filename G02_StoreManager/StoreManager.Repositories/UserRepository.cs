@@ -11,8 +11,7 @@ namespace StoreManager.Repositories
     public class UserRepository : RepositoryBase<User>
     {
         public UserRepository()
-        {
-            
+        {          
         }
     }
 }
