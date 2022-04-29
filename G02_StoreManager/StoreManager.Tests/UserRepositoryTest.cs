@@ -32,7 +32,7 @@ namespace StoreManager.Tests
         public void B_TestUpdate()
         {
             var user = new User() { };
-             _userRepository.Update(user);
+            _userRepository.Update(user);
         }
 
         [TestMethod]
@@ -41,6 +41,8 @@ namespace StoreManager.Tests
             var id = 0;
             _userRepository.Delete(id);
         }
+
+        [TestMethod]
         public void D_TestGet()
         {
             var id = 5;
