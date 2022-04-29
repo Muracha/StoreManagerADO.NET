@@ -45,7 +45,7 @@ namespace StoreManager.Tests
         [TestMethod]
         public void D_TestGet()
         {
-            var id = 5;
+            var id = 1;
             var result = _userRepository.Get(id);
             Assert.IsTrue(result!=null);
         }

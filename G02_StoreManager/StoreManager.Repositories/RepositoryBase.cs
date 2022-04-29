@@ -118,7 +118,7 @@ namespace StoreManager.Repositories
             {
                 foreach (var property in item.GetProperties()) //typeof(T).GetType().GetProperties() <<< does not work 
                 {
-                    if ($"@{property.Name}" == row[0].ToString())
+                    if (property.Name == row[0].ToString().Substring(1))
                     {
                         yield return new SqlParameter(row[0].ToString(), property.GetValue(record));
                     }
@@ -138,7 +138,6 @@ namespace StoreManager.Repositories
                         property.SetValue(item, dr[column.ColumnName], null);
                 }
             }
-
             return item;
         }
 
