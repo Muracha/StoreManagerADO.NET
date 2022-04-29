@@ -18,7 +18,7 @@ namespace StoreManager.Tests
         public UserRepositoryTest()
         {
             _userRepository = new UserRepository();
-        }
+        }   
 
         [TestMethod]
         public void A_TestInsert()
@@ -31,13 +31,21 @@ namespace StoreManager.Tests
         [TestMethod]
         public void B_TestUpdate()
         {
-
+            var user = new User() { };
+             _userRepository.Update(user);
         }
 
         [TestMethod]
         public void C_TestDelete()
         {
-
+            var id = 0;
+            _userRepository.Delete(id);
+        }
+        public void D_TestGet()
+        {
+            var id = 5;
+            var result = _userRepository.Get(id);
+            Assert.IsTrue(result!=null);
         }
     }
 }

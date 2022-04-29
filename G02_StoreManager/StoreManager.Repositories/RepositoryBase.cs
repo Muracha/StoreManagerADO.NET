@@ -3,7 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
+using System.Data.Entity.Design.PluralizationServices;
 using System.Data.SqlClient;
+using System.Globalization;
 using System.Linq;
 using System.Reflection;
 
@@ -36,7 +38,9 @@ namespace StoreManager.Repositories
             using (var database = new Database(_connectionString))
             {
                 //todo: გადავიყვანოთ _objectName მრავლობითში (მოძებნეთ შესაბამისი პაკეტი).
-                var data = database.GetTable($"Select{_objectName}_SP", CommandType.StoredProcedure);
+                string commandText = GetPluralize(_objectName);
+
+                var data = database.GetTable($"Select{commandText}_SP", CommandType.StoredProcedure);
 
                 foreach (DataRow row in data.Rows)
                 {
@@ -52,8 +56,9 @@ namespace StoreManager.Repositories
                 int id;
                 try
                 {
+                    string objectName = $"Insert{_objectName}_SP";
                     database.BeginTransaction();
-                    id = (int)database.ExecuteScalar($"Insert{_objectName}_SP", CommandType.StoredProcedure, GetParametrs(record).ToArray());
+                    id = (int)database.ExecuteScalar(objectName, CommandType.StoredProcedure, GetParametrs(record, objectName).ToArray());
                     database.CommitTransaction();
                 }
                 catch (Exception ex)
@@ -71,8 +76,9 @@ namespace StoreManager.Repositories
             {
                 try
                 {
+                    string commandText = $"Update{_objectName}_SP";
                     database.BeginTransaction();
-                    database.ExecuteNonQuery($"Update{_objectName}_SP", CommandType.StoredProcedure, GetParametrs(record).ToArray());
+                    database.ExecuteNonQuery(commandText, CommandType.StoredProcedure, GetParametrs(record, commandText).ToArray());
                     database.CommitTransaction();
                 }
                 catch (Exception ex)
@@ -103,13 +109,19 @@ namespace StoreManager.Repositories
 
         #region Methods Helper
 
-        private IEnumerable<SqlParameter> GetParametrs(T record)
+        private IEnumerable<SqlParameter> GetParametrs(T record, string commandText)
         {
-            foreach (var property in typeof(T).GetType().GetProperties())
+            Type item = typeof(T);
+            var parametrsTable = GetProcedureParametrs(commandText);
+
+            foreach (DataRow row in parametrsTable.Rows)
             {
-                if (property.GetValue(record) != null)
+                foreach (var property in item.GetProperties()) //typeof(T).GetType().GetProperties() <<< does not work 
                 {
-                    yield return new SqlParameter($"@{property.Name}", property.GetValue(record));
+                    if ($"@{property.Name}" == row[0].ToString())
+                    {
+                        yield return new SqlParameter(row[0].ToString(), property.GetValue(record));
+                    }
                 }
             }
         }
@@ -128,6 +140,26 @@ namespace StoreManager.Repositories
             }
 
             return item;
+        }
+
+        private DataTable GetProcedureParametrs(string procedureNume)
+        {
+            using (var database = new Database(_connectionString))
+            {
+                var table = database.GetTable("SelectParameters_SP", CommandType.StoredProcedure, new SqlParameter("@ProcedureNume", procedureNume));
+                return table;
+            }
+        }
+
+        private string GetPluralize(string objectName)
+        {
+            CultureInfo ci = new CultureInfo("en-us");
+            PluralizationService ps = PluralizationService.CreateService(ci);
+
+            if (ps.IsSingular(objectName) == true)
+                return ps.Pluralize(objectName);
+            else
+                return objectName;
         }
         #endregion
     }
