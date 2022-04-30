@@ -14,7 +14,7 @@ namespace StoreManager.Repositories
     public abstract class RepositoryBase<T> where T : class, new()
     {
         protected readonly string _connectionString;
-        private readonly string _objectName;
+        protected readonly string _objectName;
 
         public RepositoryBase()
         {
@@ -37,10 +37,7 @@ namespace StoreManager.Repositories
         {
             using (var database = new Database(_connectionString))
             {
-                //todo: გადავიყვანოთ _objectName მრავლობითში (მოძებნეთ შესაბამისი პაკეტი).
-                string commandText = GetPluralize(_objectName);
-
-                var data = database.GetTable($"Select{commandText}_SP", CommandType.StoredProcedure);
+                var data = database.GetTable($"Select{GetPluralize(_objectName)}_SP", CommandType.StoredProcedure);
 
                 foreach (DataRow row in data.Rows)
                 {
@@ -53,20 +50,19 @@ namespace StoreManager.Repositories
         {
             using (var database = new Database(_connectionString, true))
             {
-                int id;
                 try
                 {
                     string objectName = $"Insert{_objectName}_SP";
                     database.BeginTransaction();
-                    id = (int)database.ExecuteScalar(objectName, CommandType.StoredProcedure, GetParametrs(record, objectName).ToArray());
+                    int id = (int)database.ExecuteScalar(objectName, CommandType.StoredProcedure, GetParametrs(record, objectName).ToArray());
                     database.CommitTransaction();
+                    return id;
                 }
                 catch (Exception ex)
                 {
                     database.RollBack();
                     throw ex;
                 }
-                return id;
             }
         }
 
@@ -111,14 +107,15 @@ namespace StoreManager.Repositories
 
         private IEnumerable<SqlParameter> GetParametrs(T record, string commandText)
         {
-            Type item = typeof(T);
+            Type type = typeof(T);
             var parametrsTable = GetProcedureParametrs(commandText);
+            var properties = type.GetProperties();
 
             foreach (DataRow row in parametrsTable.Rows)
             {
-                foreach (var property in item.GetProperties()) //typeof(T).GetType().GetProperties() <<< does not work 
+                foreach (var property in properties) //typeof(T).GetProperties() <<< does not work 
                 {
-                    if (property.Name == row[0].ToString().Substring(1))
+                    if (property.Name.ToLower() == row[0].ToString().Substring(1).ToLower())
                     {
                         yield return new SqlParameter(row[0].ToString(), property.GetValue(record));
                     }
@@ -141,12 +138,11 @@ namespace StoreManager.Repositories
             return item;
         }
 
-        private DataTable GetProcedureParametrs(string procedureNume)
+        private DataTable GetProcedureParametrs(string procedureName)
         {
             using (var database = new Database(_connectionString))
             {
-                var table = database.GetTable("SelectParameters_SP", CommandType.StoredProcedure, new SqlParameter("@ProcedureNume", procedureNume));
-                return table;
+                return database.GetTable("SelectParameters_SP", CommandType.StoredProcedure, new SqlParameter("@ProcedureNume", procedureName));
             }
         }
 
