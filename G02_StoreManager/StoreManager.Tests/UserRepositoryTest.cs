@@ -31,15 +31,25 @@ namespace StoreManager.Tests
         [TestMethod]
         public void B_TestUpdate()
         {
-            var user = new User() { };
-            _userRepository.Update(user);
+            var user1 = new User();
+            user1.ID = 1;
+            user1.Username = "kakha";
+            user1.IsActive = false;
+            _userRepository.Update(user1);
+            User user2 = _userRepository.Get(1);
+
+            Assert.IsTrue(user2.Username == user1.Username);
         }
 
         [TestMethod]
         public void C_TestDelete()
         {
-            var id = 0;
+           var user1= _userRepository.Get(1);
+            var id = 1;
             _userRepository.Delete(id);
+            var user2 = _userRepository.Get(1);
+
+            Assert.IsTrue(user1.IsDeleted != user2.IsDeleted);
         }
 
         [TestMethod]
@@ -48,6 +58,13 @@ namespace StoreManager.Tests
             var id = 1;
             var result = _userRepository.Get(id);
             Assert.IsTrue(result!=null);
+        }
+
+        [TestMethod]
+        public void E_TestSelect()
+        {
+            var result = _userRepository.Select();
+            Assert.IsTrue(result != null);
         }
     }
 }

@@ -72,9 +72,9 @@ namespace StoreManager.Repositories
             {
                 try
                 {
-                    string commandText = $"Update{_objectName}_SP";
+                    string procedureName = $"Update{_objectName}_SP";
                     database.BeginTransaction();
-                    database.ExecuteNonQuery(commandText, CommandType.StoredProcedure, GetParametrs(record, commandText).ToArray());
+                    database.ExecuteNonQuery(procedureName, CommandType.StoredProcedure, GetParametrs(record, procedureName).ToArray());
                     database.CommitTransaction();
                 }
                 catch (Exception ex)
@@ -105,15 +105,14 @@ namespace StoreManager.Repositories
 
         #region Methods Helper
 
-        private IEnumerable<SqlParameter> GetParametrs(T record, string commandText)
+        private IEnumerable<SqlParameter> GetParametrs(T record, string procedureName)
         {
-            Type type = typeof(T);
-            var parametrsTable = GetProcedureParametrs(commandText);
-            var properties = type.GetProperties();
+            var parametrsTable = GetProcedureParametrs(procedureName);
+            var properties = typeof(T).GetProperties();
 
             foreach (DataRow row in parametrsTable.Rows)
             {
-                foreach (var property in properties) //typeof(T).GetProperties() <<< does not work 
+                foreach (var property in properties) 
                 {
                     if (property.Name.ToLower() == row[0].ToString().Substring(1).ToLower())
                     {
