@@ -1,12 +1,15 @@
-﻿using System;
+﻿using DataHelper.Facade;
+using System;
 using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
+using System.Runtime.CompilerServices;
 
+[assembly: InternalsVisibleTo("DataHelper.Factory")]
 
 namespace DataHelper
 {
-    public class Database : IDisposable
+    public class Database : IDatabase
     {
         private readonly bool _useSingletone;
         private SqlConnection _connection;
@@ -14,7 +17,6 @@ namespace DataHelper
 
         public Database(string connectionString, bool useSingletone = false)
         {
-
             _useSingletone = useSingletone;
             ConnectionString = connectionString ?? throw new ArgumentNullException(nameof(connectionString));
         }

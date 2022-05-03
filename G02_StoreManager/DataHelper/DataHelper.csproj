@@ -51,5 +51,11 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataHelper.Facade\DataHelper.Facade.csproj">
+      <Project>{393D9FD2-53C3-4B89-8D2C-7B9793D9D749}</Project>
+      <Name>DataHelper.Facade</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

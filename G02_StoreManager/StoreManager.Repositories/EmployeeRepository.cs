@@ -11,9 +11,6 @@ namespace StoreManager.Repositories
 {
     public class EmployeeRepository : RepositoryBase<Employee>
     {
-        public EmployeeRepository()
-        {
-            
-        }
+
     }
 }

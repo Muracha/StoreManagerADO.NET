@@ -4,9 +4,6 @@ namespace StoreManager.Repositories
 {
     public class ProductRepository : RepositoryBase<Product>
     {
-        public ProductRepository()
-        {
-           
-        }
+
     }
 }

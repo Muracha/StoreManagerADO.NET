@@ -4,15 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E33176FC-8872-45A9-B060-5FBBF99BA726}</ProjectGuid>
+    <ProjectGuid>{393D9FD2-53C3-4B89-8D2C-7B9793D9D749}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>StoreManager.Repositories</RootNamespace>
-    <AssemblyName>StoreManager.Repositories</AssemblyName>
+    <RootNamespace>DataHelper.Facade</RootNamespace>
+    <AssemblyName>DataHelper.Facade</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -33,9 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data.Entity.Design" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,33 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ContactInfoRepository.cs" />
-    <Compile Include="EmployeeRepository.cs" />
-    <Compile Include="ProductRepository.cs" />
-    <Compile Include="RepositoryBase.cs" />
-    <Compile Include="UserRepository.cs" />
+    <Compile Include="IDatabase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DataHelper.Facade\DataHelper.Facade.csproj">
-      <Project>{393d9fd2-53c3-4b89-8d2c-7b9793d9d749}</Project>
-      <Name>DataHelper.Facade</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DataHelper.Factory\DataHelper.Factory.csproj">
-      <Project>{8c801bfc-7abd-4e8e-97b8-a560b7cf06b2}</Project>
-      <Name>DataHelper.Factory</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DataHelper\DataHelper.csproj">
-      <Project>{685a714e-ece0-4068-9aeb-70b7d6ff6962}</Project>
-      <Name>DataHelper</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\StoreManager.Models\StoreManager.Models.csproj">
-      <Project>{a28d5dab-025e-40ac-81b0-60da2fce9db2}</Project>
-      <Name>StoreManager.Models</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
