@@ -9,13 +9,13 @@ using System.Runtime.CompilerServices;
 
 namespace DataHelper
 {
-    internal class Database : IDatabase
+    public class Database : IDatabase
     {
-        private protected bool _useSingletone;
+        private readonly bool _useSingletone;
         private SqlConnection _connection;
         private SqlTransaction _transaction;
 
-        public Database(string connectionString, bool useSingletone= false)
+        public Database(string connectionString, bool useSingletone = false)
         {
             _useSingletone = useSingletone;
             ConnectionString = connectionString ?? throw new ArgumentNullException(nameof(connectionString));

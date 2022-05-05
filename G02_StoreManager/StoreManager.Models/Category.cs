@@ -13,5 +13,7 @@ namespace StoreManager.Models
         public int ParentID { get; set; }
         public string CreateDate { get; set; }
         public string Description { get; set; }
+
+
     }
 }
