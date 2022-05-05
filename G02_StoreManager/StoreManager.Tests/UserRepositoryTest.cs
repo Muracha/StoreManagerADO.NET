@@ -23,7 +23,11 @@ namespace StoreManager.Tests
         [TestMethod]
         public void A_TestInsert()
         {
-            var user = new User() { };
+            var user = new User();
+            user.ID = 1;
+            user.Username = "gio";
+            user.Password = "giogio";
+            user.IsActive = true;
             int id = _userRepository.Insert(user);
             Assert.IsTrue(id > 0);
         }
@@ -65,6 +69,17 @@ namespace StoreManager.Tests
         {
             var result = _userRepository.Select();
             Assert.IsTrue(result != null);
+        }
+
+        [TestMethod]
+        public void F_TestLogin()
+        {
+            var user = new User();
+            user.ID = 1;
+            user.Username = "gio";
+            user.Password = "giogio";
+            _userRepository.Login(user);
+
         }
     }
 }

@@ -6,7 +6,7 @@ namespace DataHelper.Facade
 {
     public interface IDatabase : IDisposable
     {
-        string ConnectionString { get; }
+        string ConnectionString { get;}
 
         void BeginTransaction();
         void CloseConnection();

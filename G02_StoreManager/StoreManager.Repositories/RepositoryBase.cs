@@ -1,9 +1,7 @@
-﻿using DataHelper;
-using DataHelper.Facade;
+﻿using DataHelper.Facade;
 using DataHelper.Factory;
 using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Data;
 using System.Data.Entity.Design.PluralizationServices;
 using System.Data.SqlClient;
@@ -15,13 +13,11 @@ namespace StoreManager.Repositories
 {
     public abstract class RepositoryBase<T> : IDisposable where T : class, new()
     {
-        protected readonly string _connectionString;
         protected readonly string _objectName;
         protected readonly IDatabase _database;
 
         public RepositoryBase()
         {
-            //_connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
             _objectName = typeof(T).Name;
             _database = DatabaseFactory.GetInstance();
         }
@@ -37,7 +33,6 @@ namespace StoreManager.Repositories
         public virtual IEnumerable<T> Select()
         {
             var data = _database.GetTable($"Select{GetPluralize(_objectName)}_SP", CommandType.StoredProcedure);
-
             foreach (DataRow row in data.Rows)
             {
                 yield return GetItem(row);
@@ -46,14 +41,14 @@ namespace StoreManager.Repositories
 
         public virtual int Insert(T record)
         {
-            using (var database = new Database(_connectionString, true))
+            using (var database = DatabaseFactory.GetInstance(true))
             {
                 try
-                {
+                {   
                     string objectName = $"Insert{_objectName}_SP";
-                    database.BeginTransaction();
-                    int id = (int)database.ExecuteScalar(objectName, CommandType.StoredProcedure, GetParametrs(record, objectName).ToArray());
-                    database.CommitTransaction();
+                    _database.BeginTransaction();
+                    int id = (int)_database.ExecuteScalar(objectName, CommandType.StoredProcedure, GetParametrs(record, objectName).ToArray());
+                    _database.CommitTransaction();
                     return id;
                 }
                 catch (Exception ex)
@@ -66,7 +61,7 @@ namespace StoreManager.Repositories
 
         public virtual void Update(T record)
         {
-            using (var database = new Database(_connectionString, true))
+            using (var database = DatabaseFactory.GetInstance(true))
             {
                 try
                 {
@@ -85,7 +80,7 @@ namespace StoreManager.Repositories
 
         public virtual void Delete(object id)
         {
-            using (var database = new Database(_connectionString, true))
+            using (var database = DatabaseFactory.GetInstance(true))
             {
                 try
                 {
@@ -143,7 +138,7 @@ namespace StoreManager.Repositories
 
         private DataTable GetProcedureParametrs(string procedureName)
         {
-            using (var database = new Database(_connectionString))
+            using (var database = DatabaseFactory.GetInstance(true))
             {
                 return database.GetTable("SelectParameters_SP", CommandType.StoredProcedure, new SqlParameter("@ProcedureNume", procedureName));
             }
@@ -161,5 +156,6 @@ namespace StoreManager.Repositories
         }
 
         #endregion
+
     }
 }

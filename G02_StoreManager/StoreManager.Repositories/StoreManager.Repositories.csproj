@@ -44,10 +44,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CategoryRepository.cs" />
     <Compile Include="ContactInfoRepository.cs" />
+    <Compile Include="ContactRepository.cs" />
     <Compile Include="EmployeeRepository.cs" />
+    <Compile Include="PermissionRepository.cs" />
     <Compile Include="ProductRepository.cs" />
     <Compile Include="RepositoryBase.cs" />
+    <Compile Include="RolePermissionsRepository.cs" />
+    <Compile Include="RoleRepository.cs" />
+    <Compile Include="SupplierRepository.cs" />
+    <Compile Include="TransactionDetailsRepository.cs" />
+    <Compile Include="TransactionRepository.cs" />
     <Compile Include="UserRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
