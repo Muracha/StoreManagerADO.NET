@@ -1,7 +1,6 @@
 ﻿using DataHelper.Facade;
 using System;
 using System.Data;
-using System.Data.Common;
 using System.Data.SqlClient;
 using System.Runtime.CompilerServices;
 
@@ -9,7 +8,7 @@ using System.Runtime.CompilerServices;
 
 namespace DataHelper
 {
-    public class Database : IDatabase
+    internal class Database : IDatabase
     {
         private readonly bool _useSingletone;
         private SqlConnection _connection;

@@ -46,7 +46,7 @@ namespace StoreManager.Tests
         {
            var user1= _userRepository.Get(1);
             var id = 1;
-            _userRepository.Delete(id);
+            //_userRepository.Delete(id);
             var user2 = _userRepository.Get(1);
 
             Assert.IsTrue(user1.IsDeleted != user2.IsDeleted);
@@ -65,6 +65,17 @@ namespace StoreManager.Tests
         {
             var result = _userRepository.Select();
             Assert.IsTrue(result != null);
+        }
+
+        [TestMethod]
+        public void F_TestLogin()
+        {
+            var user = new User();
+            user.ID = 1;
+            user.Username = "gio";
+            user.Password = "giogio";
+            int result = _userRepository.Login(user);
+            Assert.IsTrue(result > 0);
         }
     }
 }

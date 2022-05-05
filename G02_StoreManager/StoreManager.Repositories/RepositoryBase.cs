@@ -1,9 +1,7 @@
-﻿using DataHelper;
-using DataHelper.Facade;
+﻿using DataHelper.Facade;
 using DataHelper.Factory;
 using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Data;
 using System.Data.Entity.Design.PluralizationServices;
 using System.Data.SqlClient;
@@ -21,7 +19,6 @@ namespace StoreManager.Repositories
 
         public RepositoryBase()
         {
-            //_connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
             _objectName = typeof(T).Name;
             _database = DatabaseFactory.GetInstance();
         }
@@ -46,7 +43,7 @@ namespace StoreManager.Repositories
 
         public virtual int Insert(T record)
         {
-            using (var database = new Database(_connectionString, true))
+            using (var database = DatabaseFactory.GetInstance(true))
             {
                 try
                 {
@@ -66,7 +63,7 @@ namespace StoreManager.Repositories
 
         public virtual void Update(T record)
         {
-            using (var database = new Database(_connectionString, true))
+            using (var database = DatabaseFactory.GetInstance(true))
             {
                 try
                 {
@@ -85,7 +82,7 @@ namespace StoreManager.Repositories
 
         public virtual void Delete(object id)
         {
-            using (var database = new Database(_connectionString, true))
+            using (var database = DatabaseFactory.GetInstance(true))
             {
                 try
                 {
@@ -143,10 +140,7 @@ namespace StoreManager.Repositories
 
         private DataTable GetProcedureParametrs(string procedureName)
         {
-            using (var database = new Database(_connectionString))
-            {
-                return database.GetTable("SelectParameters_SP", CommandType.StoredProcedure, new SqlParameter("@ProcedureNume", procedureName));
-            }
+            return _database.GetTable("SelectParameters_SP", CommandType.StoredProcedure, new SqlParameter("@ProcedureNume", procedureName));
         }
 
         private string GetPluralize(string objectName)
