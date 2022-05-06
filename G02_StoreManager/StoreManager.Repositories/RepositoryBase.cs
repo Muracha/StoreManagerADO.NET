@@ -16,7 +16,6 @@ namespace StoreManager.Repositories
         protected readonly string _connectionString;
         protected readonly string _objectName;
         protected readonly IDatabase _database;
-
         public RepositoryBase()
         {
             _objectName = typeof(T).Name;

@@ -9,12 +9,11 @@ namespace StoreManager.Repositories
     {
         public int Login(User user)
         {
-            int result = (int)_database.ExecuteScalar("Login_SP", CommandType.StoredProcedure,
-                new SqlParameter("@ID", user.ID),
+            var result = (int)_database.ExecuteScalar("Login_SP", CommandType.StoredProcedure,
                 new SqlParameter("@Username", user.Username),
                 new SqlParameter("@Password", user.Password));
-
-           return result;   
+            
+            return result;
         }
     }
 }
