@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace StoreManager.Services
 {
-    public class ProductSerices
+    public abstract class ServiceBase
     {
     }
 }

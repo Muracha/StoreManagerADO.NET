@@ -9,16 +9,16 @@ using System.Threading.Tasks;
 
 namespace StoreManager.Tests
 {
-
     [TestClass]
     public class UserRepositoryTest
     {
-        private  UserRepository _userRepository;
+        private UserRepository _userRepository;
+        private static int _userId;
 
         public UserRepositoryTest()
         {
             _userRepository = new UserRepository();
-        }   
+        }
 
         [TestMethod]
         public void A_TestInsert()
@@ -30,7 +30,15 @@ namespace StoreManager.Tests
                 Password = "123"
             };
             int id = _userRepository.Insert(user);
+            _userId = id;
             Assert.IsTrue(id > 0);
+        }
+
+        [TestMethod]
+        public void B_TestGet()
+        {
+            var result = _userRepository.Get(_userId);
+            Assert.IsTrue(result != null);
         }
 
         [TestMethod]
@@ -51,20 +59,12 @@ namespace StoreManager.Tests
         [TestMethod]
         public void C_TestDelete()
         {
-           var user1= _userRepository.Get(1);
+            var user1 = _userRepository.Get(1);
             var id = 1;
             _userRepository.Delete(id);
             var user2 = _userRepository.Get(1);
 
             Assert.IsTrue(user1.IsDeleted != user2.IsDeleted);
-        }
-
-        [TestMethod]
-        public void D_TestGet()
-        {
-            var id = 1;
-            var result = _userRepository.Get(id);
-            Assert.IsTrue(result!=null);
         }
 
         [TestMethod]
