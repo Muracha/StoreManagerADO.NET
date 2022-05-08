@@ -8,7 +8,7 @@ using System.Runtime.CompilerServices;
 
 namespace DataHelper
 {
-    internal class Database : IDatabase
+    internal  class Database : IDatabase
     {
         private readonly bool _useSingletone;
         private SqlConnection _connection;

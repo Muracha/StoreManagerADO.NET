@@ -4,15 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E3D9CB80-67C1-428E-BE69-AF0A9ACB9326}</ProjectGuid>
+    <ProjectGuid>{BEDD7539-87FB-45E2-91F9-A4D5048765D2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>StoreManager.Services</RootNamespace>
-    <AssemblyName>StoreManager.Services</AssemblyName>
+    <RootNamespace>Repository.Facade</RootNamespace>
+    <AssemblyName>Repository.Facade</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -42,27 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ProductService.cs" />
+    <Compile Include="IRepositoryBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ServiceBase.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DataHelper.Facade\DataHelper.Facade.csproj">
-      <Project>{393d9fd2-53c3-4b89-8d2c-7b9793d9d749}</Project>
-      <Name>DataHelper.Facade</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DataHelper.Factory\DataHelper.Factory.csproj">
-      <Project>{8c801bfc-7abd-4e8e-97b8-a560b7cf06b2}</Project>
-      <Name>DataHelper.Factory</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\StoreManager.Models\StoreManager.Models.csproj">
-      <Project>{a28d5dab-025e-40ac-81b0-60da2fce9db2}</Project>
-      <Name>StoreManager.Models</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\StoreManager.Repositories\StoreManager.Repositories.csproj">
-      <Project>{e33176fc-8872-45a9-b060-5fbbf99ba726}</Project>
-      <Name>StoreManager.Repositories</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

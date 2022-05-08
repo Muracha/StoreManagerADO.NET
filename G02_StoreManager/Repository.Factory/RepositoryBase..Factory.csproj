@@ -4,15 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E33176FC-8872-45A9-B060-5FBBF99BA726}</ProjectGuid>
+    <ProjectGuid>{A2E8FC63-3B3D-473C-AD7F-6ABD903DB02E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>StoreManager.Repositories</RootNamespace>
-    <AssemblyName>StoreManager.Repositories</AssemblyName>
+    <RootNamespace>Repository.Factory</RootNamespace>
+    <AssemblyName>Repository.Factory</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -33,9 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data.Entity.Design" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,43 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CategoryRepository.cs" />
-    <Compile Include="ContactInfoRepository.cs" />
-    <Compile Include="ContactRepository.cs" />
-    <Compile Include="EmployeeRepository.cs" />
-    <Compile Include="RepositoryBase\IRepositoryBase.cs" />
-    <Compile Include="PermissionRepository.cs" />
-    <Compile Include="ProductRepository.cs" />
-    <Compile Include="RepositoryBase\RepositoryBase.cs" />
-    <Compile Include="RolePermissionsRepository.cs" />
-    <Compile Include="RoleRepository.cs" />
-    <Compile Include="SupplierRepository.cs" />
-    <Compile Include="TransactionDetailsRepository.cs" />
-    <Compile Include="TransactionRepository.cs" />
-    <Compile Include="UserRepository.cs" />
+    <Compile Include="RepositoryFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DataHelper.Facade\DataHelper.Facade.csproj">
-      <Project>{393d9fd2-53c3-4b89-8d2c-7b9793d9d749}</Project>
-      <Name>DataHelper.Facade</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DataHelper.Factory\DataHelper.Factory.csproj">
-      <Project>{8c801bfc-7abd-4e8e-97b8-a560b7cf06b2}</Project>
-      <Name>DataHelper.Factory</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DataHelper\DataHelper.csproj">
-      <Project>{685a714e-ece0-4068-9aeb-70b7d6ff6962}</Project>
-      <Name>DataHelper</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\StoreManager.Models\StoreManager.Models.csproj">
-      <Project>{a28d5dab-025e-40ac-81b0-60da2fce9db2}</Project>
-      <Name>StoreManager.Models</Name>
+    <ProjectReference Include="..\Repository.Facade\RepositoryBase.Facade.csproj">
+      <Project>{bedd7539-87fb-45e2-91f9-a4d5048765d2}</Project>
+      <Name>RepositoryBase.Facade</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
-  </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

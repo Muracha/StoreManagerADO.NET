@@ -8,40 +8,14 @@ using System.Threading.Tasks;
 
 namespace StoreManager.Services
 {
-
-    //todo: gavitanot dziritadi punqcionali sabazo servisis klasshi ise rom moergos memkvidre klasebs.
-    public class ProductService : ServiceBase
+    public class ProductService : ServiceBase<Product>
     {
-        private ProductRepository _productRepository;
-
-        public ProductService()
-        {
-            _productRepository = new ProductRepository();
-        }
-
-        public virtual Product Get(object id)
-        {
-            return _productRepository.Get(id);
-        }
-
-        public virtual IEnumerable<Product> Select()
-        {
-            return _productRepository.Select();
-        }
-
-        public virtual int Insert(Product record)
-        {
-            return _productRepository.Insert(record);
-        }
-
-        public virtual void Update(Product record)
-        {
-            _productRepository.Update(record);
-        }
-
-        public virtual void Delete(object id)
-        {
-            _productRepository.Delete(id);
-        }
+        //todo: gavitanot dziritadi punqcionali sabazo servisis klasshi ise rom moergos memkvidre klasebs.
+        /*
+         1. shevecadot ramodenime repositorebze UnitTest-ebis gamartva.
+         2. gavitanot dziritadi punqcionali sabazo servisis klasshi ise rom moergos memkvidre klasebs.
+         3. chamomiweret procedurebi romelsac ar paravs mimdinare repositorebi.
+         4. tu moaswrebt daiwyet UnitTestebi servicebistvis.
+         */
     }
 }

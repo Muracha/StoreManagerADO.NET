@@ -11,9 +11,8 @@ using System.Reflection;
 
 namespace StoreManager.Repositories
 {
-    public abstract class RepositoryBase<T> : IDisposable where T : class, new()
+    public abstract class RepositoryBase<T> : IDisposable,IRepositoryBase<T> where T : class, new()
     {
-        protected readonly string _connectionString;
         protected readonly string _objectName;
         protected readonly IDatabase _database;
 
@@ -106,7 +105,7 @@ namespace StoreManager.Repositories
 
         #region Methods Helper
 
-        private IEnumerable<SqlParameter> GetParametrs(T record, string procedureName)
+        public IEnumerable<SqlParameter> GetParametrs(T record, string procedureName)
         {
             var parametrsTable = GetProcedureParametrs(procedureName);
             var properties = typeof(T).GetProperties();
@@ -123,7 +122,7 @@ namespace StoreManager.Repositories
             }
         }
 
-        private T GetItem(DataRow dr)
+        public T GetItem(DataRow dr)
         {
             T item = new T();
 
@@ -138,12 +137,12 @@ namespace StoreManager.Repositories
             return item;
         }
 
-        private DataTable GetProcedureParametrs(string procedureName)
+        public DataTable GetProcedureParametrs(string procedureName)
         {
             return _database.GetTable("SelectParameters_SP", CommandType.StoredProcedure, new SqlParameter("@ProcedureNume", procedureName));
         }
 
-        private string GetPluralize(string objectName)
+        public string GetPluralize(string objectName)
         {
             CultureInfo ci = new CultureInfo("en-us");
             PluralizationService ps = PluralizationService.CreateService(ci);
