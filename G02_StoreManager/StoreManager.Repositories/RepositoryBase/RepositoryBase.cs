@@ -11,18 +11,18 @@ using System.Reflection;
 
 namespace StoreManager.Repositories
 {
-    public abstract class RepositoryBase<T> : IDisposable,IRepositoryBase<T> where T : class, new()
+    public abstract class RepositoryBase<TModel> : IDisposable where TModel : class, new()
     {
         protected readonly string _objectName;
         protected readonly IDatabase _database;
 
         public RepositoryBase()
         {
-            _objectName = typeof(T).Name;
+            _objectName = typeof(TModel).Name;
             _database = DatabaseFactory.GetInstance();
         }
 
-        public virtual T Get(object id)
+        public virtual TModel Get(object id)
         {
             var table = _database.GetTable($"Select{_objectName}_SP", CommandType.StoredProcedure, new SqlParameter("@ID", id));
             if (table.Rows.Count > 0)
@@ -30,7 +30,7 @@ namespace StoreManager.Repositories
             return null;
         }
 
-        public virtual IEnumerable<T> Select()
+        public virtual IEnumerable<TModel> Select()
         {
             var data = _database.GetTable($"Select{GetPluralize(_objectName)}_SP", CommandType.StoredProcedure);
 
@@ -40,7 +40,7 @@ namespace StoreManager.Repositories
             }
         }
 
-        public virtual int Insert(T record)
+        public virtual int Insert(TModel record)
         {
             using (var database = DatabaseFactory.GetInstance(true))
             {
@@ -60,7 +60,7 @@ namespace StoreManager.Repositories
             }
         }
 
-        public virtual void Update(T record)
+        public virtual void Update(TModel record)
         {
             using (var database = DatabaseFactory.GetInstance(true))
             {
@@ -105,10 +105,10 @@ namespace StoreManager.Repositories
 
         #region Methods Helper
 
-        public IEnumerable<SqlParameter> GetParametrs(T record, string procedureName)
+        public IEnumerable<SqlParameter> GetParametrs(TModel record, string procedureName)
         {
             var parametrsTable = GetProcedureParametrs(procedureName);
-            var properties = typeof(T).GetProperties();
+            var properties = typeof(TModel).GetProperties();
 
             foreach (DataRow row in parametrsTable.Rows)
             {
@@ -122,9 +122,9 @@ namespace StoreManager.Repositories
             }
         }
 
-        public T GetItem(DataRow dr)
+        public TModel GetItem(DataRow dr)
         {
-            T item = new T();
+            TModel item = new TModel();
 
             foreach (DataColumn column in dr.Table.Columns)
             {
