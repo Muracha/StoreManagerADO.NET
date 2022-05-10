@@ -12,36 +12,21 @@ namespace StoreManager.Services
         //    //_IRepositoryBase = new RepositoryBase<T>();
         //}
 
-        //public virtual T Get(object id)
-        //{
-        //    return _IRepositoryBase.Get(id);
-        //}
-
-
+        //public virtual T Gets(object id)=> _IRepositoryBase.Get(id);
+      
         public override T Get(object id)
         {
             return base.Get(id);
         }
 
-        public override IEnumerable<T> Select()
-        {
-            return base.Select();
-        }
+        public override IEnumerable<T> Select() => base.Select();
+     
+        public override int Insert(T record) => base.Insert(record);
 
-        public override int Insert(T record)
-        {
-            return base.Insert(record);
-        }
-
-        public override void Update(T record)
-        {
-            base.Update(record);
-        }
-
-        public override void Delete(object id)
-        {
-            base.Delete(id);
-        }
+        public override void Update(T record)=> base.Update(record);
+    
+        public override void Delete(object id)=> base.Delete(id);
+        
     }
   
 }
