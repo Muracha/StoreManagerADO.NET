@@ -42,10 +42,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CategoryService.cs" />
+    <Compile Include="ConntactService.cs" />
+    <Compile Include="ContactInfoService.cs" />
+    <Compile Include="EmployeeService.cs" />
+    <Compile Include="PermissionService.cs" />
     <Compile Include="ProductService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RolePermissionsService.cs" />
+    <Compile Include="RoleService.cs" />
     <Compile Include="ServiceBase.cs" />
     <Compile Include="ServiceRepositoryBase.cs" />
+    <Compile Include="SupplierService.cs" />
+    <Compile Include="TransactionDetailsService.cs" />
+    <Compile Include="TransactionService.cs" />
+    <Compile Include="UserService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataHelper.Facade\DataHelper.Facade.csproj">
