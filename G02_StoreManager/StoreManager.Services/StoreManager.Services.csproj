@@ -51,8 +51,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RolePermissionsService.cs" />
     <Compile Include="RoleService.cs" />
-    <Compile Include="ServiceBase.cs" />
-    <Compile Include="ServiceRepositoryBase.cs" />
+    <Compile Include="ServiceBase\ServiceBase.cs" />
+    <Compile Include="ServiceBase\ServiceRepositoryBase.cs" />
     <Compile Include="SupplierService.cs" />
     <Compile Include="TransactionDetailsService.cs" />
     <Compile Include="TransactionService.cs" />

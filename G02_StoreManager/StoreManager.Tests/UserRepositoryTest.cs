@@ -1,7 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using StoreManager.Models;
 using StoreManager.Repositories;
-using System;
 
 namespace StoreManager.Tests
 {
@@ -10,12 +9,12 @@ namespace StoreManager.Tests
     {
         private UserRepository _userRepository;
         private static int _userId;
-        private  bool _textExit;
+        private SingleTon _singleTone;
 
         public UserRepositoryTest()
         {
             _userRepository = new UserRepository();
-         
+            _singleTone = SingleTon.Instance;
         }
 
         [TestMethod]
@@ -35,6 +34,7 @@ namespace StoreManager.Tests
             }
             catch
             {
+                _singleTone.CleareInstance();
                 Assert.Fail();
             }
         }
@@ -42,76 +42,83 @@ namespace StoreManager.Tests
         [TestMethod]
         public void B_TestGet()
         {
-            try
+            if (_singleTone.CheckInstance())
             {
-                var result = _userRepository.Get(_userId);
-                Assert.IsTrue(result != null);
+                try
+                {
+                    var result = _userRepository.Get(_userId);
+                    Assert.IsTrue(result != null);
+                }
+                catch
+                {
+                    _singleTone.CleareInstance();
+                    Assert.Fail();
+                }
             }
-            catch
-            {
-                Assert.Fail();
-                Environment.Exit(0);
-            }
-
         }
 
         [TestMethod]
         public void C_TestSelect()
         {
-
-            try
+            if (_singleTone.CheckInstance())
             {
-                var result = _userRepository.Select();
-                Assert.IsTrue(result != null);
+                try
+                {
+                    var result = _userRepository.Select();
+                    Assert.IsTrue(result != null);
+                }
+                catch
+                {
+                    _singleTone.CleareInstance();
+                    Assert.Fail();
+                }
             }
-            catch
-            {
-                Environment.Exit(0);
-            }
-
         }
 
         [TestMethod]
         public void D_TestUpdate()
         {
-            try
+            if (_singleTone.CheckInstance())
             {
-                var user1 = new User
+                try
                 {
-                    ID = _userId,
-                    Username = "kakha",
-                    IsActive = true
-                };
-                _userRepository.Update(user1);
-                User user2 = _userRepository.Get(1);
-                Assert.IsTrue(user2.Username == user1.Username);
+                    var user1 = new User
+                    {
+                        ID = _userId,
+                        Username = "kakha",
+                        IsActive = true
+                    };
+                    _userRepository.Update(user1);
+                    User user2 = _userRepository.Get(_userId);
+                    Assert.IsTrue(user2.Username == user1.Username);
+                }
+                catch
+                {
+                    _singleTone.CleareInstance();
+                    Assert.Fail();
+                }
             }
-            catch
-            {
-                Assert.Fail();
-                Environment.Exit(0);
-            }
-
         }
 
         [TestMethod]
         public void E_TestDelete()
         {
-            try
+            if (_singleTone.CheckInstance())
             {
-                var user1 = _userRepository.Get(_userId);
-                _userRepository.Delete(_userId);
-                var user2 = _userRepository.Get(_userId);
+                try
+                {
+                    var user1 = _userRepository.Get(_userId);
+                    _userRepository.Delete(_userId);
+                    var user2 = _userRepository.Get(_userId);
 
-                Assert.IsTrue(user1.IsDeleted != user2.IsDeleted);
+                    Assert.IsTrue(user1.IsDeleted != user2.IsDeleted);
+                }
+                catch
+                {
+                    _singleTone.CleareInstance();
+                    Assert.Fail();
+                }
             }
-            catch
-            {
-                Assert.Fail();
-                Environment.Exit(0);
-            }
-
         }
     }
-   
 }
