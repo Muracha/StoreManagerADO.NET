@@ -9,7 +9,7 @@ namespace StoreManager.Tests
     {
         private UserRepository _userRepository;
         private static int _userId;
-        private SingleTon _singleTone;
+        private  SingleTon _singleTone;
 
         public UserRepositoryTest()
         {
