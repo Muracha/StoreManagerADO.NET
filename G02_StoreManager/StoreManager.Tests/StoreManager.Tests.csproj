@@ -57,6 +57,8 @@
     <Compile Include="Repository.Tests\ContactRepositoryTest.cs" />
     <Compile Include="Repository.Tests\EmployeeRepositoryTest.cs" />
     <Compile Include="Repository.Tests\PermissionRepositoryTest.cs" />
+    <Compile Include="Repository.Tests\TestRepositoryBase.cs" />
+    <Compile Include="Services.Tests\ContactInfoServiceTest.cs" />
     <Compile Include="Services.Tests\ProductServiceTest.cs" />
     <Compile Include="Repository.Tests\ProductRepositoryTest.cs" />
     <Compile Include="Repository.Tests\RolePermissionsRepositoryTest.cs" />
@@ -64,6 +66,7 @@
     <Compile Include="Repository.Tests\SupplierRepositoryTest.cs" />
     <Compile Include="Repository.Tests\TransactionDetailsRepositoryTest.cs" />
     <Compile Include="Repository.Tests\TransactionRepositoryTest.cs" />
+    <Compile Include="Services.Tests\TestServiceBase.cs" />
     <Compile Include="SingleTon.cs" />
     <Compile Include="Repository.Tests\UserRepositoryTest.cs" />
   </ItemGroup>

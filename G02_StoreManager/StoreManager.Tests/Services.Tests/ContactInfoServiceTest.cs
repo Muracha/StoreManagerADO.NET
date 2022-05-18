@@ -1,17 +1,17 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using StoreManager.Models;
 using StoreManager.Repositories;
-using System;
-
+using StoreManager.Services;
 
 namespace StoreManager.Tests
 {
     [TestClass]
-    public class ContactInfoRepositoryTest : TestRepositoryBase<ContactInfo, ContactInfoRepository>
+    public class ContactInfoServiceTest : TestServiceBase<ContactInfo, ContactInfoService, ContactInfoRepository>
     {
-        private ContactInfoRepository _contactInfoRepository;
-        private ContactInfo _updatedContactInfo;
-        public ContactInfoRepositoryTest()
+        protected ContactInfo _updatedContactInfo;
+        protected ContactInfoService _contactInfoService;
+
+        public ContactInfoServiceTest()
         {
             var contactInfo = new ContactInfo();
             contactInfo.EmployeeID = 1;
@@ -28,14 +28,14 @@ namespace StoreManager.Tests
             {
                 try
                 {
-                    _contactInfoRepository = new ContactInfoRepository();
+                    _contactInfoService = new ContactInfoService();
                     _updatedContactInfo = new ContactInfo();
                     _updatedContactInfo.ID = GetID;
                     _updatedContactInfo.ContactType = 2;
                     _updatedContactInfo.ContactData = "yes";
                     _updatedContactInfo.IsPrimary = false;
-                    _contactInfoRepository.Update(_updatedContactInfo);
-                    var oldContactInfo = _contactInfoRepository.Get(GetID);
+                    _contactInfoService.Update(_updatedContactInfo);
+                    var oldContactInfo = _contactInfoService.Get(GetID);
 
                     if (_updatedContactInfo.ContactType != oldContactInfo.ContactType)
                     {
@@ -47,11 +47,12 @@ namespace StoreManager.Tests
                             }
                         }
                     }
+
+                    Assert.Fail();
                 }
                 catch
                 {
                     TestStatus = false;
-                    Assert.Fail();
                 }
             }
         }
