@@ -11,10 +11,6 @@ namespace StoreManager.Tests
         where TService : ServiceRepositoryBase<TModel, TRepository>, new()
     {
         protected TService _service;
-        protected TModel _model;
-        protected static bool _checker = true;
-        protected static int _modelID = 0;
-
         public TestServiceBase()
         {
             _service = new TService();
@@ -25,8 +21,8 @@ namespace StoreManager.Tests
         {
             try
             {
-                GetID = _service.Insert(GetModel);
-                Assert.IsTrue(GetID > 0);
+                ModelID = _service.Insert(GetModel);
+                Assert.IsTrue(ModelID > 0);
             }
             catch
             {
@@ -42,7 +38,7 @@ namespace StoreManager.Tests
             {
                 try
                 {
-                    Assert.IsTrue(_service.Get(GetID) != null);
+                    Assert.IsTrue(_service.Get(ModelID) != null);
                 }
                 catch
                 {
@@ -69,7 +65,10 @@ namespace StoreManager.Tests
             }
         }
 
-        public abstract void D_TestUpdate();
+        public virtual void D_TestUpdate()
+        {
+
+        }
 
         [TestMethod]
         public void E_TestDelete()
@@ -78,8 +77,8 @@ namespace StoreManager.Tests
             {
                 try
                 {
-                    _service.Delete(GetID);
-                    var record = _service.Get(GetID);
+                    _service.Delete(ModelID);
+                    var record = _service.Get(ModelID);
                     var value = (bool)record.GetType().GetProperty("IsDeleted").GetValue(record);
                     Assert.IsTrue(value);
                 }
@@ -91,22 +90,8 @@ namespace StoreManager.Tests
             }
         }
 
-        public int GetID
-        {
-            get => _modelID;
-            set => _modelID = value;
-        }
-
-        public bool TestStatus
-        {
-            get => _checker;
-            set => _checker = value;
-        }
-
-        public TModel GetModel
-        {
-            get => _model;
-            set => _model = value;
-        }
+        public int ModelID { get; set; }
+        public bool TestStatus { get; set; }
+        public TModel GetModel { get; set; }
     }
 }

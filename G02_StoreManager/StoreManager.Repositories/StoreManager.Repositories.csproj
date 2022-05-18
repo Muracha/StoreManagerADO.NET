@@ -50,6 +50,7 @@
     <Compile Include="EmployeeRepository.cs" />
     <Compile Include="PermissionRepository.cs" />
     <Compile Include="ProductRepository.cs" />
+    <Compile Include="RepositoryBase\IRepositoryBase.cs" />
     <Compile Include="RepositoryBase\RepositoryBase.cs" />
     <Compile Include="RolePermissionsRepository.cs" />
     <Compile Include="RoleRepository.cs" />

@@ -9,8 +9,6 @@ namespace StoreManager.Tests
     public class ContactInfoServiceTest : TestServiceBase<ContactInfo, ContactInfoService, ContactInfoRepository>
     {
         protected ContactInfo _updatedContactInfo;
-        protected ContactInfoService _contactInfoService;
-
         public ContactInfoServiceTest()
         {
             var contactInfo = new ContactInfo();
@@ -28,31 +26,24 @@ namespace StoreManager.Tests
             {
                 try
                 {
-                    _contactInfoService = new ContactInfoService();
-                    _updatedContactInfo = new ContactInfo();
-                    _updatedContactInfo.ID = GetID;
+                    var oldContactInfo = GetModel;
+                    _updatedContactInfo.ID = ModelID;
                     _updatedContactInfo.ContactType = 2;
                     _updatedContactInfo.ContactData = "yes";
                     _updatedContactInfo.IsPrimary = false;
-                    _contactInfoService.Update(_updatedContactInfo);
-                    var oldContactInfo = _contactInfoService.Get(GetID);
+                    _service.Update(_updatedContactInfo);
 
-                    if (_updatedContactInfo.ContactType != oldContactInfo.ContactType)
-                    {
-                        if (_updatedContactInfo.ContactData != oldContactInfo.ContactData)
-                        {
-                            if (_updatedContactInfo.IsPrimary != oldContactInfo.IsPrimary)
-                            {
-                                Assert.IsTrue(true);
-                            }
-                        }
-                    }
-
-                    Assert.Fail();
+                    Assert.IsTrue
+                        (
+                        _updatedContactInfo.ContactType != oldContactInfo.ContactType &&
+                        _updatedContactInfo.ContactData != oldContactInfo.ContactData &&
+                        _updatedContactInfo.IsPrimary != oldContactInfo.IsPrimary
+                        );
                 }
                 catch
                 {
                     TestStatus = false;
+                    Assert.Fail();
                 }
             }
         }

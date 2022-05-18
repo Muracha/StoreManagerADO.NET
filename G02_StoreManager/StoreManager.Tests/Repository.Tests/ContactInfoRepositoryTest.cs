@@ -9,7 +9,6 @@ namespace StoreManager.Tests
     [TestClass]
     public class ContactInfoRepositoryTest : TestRepositoryBase<ContactInfo, ContactInfoRepository>
     {
-        private ContactInfoRepository _contactInfoRepository;
         private ContactInfo _updatedContactInfo;
         public ContactInfoRepositoryTest()
         {
@@ -28,25 +27,20 @@ namespace StoreManager.Tests
             {
                 try
                 {
-                    _contactInfoRepository = new ContactInfoRepository();
+                    var oldContactInfo = GetModel;
                     _updatedContactInfo = new ContactInfo();
-                    _updatedContactInfo.ID = GetID;
+                    _updatedContactInfo.ID = ModelID;
                     _updatedContactInfo.ContactType = 2;
                     _updatedContactInfo.ContactData = "yes";
                     _updatedContactInfo.IsPrimary = false;
-                    _contactInfoRepository.Update(_updatedContactInfo);
-                    var oldContactInfo = _contactInfoRepository.Get(GetID);
+                    _repository.Update(_updatedContactInfo);
 
-                    if (_updatedContactInfo.ContactType != oldContactInfo.ContactType)
-                    {
-                        if (_updatedContactInfo.ContactData != oldContactInfo.ContactData)
-                        {
-                            if (_updatedContactInfo.IsPrimary != oldContactInfo.IsPrimary)
-                            {
-                                Assert.IsTrue(true);
-                            }
-                        }
-                    }
+                    Assert.IsTrue
+                        (
+                        _updatedContactInfo.ContactType != oldContactInfo.ContactType &&
+                        _updatedContactInfo.ContactData != oldContactInfo.ContactData &&
+                        _updatedContactInfo.IsPrimary != oldContactInfo.IsPrimary
+                        );
                 }
                 catch
                 {

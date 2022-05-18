@@ -51,6 +51,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RolePermissionsService.cs" />
     <Compile Include="RoleService.cs" />
+    <Compile Include="ServiceBase\IServiceRepositoryBase.cs" />
     <Compile Include="ServiceBase\ServiceBase.cs" />
     <Compile Include="ServiceBase\ServiceRepositoryBase.cs" />
     <Compile Include="SupplierService.cs" />

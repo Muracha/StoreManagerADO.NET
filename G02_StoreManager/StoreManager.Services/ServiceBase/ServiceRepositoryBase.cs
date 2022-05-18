@@ -3,7 +3,7 @@ using StoreManager.Repositories;
 
 namespace StoreManager.Services
 {
-    public abstract class ServiceRepositoryBase<TModel, TRepository> : ServiceBase<TModel>
+    public abstract class ServiceRepositoryBase<TModel, TRepository> : ServiceBase<TModel>, IServiceRepositoryBase<TModel> 
         where TModel : class, new()
         where TRepository : RepositoryBase<TModel>, new()
     {

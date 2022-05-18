@@ -11,11 +11,10 @@ using System.Reflection;
 
 namespace StoreManager.Repositories
 {
-    public abstract class RepositoryBase<TModel> : IDisposable where TModel : class, new()
+    public abstract class RepositoryBase<TModel> : IDisposable, IRepositoryBase<TModel> where TModel : class, new()
     {
         protected readonly string _objectName;
         protected readonly IDatabase _database;
-
         public RepositoryBase()
         {
             _objectName = typeof(TModel).Name;
@@ -24,20 +23,42 @@ namespace StoreManager.Repositories
 
         public virtual TModel Get(object id)
         {
-            var table = _database.GetTable($"Select{_objectName}_SP", CommandType.StoredProcedure, new SqlParameter("@ID", id));
-            if (table.Rows.Count > 0)
-                return GetItem(table.Rows[0]);
+            try
+            {
+                var table = _database.GetTable($"Select{_objectName}_SP", CommandType.StoredProcedure, new SqlParameter("@ID", id));
+                if (table.Rows.Count > 0)
+                    return GetItem(table.Rows[0]);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
             return null;
         }
 
         public virtual IEnumerable<TModel> Select()
         {
-            var data = _database.GetTable($"Select{GetPluralize(_objectName)}_SP", CommandType.StoredProcedure);
-
-            foreach (DataRow row in data.Rows)
+            IList<TModel> list = new List<TModel>();
+            try
             {
-                yield return GetItem(row);
+                var data = _database.GetTable($"Select{GetPluralize(_objectName)}_SP", CommandType.StoredProcedure);
+                if (data.Rows.Count > 0)
+                {
+                    foreach (DataRow row in data.Rows)
+                    {
+                        list.Add(GetItem(row));
+                    }
+
+                    return list;
+                }
             }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return null;
         }
 
         public virtual int Insert(TModel record)
@@ -89,10 +110,10 @@ namespace StoreManager.Repositories
                     database.ExecuteNonQuery($"Delete{_objectName}_SP", CommandType.StoredProcedure, new SqlParameter("@ID", id));
                     database.CommitTransaction();
                 }
-                catch
+                catch (Exception ex)
                 {
                     database.RollBack();
-                    throw;
+                    throw ex;
                 }
             }
         }
