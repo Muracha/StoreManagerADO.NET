@@ -28,37 +28,35 @@ namespace StoreManager.Repositories
                 var table = _database.GetTable($"Select{_objectName}_SP", CommandType.StoredProcedure, new SqlParameter("@ID", id));
                 if (table.Rows.Count > 0)
                     return GetItem(table.Rows[0]);
+                return null;
             }
             catch (Exception ex)
             {
                 throw ex;
             }
-
-            return null;
         }
 
         public virtual IEnumerable<TModel> Select()
         {
             IList<TModel> list = new List<TModel>();
+
             try
             {
-                var data = _database.GetTable($"Select{GetPluralize(_objectName)}_SP", CommandType.StoredProcedure);
-                if (data.Rows.Count > 0)
+                var table = _database.GetTable($"Select{GetPluralize(_objectName)}_SP", CommandType.StoredProcedure);
+                if(table.Rows.Count > 0)
                 {
-                    foreach (DataRow row in data.Rows)
+                    foreach (DataRow row in table.Rows)
                     {
                         list.Add(GetItem(row));
                     }
-
                     return list;
                 }
+                return null;
             }
             catch (Exception ex)
             {
                 throw ex;
             }
-
-            return null;
         }
 
         public virtual int Insert(TModel record)
@@ -124,7 +122,7 @@ namespace StoreManager.Repositories
             GC.SuppressFinalize(this);
         }
 
-        #region Methods Helper
+        #region Method Helper
 
         public IEnumerable<SqlParameter> GetParametrs(TModel record, string procedureName)
         {

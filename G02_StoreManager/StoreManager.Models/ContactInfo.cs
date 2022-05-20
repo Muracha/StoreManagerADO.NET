@@ -13,7 +13,7 @@ namespace StoreManager.Models
         public int ContactType { get; set; }
         public string ContactData { get; set; }
         public bool IsPrimary { get; set; }
-        public string CreateDate { get; set; }
+        public DateTime CreateDate { get; set; }
         public bool IsDeleted { get; set; }
     }
 }

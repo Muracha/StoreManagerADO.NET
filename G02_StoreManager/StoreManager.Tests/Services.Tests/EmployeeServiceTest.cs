@@ -1,12 +1,17 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using StoreManager.Models;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using StoreManager.Services;
 using StoreManager.Repositories;
-using System;
+using StoreManager.Models;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace StoreManager.Tests
+namespace StoreManager.Tests.Services.Tests
 {
     [TestClass]
-    public class EmployeeRepositoryTest : TestRepositoryBase<Employee, EmployeeRepository>
+    public class EmployeeServiceTest : TestServiceBase<Employee, EmployeeService, EmployeeRepository>
     {
         private Employee employee = new Employee()
         {
@@ -16,7 +21,7 @@ namespace StoreManager.Tests
             HireDate = DateTime.Today,
         };
 
-        public EmployeeRepositoryTest()
+        public EmployeeServiceTest()
         {
             base.GetModel = employee;
         }
@@ -31,10 +36,10 @@ namespace StoreManager.Tests
                     employee.ID = ModelID;
                     employee.FirstName = "Mishka";
                     employee.LastName = "Muracha";
-                    employee.BirthDate = new DateTime(1999,02, 01);
+                    employee.BirthDate = new DateTime(1999, 02, 01);
                     employee.HireDate = new DateTime(1999, 02, 02);
-                    base._repository.Update(employee);
-                    var record = base._repository.Get(employee.ID);
+                    base._service.Update(employee);
+                    var record = base._service.Get(employee.ID);
 
                     Assert.IsTrue(employee.FirstName == record.FirstName &&
                                   employee.LastName == record.LastName &&
@@ -48,8 +53,5 @@ namespace StoreManager.Tests
                 }
             }
         }
-
     }
-
-
 }

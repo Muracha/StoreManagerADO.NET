@@ -1,11 +1,17 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using StoreManager.Models;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using StoreManager.Services;
 using StoreManager.Repositories;
+using StoreManager.Models;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace StoreManager.Tests
+namespace StoreManager.Tests.Services.Tests
 {
     [TestClass]
-    public class UserRepositoryTest : TestRepositoryBase<User, UserRepository>
+    public class UserServiceTest : TestServiceBase<User, UserService, UserRepository>
     {
         private User user = new User()
         {
@@ -15,7 +21,7 @@ namespace StoreManager.Tests
             IsActive = true
         };
 
-        public UserRepositoryTest()
+        public UserServiceTest()
         {
             base.GetModel = user;
         }
@@ -30,8 +36,8 @@ namespace StoreManager.Tests
                     user.ID = ModelID;
                     user.Username = "Michael";
                     user.IsActive = false;
-                    base._repository.Update(user);
-                    var record = base._repository.Get(ModelID);
+                    base._service.Update(user);
+                    var record = base._service.Get(ModelID);
 
                     Assert.IsTrue(user.Username == record.Username &&
                                   user.IsActive == record.IsActive);

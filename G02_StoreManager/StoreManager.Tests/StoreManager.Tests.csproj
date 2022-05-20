@@ -54,19 +54,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository.Tests\CategoryRepositoryTest.cs" />
     <Compile Include="Repository.Tests\ContactInfoRepositoryTest.cs" />
-    <Compile Include="Repository.Tests\ContactRepositoryTest.cs" />
     <Compile Include="Repository.Tests\EmployeeRepositoryTest.cs" />
     <Compile Include="Repository.Tests\PermissionRepositoryTest.cs" />
-    <Compile Include="Repository.Tests\TestRepositoryBase.cs" />
+    <Compile Include="Repository.Tests\TestRepositoryBase\TestRepositoryBase.cs" />
     <Compile Include="Services.Tests\ContactInfoServiceTest.cs" />
-    <Compile Include="Services.Tests\ProductServiceTest.cs" />
-    <Compile Include="Repository.Tests\ProductRepositoryTest.cs" />
-    <Compile Include="Repository.Tests\RolePermissionsRepositoryTest.cs" />
-    <Compile Include="Repository.Tests\RoleRepositoryTest.cs" />
-    <Compile Include="Repository.Tests\SupplierRepositoryTest.cs" />
-    <Compile Include="Repository.Tests\TransactionDetailsRepositoryTest.cs" />
-    <Compile Include="Repository.Tests\TransactionRepositoryTest.cs" />
-    <Compile Include="Services.Tests\TestServiceBase.cs" />
+    <Compile Include="Services.Tests\EmployeeServiceTest.cs" />
+    <Compile Include="Services.Tests\PermissionServiceTest.cs" />
+    <Compile Include="Services.Tests\TestServiceBase\TestServiceBase.cs" />
+    <Compile Include="Services.Tests\UserServiceTest.cs" />
     <Compile Include="SingleTon.cs" />
     <Compile Include="Repository.Tests\UserRepositoryTest.cs" />
   </ItemGroup>

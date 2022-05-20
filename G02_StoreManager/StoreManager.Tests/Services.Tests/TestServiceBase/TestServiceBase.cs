@@ -1,22 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using StoreManager.Repositories;
+using StoreManager.Services;
 
 namespace StoreManager.Tests
 {
     [TestClass]
-    public abstract class TestRepositoryBase<TModel, TRepository>
+    public abstract class TestServiceBase<TModel, TService, TRepository>
         where TModel : class, new()
         where TRepository : RepositoryBase<TModel>, new()
+        where TService : ServiceRepositoryBase<TModel, TRepository>, new()
     {
-        protected readonly TRepository _repository;
-        public TestRepositoryBase()
+        protected TService _service;
+        protected int ModelID { get; set; }
+        protected bool TestStatus { get; set; }
+        protected TModel GetModel { get; set; }
+        public TestServiceBase()
         {
-            _repository = new TRepository();
+            _service = new TService();
         }
 
         [TestMethod]
@@ -24,7 +24,7 @@ namespace StoreManager.Tests
         {
             try
             {
-                ModelID = _repository.Insert(GetModel);
+                ModelID = _service.Insert(GetModel);
                 Assert.IsTrue(ModelID > 0);
             }
             catch
@@ -41,7 +41,7 @@ namespace StoreManager.Tests
             {
                 try
                 {
-                    Assert.IsTrue(_repository.Get(ModelID) != null);
+                    Assert.IsNotNull(_service.Get(ModelID));
                 }
                 catch
                 {
@@ -54,11 +54,11 @@ namespace StoreManager.Tests
         [TestMethod]
         public void C_TestSelect()
         {
-            if (true)
+            if (TestStatus)
             {
                 try
                 {
-                    Assert.IsTrue(_repository.Select() != null);
+                    Assert.IsNotNull(_service.Select());
                 }
                 catch
                 {
@@ -68,7 +68,10 @@ namespace StoreManager.Tests
             }
         }
 
-        public abstract void D_TestUpdate();
+        public virtual void D_TestUpdate()
+        {
+
+        }
 
         [TestMethod]
         public void E_TestDelete()
@@ -77,10 +80,8 @@ namespace StoreManager.Tests
             {
                 try
                 {
-                    _repository.Delete(ModelID);
-                    var record = _repository.Get(ModelID);
-                    bool value = (bool)record.GetType().GetProperty("IsDeleted").GetValue(record);
-                    Assert.IsTrue(value);
+                    _service.Delete(ModelID);
+                    Assert.IsNull(_service.Get(ModelID));
                 }
                 catch
                 {
@@ -89,9 +90,5 @@ namespace StoreManager.Tests
                 }
             }
         }
-
-        public int ModelID { get; set; }
-        public bool TestStatus { get; set; }
-        public TModel GetModel { get; set; }
     }
 }

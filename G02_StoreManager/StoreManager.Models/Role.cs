@@ -10,7 +10,7 @@ namespace StoreManager.Models
     {
         public int ID { get; set; }
         public string Name { get; set; }
-        public string CreateDate { get; set; }
+        public DateTime CreateDate { get; set; }
         public string Description { get; set; }
     }
 }

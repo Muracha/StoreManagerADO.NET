@@ -1,11 +1,17 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using StoreManager.Models;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using StoreManager.Services;
 using StoreManager.Repositories;
+using StoreManager.Models;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace StoreManager.Tests
+namespace StoreManager.Tests.Services.Tests
 {
     [TestClass]
-    public class PermissionRepositoryTest : TestRepositoryBase<Permission, PermissionRepository>
+    public class PermissionServiceTest : TestServiceBase<Permission, PermissionService, PermissionRepository>
     {
         private Permission permission = new Permission()
         {
@@ -13,7 +19,7 @@ namespace StoreManager.Tests
             Code = 0001,
             Description = "for officers"
         };
-        public PermissionRepositoryTest()
+        public PermissionServiceTest()
         {
             base.GetModel = permission;
         }
@@ -29,8 +35,8 @@ namespace StoreManager.Tests
                     permission.Name = "3232";
                     permission.Code = 0002;
                     permission.Description = "Not for Officers";
-                    base._repository.Update(permission);
-                    var record = base._repository.Get(permission);
+                    base._service.Update(permission);
+                    var record = base._service.Get(permission);
 
                     Assert.IsTrue(permission.Name == record.Name &&
                                   permission.Code == record.Code &&

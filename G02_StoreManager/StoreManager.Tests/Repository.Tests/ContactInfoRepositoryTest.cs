@@ -9,37 +9,38 @@ namespace StoreManager.Tests
     [TestClass]
     public class ContactInfoRepositoryTest : TestRepositoryBase<ContactInfo, ContactInfoRepository>
     {
-        private ContactInfo _updatedContactInfo;
+        private ContactInfo contactInfo = new ContactInfo() 
+        { 
+            EmployeeID = 1,
+            ContactType = 1,
+            ContactData = "idk",
+            IsPrimary = true
+        };
+
         public ContactInfoRepositoryTest()
         {
-            var contactInfo = new ContactInfo();
-            contactInfo.EmployeeID = 1;
-            contactInfo.ContactType = 1;
-            contactInfo.ContactData = "idk";
-            contactInfo.IsPrimary = true;
-            GetModel = contactInfo;
+            base.GetModel = contactInfo;
         }
 
         [TestMethod]
         public override void D_TestUpdate()
         {
-            if (TestStatus)
+            if (base.TestStatus)
             {
                 try
                 {
-                    var oldContactInfo = GetModel;
-                    _updatedContactInfo = new ContactInfo();
-                    _updatedContactInfo.ID = ModelID;
-                    _updatedContactInfo.ContactType = 2;
-                    _updatedContactInfo.ContactData = "yes";
-                    _updatedContactInfo.IsPrimary = false;
-                    _repository.Update(_updatedContactInfo);
+                    contactInfo.ID = ModelID;
+                    contactInfo.ContactType = 2;
+                    contactInfo.ContactData = "yes";
+                    contactInfo.IsPrimary = false;
+                    base._repository.Update(contactInfo);
+                    var record = base._repository.Get(contactInfo.ID);
 
                     Assert.IsTrue
                         (
-                        _updatedContactInfo.ContactType != oldContactInfo.ContactType &&
-                        _updatedContactInfo.ContactData != oldContactInfo.ContactData &&
-                        _updatedContactInfo.IsPrimary != oldContactInfo.IsPrimary
+                        contactInfo.ContactType == record.ContactType &&
+                        contactInfo.ContactData == record.ContactData &&
+                        contactInfo.IsPrimary == record.IsPrimary
                         );
                 }
                 catch
