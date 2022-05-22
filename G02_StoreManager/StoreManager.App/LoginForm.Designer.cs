@@ -59,7 +59,7 @@
             this.btnOk.TabIndex = 4;
             this.btnOk.Text = "Login";
             this.btnOk.UseVisualStyleBackColor = true;
-            this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
+            this.btnOk.Click += new System.EventHandler(this.BtnOk_Click);
             // 
             // btnCancel
             // 
@@ -75,7 +75,7 @@
             this.btnCancel.TabIndex = 5;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            this.btnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
             // 
             // pctUserLogo
             // 
@@ -137,7 +137,7 @@
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(159, 20);
             this.txtUsername.TabIndex = 13;
-            this.txtUsername.TextChanged += new System.EventHandler(this.txtUsername_TextChanged);
+            this.txtUsername.TextChanged += new System.EventHandler(this.TxtUsername_TextChanged);
             // 
             // pnlPassword
             // 
@@ -159,7 +159,7 @@
             this.txtPassword.Size = new System.Drawing.Size(159, 20);
             this.txtPassword.TabIndex = 15;
             this.txtPassword.UseSystemPasswordChar = true;
-            this.txtPassword.TextChanged += new System.EventHandler(this.txtPassword_TextChanged);
+            this.txtPassword.TextChanged += new System.EventHandler(this.TxtPassword_TextChanged);
             // 
             // ShowPassword
             // 
@@ -194,14 +194,12 @@
             this.Controls.Add(this.pctUsername);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOk);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.LoginForm_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.pctUserLogo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctUserGifLogo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctPassword)).EndInit();

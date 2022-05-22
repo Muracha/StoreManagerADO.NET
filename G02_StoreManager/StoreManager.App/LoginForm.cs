@@ -8,8 +8,9 @@ namespace StoreManager.App
     public partial class LoginForm : Form
     {
         private readonly UserService _userService;
-        public static int _userID;
         private static int _attempt = 2;
+        public static int _userID;
+        public static bool _loginSuccessful;
 
         public LoginForm()
         {
@@ -18,7 +19,7 @@ namespace StoreManager.App
         }
 
         //btnOk -Login ღილაკი 
-        private void btnOk_Click(object sender, EventArgs e)
+        private void BtnOk_Click(object sender, EventArgs e)
         {
             //თუ txtUsername.Text და txtPassword.Text ცარიელია, აჩვენებს ცარიელ ველებს ShowEmpty() გამოყენებით.
             if (txtUsername.Text != "" && txtPassword.Text != "")
@@ -35,6 +36,7 @@ namespace StoreManager.App
 
             if ((_userID = _userService.Login(txtUsername.Text, txtPassword.Text)) > 0)
             {
+                _loginSuccessful=true;
                 this.Close();
             }
             else if (_attempt >= 1)
@@ -80,16 +82,13 @@ namespace StoreManager.App
                 txtPassword.UseSystemPasswordChar = false;
         }
 
-        //გამოდუს აპლიკაციიდან
-        private void LoginForm_FormClosed(object sender, FormClosedEventArgs e) => Application.Exit();
-
-        //ხურავს აპლიკაციას cansel ღილაკის დაჭერისას.
-        private void btnCancel_Click(object sender, EventArgs e) => Application.Exit();
+        //ხურავს აპლიკაციას cancel ღილაკის დაჭერისას.
+        private void BtnCancel_Click(object sender, EventArgs e) => Application.Exit();
 
         // txtUsername-textbox.
-        private void txtUsername_TextChanged(object sender, EventArgs e) => ShowEmpty();
+        private void TxtUsername_TextChanged(object sender, EventArgs e) => ShowEmpty();
 
         // txtPassword-textbox.
-        private void txtPassword_TextChanged(object sender, EventArgs e) => ShowEmpty();
+        private void TxtPassword_TextChanged(object sender, EventArgs e) => ShowEmpty();
     }
 }
