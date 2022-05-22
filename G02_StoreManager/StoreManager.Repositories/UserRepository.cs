@@ -1,18 +1,18 @@
-﻿using System;
-using StoreManager.Models;
+﻿using StoreManager.Models;
+using System;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace StoreManager.Repositories
 {
     public class UserRepository : RepositoryBase<User>
     {
-        public bool Login(string username, string password)
+        public int Login(string username, string password)
         {
-            throw new NotImplementedException();
-        }
-
-        public int GetUserID(string username)
-        {
-            throw new NotImplementedException();
+            int result = (int)_database.ExecuteScalar("Login_SP", CommandType.StoredProcedure,
+                new SqlParameter("@Username", username),
+                new SqlParameter("@Password", password));
+            return result;
         }
     }
 }
