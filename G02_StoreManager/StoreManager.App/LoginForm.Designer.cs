@@ -75,7 +75,7 @@
             this.btnCancel.TabIndex = 5;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // pctUserLogo
             // 
@@ -102,9 +102,9 @@
             // pctPassword
             // 
             this.pctPassword.Image = global::StoreManager.App.Properties.Resources.password;
-            this.pctPassword.Location = new System.Drawing.Point(240, 130);
+            this.pctPassword.Location = new System.Drawing.Point(236, 130);
             this.pctPassword.Name = "pctPassword";
-            this.pctPassword.Size = new System.Drawing.Size(22, 20);
+            this.pctPassword.Size = new System.Drawing.Size(26, 20);
             this.pctPassword.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pctPassword.TabIndex = 8;
             this.pctPassword.TabStop = false;
@@ -112,9 +112,9 @@
             // pctUsername
             // 
             this.pctUsername.Image = global::StoreManager.App.Properties.Resources.User;
-            this.pctUsername.Location = new System.Drawing.Point(240, 92);
+            this.pctUsername.Location = new System.Drawing.Point(236, 92);
             this.pctUsername.Name = "pctUsername";
-            this.pctUsername.Size = new System.Drawing.Size(22, 20);
+            this.pctUsername.Size = new System.Drawing.Size(26, 20);
             this.pctUsername.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pctUsername.TabIndex = 7;
             this.pctUsername.TabStop = false;
@@ -166,12 +166,16 @@
             this.ShowPassword.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ShowPassword.AutoSize = true;
+            this.ShowPassword.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.ShowPassword.Checked = true;
             this.ShowPassword.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ShowPassword.Location = new System.Drawing.Point(407, 160);
+            this.ShowPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ShowPassword.Location = new System.Drawing.Point(330, 160);
             this.ShowPassword.Name = "ShowPassword";
-            this.ShowPassword.Size = new System.Drawing.Size(15, 14);
+            this.ShowPassword.Size = new System.Drawing.Size(92, 16);
             this.ShowPassword.TabIndex = 16;
+            this.ShowPassword.Text = "Show Password";
+            this.ShowPassword.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.ShowPassword.UseVisualStyleBackColor = true;
             this.ShowPassword.CheckedChanged += new System.EventHandler(this.ShowPassword_CheckedChanged);
             // 
@@ -200,6 +204,7 @@
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LoginForm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.pctUserLogo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctUserGifLogo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctPassword)).EndInit();
