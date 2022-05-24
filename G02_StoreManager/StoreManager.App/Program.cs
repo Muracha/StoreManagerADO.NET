@@ -15,11 +15,11 @@ namespace StoreManager.App
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            Application.Run(new LoginForm());
-            if (LoginForm._loginSuccessful)
+            var loginForm = new LoginForm();
+            var result = loginForm.ShowDialog();
+
+            if (result == DialogResult.OK)
                 Application.Run(new MainForm());
-            else
-                Application.Exit();
         }
     }
 }

@@ -1,0 +1,4 @@
+1. Gatestet test keisebit yvela repository.
+2. Gatestet test keisebit yvela service.
+3. Aawyvet mtavar panjaraze brdzanebebis menu an ubralod chamomiweret teqstur dokumentshi.
+4. Moipiqret permissionis gadamowmebis meqanizmi avtorizebul momxmareblebisatvis.

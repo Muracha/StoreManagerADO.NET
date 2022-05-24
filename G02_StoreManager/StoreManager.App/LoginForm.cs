@@ -8,9 +8,7 @@ namespace StoreManager.App
     public partial class LoginForm : Form
     {
         private readonly UserService _userService;
-        private static int _attempts = 2;
-        public static int _userID { get; private set; }
-        public static  bool _loginSuccessful { get; private set; }
+        private int _attempts = 2;
 
         public LoginForm()
         {
@@ -34,10 +32,9 @@ namespace StoreManager.App
             //თუ _userID > 0 (_userID-ის ენიჭება -1 ან userID ) მაშინ ხურავს ფანჯარას ან გვაძლევს 3 მცდელობას.
             //3 წარუმატებელი მცდელობისას გამოდის აპლიკაციიდან. 
 
-            if ((_userID = _userService.Login(txtUsername.Text, txtPassword.Text)) > 0)
+            if ((LocalStorage.LoggedUserID = _userService.Login(txtUsername.Text, txtPassword.Text)) > 0)
             {
-                _loginSuccessful = true;
-                this.Close();
+                DialogResult = DialogResult.OK;
             }
             else if (_attempts >= 1)
             {
@@ -47,12 +44,12 @@ namespace StoreManager.App
             else
             {
                 MessageBox.Show("Login failed!");
-                Application.Exit();
+                DialogResult = DialogResult.Cancel;
             }
         }
 
         //აფერადებს ცარიელ textbox-ებს.
-        public  void ShowEmpty()
+        private void ShowEmpty()
         {
             if (txtUsername.Text == string.Empty)
                 pnlUserName.BackColor = Color.Red;
@@ -90,17 +87,5 @@ namespace StoreManager.App
 
         // txtPassword-textbox.
         private void TxtPassword_TextChanged(object sender, EventArgs e) => ShowEmpty();
-
-        // form closing
-        private void LoginForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (!_loginSuccessful)
-            {
-                if (MessageBox.Show("Are you sure you want to exit?", "Confirm exit", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
-                {
-                    e.Cancel = true;
-                }
-            }
-        }
     }
 }
