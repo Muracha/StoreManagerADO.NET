@@ -10,11 +10,6 @@ namespace StoreManager.App
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            OpenLoadHome();
-        }
-
         private void BtnSubUser_Click(object sender, EventArgs e)
         {
             ShowSubMenu(pnlMenuUser);
@@ -35,12 +30,7 @@ namespace StoreManager.App
             ShowSubMenu(pnlMenuCategories);
         }
 
-        private void BtnHome_Click(object sender, EventArgs e)
-        {
-            OpenLoadHome();
-        }
-
-        private void OpenLoadHome()
+        private void MainFormLoad(object sender, EventArgs e)
         {
             OpenFormToMainPanel(new Home());
         }

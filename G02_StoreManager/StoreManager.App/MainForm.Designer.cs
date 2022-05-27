@@ -29,6 +29,7 @@ namespace StoreManager.App
 		/// </summary>
 		private void InitializeComponent()
 		{
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.pnlSubsMenu = new System.Windows.Forms.Panel();
             this.pnlMenuEmployees = new System.Windows.Forms.Panel();
             this.button3 = new System.Windows.Forms.Button();
@@ -516,7 +517,7 @@ namespace StoreManager.App
             this.btnHome.Text = "     Home";
             this.btnHome.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnHome.UseVisualStyleBackColor = false;
-            this.btnHome.Click += new System.EventHandler(this.BtnHome_Click);
+            this.btnHome.Click += new System.EventHandler(this.MainFormLoad);
             // 
             // pnlLogo
             // 
@@ -564,10 +565,11 @@ namespace StoreManager.App
             this.Controls.Add(this.pnlTop);
             this.Controls.Add(this.pnlMainForm);
             this.Controls.Add(this.pnlSubsMenu);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(1246, 719);
             this.Name = "MainForm";
             this.Text = "Store";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.MainFormLoad);
             this.pnlSubsMenu.ResumeLayout(false);
             this.pnlMenuEmployees.ResumeLayout(false);
             this.pnlMenuCategories.ResumeLayout(false);
