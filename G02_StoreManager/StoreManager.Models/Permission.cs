@@ -13,6 +13,5 @@ namespace StoreManager.Models
         public int Code { get; set; }
         public DateTime CreateDate { get; set; }
         public string Description { get; set; }
-
     }
 }

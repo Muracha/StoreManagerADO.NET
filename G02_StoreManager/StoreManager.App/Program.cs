@@ -16,9 +16,7 @@ namespace StoreManager.App
             Application.SetCompatibleTextRenderingDefault(false);
 
             var loginForm = new LoginForm();
-            var result = loginForm.ShowDialog();
-
-            if (result == DialogResult.OK)
+            if (loginForm.ShowDialog() == DialogResult.OK)
                 Application.Run(new MainForm());
         }
     }

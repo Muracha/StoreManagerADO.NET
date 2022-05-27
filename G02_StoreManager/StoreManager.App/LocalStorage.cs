@@ -11,11 +11,14 @@ namespace StoreManager.App
         /// <summary>
         /// ინახავს ავტორიზებული მომხმარებლის იდენთიფიკატორს.
         /// </summary>
+        /// 
+
         public static int LoggedUserID { get; set; }
 
         /// <summary>
         /// ინახავს ავტორიზებული მომხმარებლის უფლებების კოდებს.
         /// </summary>
-        public static IEnumerable<int> Permissions { get; set; } = new List<int>();
+        /// 
+        public static IEnumerable<object> Permissions { get; set; } = new List<object>();
     }
 }

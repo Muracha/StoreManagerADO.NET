@@ -22,5 +22,39 @@ namespace StoreManager.App.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2")]
+        public int Attempts {
+            get {
+                return ((int)(this["Attempts"]));
+            }
+            set {
+                this["Attempts"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.DateTime LastAttemptToLogin {
+            get {
+                return ((global::System.DateTime)(this["LastAttemptToLogin"]));
+            }
+            set {
+                this["LastAttemptToLogin"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.DateTime FailedLoginDateTime {
+            get {
+                return ((global::System.DateTime)(this["FailedLoginDateTime"]));
+            }
+            set {
+                this["FailedLoginDateTime"] = value;
+            }
+        }
     }
 }

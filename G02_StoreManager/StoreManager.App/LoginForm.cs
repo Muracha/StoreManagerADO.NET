@@ -1,5 +1,6 @@
-﻿using StoreManager.Services;
-using System;
+﻿using System;
+using System.Collections.Generic;
+using StoreManager.Services;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -8,17 +9,18 @@ namespace StoreManager.App
     public partial class LoginForm : Form
     {
         private readonly UserService _userService;
-        private int _attempts = 2;
+        private readonly RolePermissionsService _rolePermissionsService;
 
         public LoginForm()
         {
             InitializeComponent();
             _userService = new UserService();
+            _rolePermissionsService = new RolePermissionsService();
         }
 
         //btnOk -Login ღილაკი 
         private void BtnOk_Click(object sender, EventArgs e)
-        {
+        {   
             //თუ txtUsername.Text და txtPassword.Text ცარიელია, აჩვენებს ცარიელ ველებს ShowEmpty() გამოყენებით.
             if (txtUsername.Text != "" && txtPassword.Text != "")
                 LoginSolution();
@@ -34,16 +36,18 @@ namespace StoreManager.App
 
             if ((LocalStorage.LoggedUserID = _userService.Login(txtUsername.Text, txtPassword.Text)) > 0)
             {
+                LocalStorage.Permissions= _rolePermissionsService.SelectRolePermisios(LocalStorage.LoggedUserID);
                 DialogResult = DialogResult.OK;
             }
-            else if (_attempts >= 1)
+            else if (Properties.Settings.Default.Attempts >= 1)
             {
-                MessageBox.Show($"The login or password is incorrect! {_attempts--} - attempts left");
                 TryAgain();
+                MessageBox.Show($"Login Failed : \n{Properties.Settings.Default.Attempts--} attempts left.");
             }
             else
             {
-                MessageBox.Show("Login failed!");
+                Properties.Settings.Default.FailedLoginDateTime = DateTime.Now.AddMinutes(1);
+                MessageBox.Show("You have failed too many time.");
                 DialogResult = DialogResult.Cancel;
             }
         }
@@ -80,12 +84,31 @@ namespace StoreManager.App
         }
 
         //ხურავს აპლიკაციას cancel ღილაკის დაჭერისას.
-        private void btnCancel_Click(object sender, EventArgs e) => Application.Exit();
+        private void BtnCancel_Click(object sender, EventArgs e) => Application.Exit();
 
         // txtUsername-textbox.
         private void TxtUsername_TextChanged(object sender, EventArgs e) => ShowEmpty();
 
         // txtPassword-textbox.
         private void TxtPassword_TextChanged(object sender, EventArgs e) => ShowEmpty();
+
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+            if (Properties.Settings.Default.FailedLoginDateTime > DateTime.Now)
+            {
+                MessageBox.Show("You have been blocked out of System.");
+                DialogResult = DialogResult.Cancel;
+            }
+            if (Properties.Settings.Default.LastAttemptToLogin.AddMinutes(.3) < DateTime.Now)
+            {
+                Properties.Settings.Default.Attempts = 2;
+            }
+            Properties.Settings.Default.LastAttemptToLogin = DateTime.Now;
+        }
+
+        private void LoginForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Properties.Settings.Default.Save();
+        }
     }
 }

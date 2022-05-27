@@ -47,11 +47,13 @@ namespace DataHelper
         #region GetCommand
         public SqlCommand GetCommand(string commandText, CommandType commandType, params SqlParameter[] parameters)
         {
-            SqlCommand command = new SqlCommand();
-            command.Connection = GetConnection();
-            command.CommandText = commandText;
-            command.CommandType = commandType;
-            command.Transaction = _transaction;
+            SqlCommand command = new SqlCommand
+            {
+                Connection = GetConnection(),
+                CommandText = commandText,
+                CommandType = commandType,
+                Transaction = _transaction
+            };
             command.Parameters.AddRange(parameters);
             return command;
         }
@@ -135,9 +137,10 @@ namespace DataHelper
 
         public SqlDataAdapter GetSqlDataAdapter(string commandText, CommandType commandType, params SqlParameter[] parameters)
         {
-            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
-            sqlDataAdapter.SelectCommand = GetCommand(commandText, commandType, parameters);
-
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter
+            {
+                SelectCommand = GetCommand(commandText, commandType, parameters)
+            };
             return sqlDataAdapter;
         }
 
