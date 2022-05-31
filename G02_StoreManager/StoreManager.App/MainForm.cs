@@ -37,11 +37,7 @@ namespace StoreManager.App
         private void MainFormLoad(object sender, EventArgs e)
         {
             OpenFormToMainPanel(new Home());
-            RefreshRolePermissions();
-        }
-
-        private void RefreshRolePermissions()
-        {
+            SelectPermission();
             StartTableDependency();
         }
 
@@ -52,10 +48,8 @@ namespace StoreManager.App
 
         private void StartTableDependency()
         {
-            if (!RolePermissionsService._dependencyStatusIs)
+            if (_rolePermissionsService.CheckPermissions()==true)
                 SelectPermission();
-            else
-                RefreshRolePermissions();
         }
 
         private void OpenFormToMainPanel(Form childForm)
@@ -76,6 +70,5 @@ namespace StoreManager.App
             else
                 subMenu.Visible = false;
         }
-
     }
 }

@@ -7,18 +7,19 @@ namespace StoreManager.Services
 {
     public class RolePermissionsService : ServiceRepositoryBase<RolePermissions, RolePermissionsRepository>
     {
-        public static bool _dependencyStatusIs { get; set; }
+        private static bool _dependencyStatusIs { get; set; }
 
         public IEnumerable<int> SelectRolePermissios(int userId)
         {
             return _repository.SelectRolePermissions(userId);
         }
 
-        public void CheckPermissions()
+        public bool CheckPermissions()
         {
             var dependency = _repository.TSqlTableDependency();
             dependency.OnChanged += Dependency_OnChanged;
             dependency.Start();
+            return _dependencyStatusIs;
         }
 
         private void Dependency_OnChanged(object sender, RecordChangedEventArgs<RolePermissions> e)
