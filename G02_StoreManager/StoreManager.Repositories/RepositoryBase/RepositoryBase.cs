@@ -8,6 +8,7 @@ using System.Data.SqlClient;
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
+using TableDependency.SqlClient;
 
 namespace StoreManager.Repositories
 {
@@ -15,10 +16,25 @@ namespace StoreManager.Repositories
     {
         protected readonly string _objectName;
         protected readonly IDatabase _database;
+        protected SqlTableDependency<TModel> _tableDependency;
+
         public RepositoryBase()
         {
             _objectName = typeof(TModel).Name;
             _database = DatabaseFactory.GetInstance();
+        }
+
+        //sacdeli versia
+        public virtual SqlTableDependency<TModel> TSqlTableDependency()
+        {
+            try
+            {
+                return _tableDependency=new SqlTableDependency<TModel>(_database.GetConnection().ConnectionString);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public virtual TModel Get(object id)
@@ -43,7 +59,7 @@ namespace StoreManager.Repositories
             try
             {
                 var table = _database.GetTable($"Select{GetPluralize(_objectName)}_SP", CommandType.StoredProcedure);
-                if(table.Rows.Count > 0)
+                if (table.Rows.Count > 0)
                 {
                     foreach (DataRow row in table.Rows)
                     {
@@ -115,10 +131,11 @@ namespace StoreManager.Repositories
                 }
             }
         }
-
+        
         public void Dispose()
         {
             _database.Dispose();
+            //_tableDependency.Dispose();
             GC.SuppressFinalize(this);
         }
 

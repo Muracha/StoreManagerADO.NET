@@ -7,10 +7,16 @@ namespace StoreManager.Repositories
 {
     public class RolePermissionsRepository : RepositoryBase<RolePermissions>
     {
-        public IEnumerable<object> SelectRolePermissions(int userID)
+        public IEnumerable<int> SelectRolePermissions(int userID)
         {
-            yield return _database.GetTable("SelectUserPermissions_SP", CommandType.StoredProcedure,
-                           new SqlParameter("@UserID", userID));
+            using (var reader = _database.ExecuteReader("SelectUserPermissions_SP", CommandType.StoredProcedure,
+                                       new SqlParameter("@UserID", userID)))
+            {
+                foreach (IDataRecord record in reader)
+                {
+                    yield return record.GetInt32(0);
+                }
+            }
         }
     }
 }

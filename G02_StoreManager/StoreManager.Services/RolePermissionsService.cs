@@ -1,15 +1,42 @@
-﻿using System;
-using StoreManager.Models;
+﻿using StoreManager.Models;
 using StoreManager.Repositories;
 using System.Collections.Generic;
+using TableDependency.SqlClient.Base.EventArgs;
 
 namespace StoreManager.Services
 {
     public class RolePermissionsService : ServiceRepositoryBase<RolePermissions, RolePermissionsRepository>
     {
-        public IEnumerable<object> SelectRolePermisios(int userId)
+        public static bool _dependencyStatusIs { get; set; }
+
+        public IEnumerable<int> SelectRolePermissios(int userId)
         {
-            return _repository.SelectRolePermissions(userId);   
+            return _repository.SelectRolePermissions(userId);
+        }
+
+        public void CheckPermissions()
+        {
+            var dependency = _repository.TSqlTableDependency();
+            dependency.OnChanged += Dependency_OnChanged;
+            dependency.Start();
+        }
+
+        private void Dependency_OnChanged(object sender, RecordChangedEventArgs<RolePermissions> e)
+        {
+            switch (e.ChangeType)
+            {
+                case TableDependency.SqlClient.Base.Enums.ChangeType.Delete:
+                    _dependencyStatusIs = true;
+                    break;
+                case TableDependency.SqlClient.Base.Enums.ChangeType.Insert:
+                    _dependencyStatusIs = true;
+                    break;
+                case TableDependency.SqlClient.Base.Enums.ChangeType.Update:
+                    _dependencyStatusIs = true;
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

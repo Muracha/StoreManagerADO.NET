@@ -1,13 +1,17 @@
-﻿using System;
+﻿using StoreManager.Services;
+using System;
 using System.Windows.Forms;
 
 namespace StoreManager.App
 {
     public partial class MainForm : Form
     {
+        private  RolePermissionsService _rolePermissionsService;
+
         public MainForm()
         {
             InitializeComponent();
+            _rolePermissionsService = new RolePermissionsService();
         }
 
         private void BtnSubUser_Click(object sender, EventArgs e)
@@ -33,6 +37,25 @@ namespace StoreManager.App
         private void MainFormLoad(object sender, EventArgs e)
         {
             OpenFormToMainPanel(new Home());
+            RefreshRolePermissions();
+        }
+
+        private void RefreshRolePermissions()
+        {
+            StartTableDependency();
+        }
+
+        private void SelectPermission()
+        {
+            LocalStorage.Permissions = _rolePermissionsService.SelectRolePermissios(LocalStorage.LoggedUserID);
+        }
+
+        private void StartTableDependency()
+        {
+            if (!RolePermissionsService._dependencyStatusIs)
+                SelectPermission();
+            else
+                RefreshRolePermissions();
         }
 
         private void OpenFormToMainPanel(Form childForm)

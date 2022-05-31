@@ -19,6 +19,6 @@ namespace StoreManager.App
         /// ინახავს ავტორიზებული მომხმარებლის უფლებების კოდებს.
         /// </summary>
         /// 
-        public static IEnumerable<object> Permissions { get; set; } = new List<object>();
+        public static IEnumerable<int> Permissions { get; set; } = new List<int>();
     }
 }
