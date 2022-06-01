@@ -1,7 +1,9 @@
-﻿using StoreManager.Models;
+﻿using System;
+using StoreManager.Models;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using TableDependency.SqlClient;
 
 namespace StoreManager.Repositories
 {

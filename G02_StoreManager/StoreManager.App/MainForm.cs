@@ -1,17 +1,20 @@
 ﻿using StoreManager.Services;
 using System;
 using System.Windows.Forms;
+using TableDependency.SqlClient.Base.Enums;
+using TableDependency.SqlClient.Base.EventArgs;
 
 namespace StoreManager.App
 {
     public partial class MainForm : Form
     {
-        private  RolePermissionsService _rolePermissionsService;
+        private readonly RolePermissionsService _rolePermissionsService;
 
         public MainForm()
         {
             InitializeComponent();
             _rolePermissionsService = new RolePermissionsService();
+            _rolePermissionsService.StartTableDependency();
         }
 
         private void BtnSubUser_Click(object sender, EventArgs e)
@@ -37,21 +40,7 @@ namespace StoreManager.App
         private void MainFormLoad(object sender, EventArgs e)
         {
             OpenFormToMainPanel(new Home());
-            SelectPermission();
-            StartTableDependency();
         }
-
-        private void SelectPermission()
-        {
-            LocalStorage.Permissions = _rolePermissionsService.SelectRolePermissios(LocalStorage.LoggedUserID);
-        }
-
-        private void StartTableDependency()
-        {
-            if (_rolePermissionsService.CheckPermissions()==true)
-                SelectPermission();
-        }
-
         private void OpenFormToMainPanel(Form childForm)
         {
             childForm.TopLevel = false;
@@ -69,6 +58,11 @@ namespace StoreManager.App
                 subMenu.Visible = true;
             else
                 subMenu.Visible = false;
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            _rolePermissionsService.StopTableDependency();
         }
     }
 }

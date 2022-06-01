@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using StoreManager.Services;
 using System.Drawing;
 using System.Windows.Forms;
+using StoreManager.Repositories;
 
 namespace StoreManager.App
 {
@@ -36,7 +37,7 @@ namespace StoreManager.App
 
             if ((LocalStorage.LoggedUserID = _userService.Login(txtUsername.Text, txtPassword.Text)) > 0)
             {
-                //LocalStorage.Permissions= _rolePermissionsService.SelectRolePermisios(LocalStorage.LoggedUserID);
+                LocalStorage.Permissions= _rolePermissionsService.SelectRolePermissions(LocalStorage.LoggedUserID);
                 DialogResult = DialogResult.OK;
             }
             else if (Properties.Settings.Default.Attempts >= 1)

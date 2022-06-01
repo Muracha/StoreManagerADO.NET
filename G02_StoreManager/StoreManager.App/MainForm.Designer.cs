@@ -569,6 +569,7 @@ namespace StoreManager.App
             this.MinimumSize = new System.Drawing.Size(1246, 719);
             this.Name = "MainForm";
             this.Text = "Store";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainFormLoad);
             this.pnlSubsMenu.ResumeLayout(false);
             this.pnlMenuEmployees.ResumeLayout(false);
