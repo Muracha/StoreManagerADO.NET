@@ -72,6 +72,7 @@
     <Compile Include="SupplierService.cs" />
     <Compile Include="TransactionDetailsService.cs" />
     <Compile Include="TransactionService.cs" />
+    <Compile Include="UserRoleService.cs" />
     <Compile Include="UserService.cs" />
   </ItemGroup>
   <ItemGroup>

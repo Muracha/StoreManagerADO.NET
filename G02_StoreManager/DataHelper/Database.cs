@@ -8,7 +8,7 @@ using System.Runtime.CompilerServices;
 
 namespace DataHelper
 {
-    internal  class Database : IDatabase
+    internal class Database : IDatabase
     {
         private readonly bool _useSingletone;
         private SqlConnection _connection;
@@ -61,6 +61,18 @@ namespace DataHelper
         public SqlCommand GetCommand(string commandText, params SqlParameter[] parameters)
         {
             return GetCommand(commandText, CommandType.Text, parameters);
+        }
+        #endregion
+
+        #region SqlDependecy
+        public SqlDependency GetSqlDependency(string commandText)
+        {
+            SqlDependency.Start(ConnectionString);
+            var cmd = GetCommand(commandText);
+            SqlDependency _sqlDependency = new SqlDependency(cmd);
+            cmd.Connection.Open();
+            cmd.ExecuteReader(CommandBehavior.CloseConnection);
+            return _sqlDependency;
         }
         #endregion
 

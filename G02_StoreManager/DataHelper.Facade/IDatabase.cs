@@ -8,7 +8,7 @@ namespace DataHelper.Facade
     public interface IDatabase : IDisposable
     {
         string ConnectionString { get; }
-
+        SqlDependency GetSqlDependency(string commandText);
         void BeginTransaction();
         void CloseConnection();
         void CommitTransaction();

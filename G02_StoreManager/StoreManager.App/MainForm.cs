@@ -1,5 +1,6 @@
-﻿using StoreManager.Services;
-using System;
+﻿using System;
+using StoreManager.Services;
+using StoreManager.Models;
 using System.Windows.Forms;
 using TableDependency.SqlClient.Base.Enums;
 using TableDependency.SqlClient.Base.EventArgs;
@@ -14,7 +15,7 @@ namespace StoreManager.App
         {
             InitializeComponent();
             _rolePermissionsService = new RolePermissionsService();
-            _rolePermissionsService.StartTableDependency();
+            _rolePermissionsService.StartDableDependenc();
         }
 
         private void BtnSubUser_Click(object sender, EventArgs e)
@@ -62,7 +63,7 @@ namespace StoreManager.App
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            _rolePermissionsService.StopTableDependency();
+            
         }
     }
 }

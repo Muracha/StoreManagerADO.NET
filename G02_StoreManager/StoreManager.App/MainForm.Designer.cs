@@ -441,7 +441,7 @@ namespace StoreManager.App
             this.button19.Name = "button19";
             this.button19.Size = new System.Drawing.Size(217, 38);
             this.button19.TabIndex = 3;
-            this.button19.Text = "text";
+            this.button19.Text = "Uers List";
             this.button19.UseVisualStyleBackColor = false;
             // 
             // button20
@@ -457,7 +457,7 @@ namespace StoreManager.App
             this.button20.Name = "button20";
             this.button20.Size = new System.Drawing.Size(217, 31);
             this.button20.TabIndex = 2;
-            this.button20.Text = "text";
+            this.button20.Text = "Add";
             this.button20.UseVisualStyleBackColor = false;
             // 
             // btnLogOut
