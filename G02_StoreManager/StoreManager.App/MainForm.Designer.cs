@@ -60,7 +60,6 @@ namespace StoreManager.App
             this.pnlLogo = new System.Windows.Forms.Panel();
             this.pcbLogo = new System.Windows.Forms.PictureBox();
             this.pnlMainForm = new System.Windows.Forms.Panel();
-            this.pnlTop = new System.Windows.Forms.FlowLayoutPanel();
             this.pnlSubsMenu.SuspendLayout();
             this.pnlMenuEmployees.SuspendLayout();
             this.pnlMenuCategories.SuspendLayout();
@@ -98,7 +97,7 @@ namespace StoreManager.App
             this.pnlMenuEmployees.Controls.Add(this.button5);
             this.pnlMenuEmployees.Controls.Add(this.button6);
             this.pnlMenuEmployees.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlMenuEmployees.Location = new System.Drawing.Point(0, 693);
+            this.pnlMenuEmployees.Location = new System.Drawing.Point(0, 703);
             this.pnlMenuEmployees.Name = "pnlMenuEmployees";
             this.pnlMenuEmployees.Size = new System.Drawing.Size(217, 139);
             this.pnlMenuEmployees.TabIndex = 14;
@@ -180,7 +179,7 @@ namespace StoreManager.App
             this.btnMainEmployees.ForeColor = System.Drawing.Color.White;
             this.btnMainEmployees.Image = global::StoreManager.App.Properties.Resources.Employee;
             this.btnMainEmployees.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.btnMainEmployees.Location = new System.Drawing.Point(0, 655);
+            this.btnMainEmployees.Location = new System.Drawing.Point(0, 665);
             this.btnMainEmployees.Name = "btnMainEmployees";
             this.btnMainEmployees.Size = new System.Drawing.Size(217, 38);
             this.btnMainEmployees.TabIndex = 12;
@@ -196,7 +195,7 @@ namespace StoreManager.App
             this.pnlMenuCategories.Controls.Add(this.button28);
             this.pnlMenuCategories.Controls.Add(this.button29);
             this.pnlMenuCategories.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlMenuCategories.Location = new System.Drawing.Point(0, 516);
+            this.pnlMenuCategories.Location = new System.Drawing.Point(0, 526);
             this.pnlMenuCategories.Name = "pnlMenuCategories";
             this.pnlMenuCategories.Size = new System.Drawing.Size(217, 139);
             this.pnlMenuCategories.TabIndex = 16;
@@ -277,7 +276,7 @@ namespace StoreManager.App
             this.btnCategories.ForeColor = System.Drawing.Color.White;
             this.btnCategories.Image = global::StoreManager.App.Properties.Resources.Category;
             this.btnCategories.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCategories.Location = new System.Drawing.Point(0, 478);
+            this.btnCategories.Location = new System.Drawing.Point(0, 488);
             this.btnCategories.Name = "btnCategories";
             this.btnCategories.Size = new System.Drawing.Size(217, 38);
             this.btnCategories.TabIndex = 15;
@@ -293,7 +292,7 @@ namespace StoreManager.App
             this.pnlMenuProduct.Controls.Add(this.button10);
             this.pnlMenuProduct.Controls.Add(this.button11);
             this.pnlMenuProduct.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlMenuProduct.Location = new System.Drawing.Point(0, 337);
+            this.pnlMenuProduct.Location = new System.Drawing.Point(0, 347);
             this.pnlMenuProduct.Name = "pnlMenuProduct";
             this.pnlMenuProduct.Size = new System.Drawing.Size(217, 141);
             this.pnlMenuProduct.TabIndex = 9;
@@ -374,7 +373,7 @@ namespace StoreManager.App
             this.btnProducts.ForeColor = System.Drawing.Color.White;
             this.btnProducts.Image = global::StoreManager.App.Properties.Resources.Products;
             this.btnProducts.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnProducts.Location = new System.Drawing.Point(0, 299);
+            this.btnProducts.Location = new System.Drawing.Point(0, 309);
             this.btnProducts.Name = "btnProducts";
             this.btnProducts.Size = new System.Drawing.Size(217, 38);
             this.btnProducts.TabIndex = 10;
@@ -392,7 +391,7 @@ namespace StoreManager.App
             this.pnlMenuUser.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlMenuUser.Location = new System.Drawing.Point(0, 151);
             this.pnlMenuUser.Name = "pnlMenuUser";
-            this.pnlMenuUser.Size = new System.Drawing.Size(217, 148);
+            this.pnlMenuUser.Size = new System.Drawing.Size(217, 158);
             this.pnlMenuUser.TabIndex = 4;
             this.pnlMenuUser.Visible = false;
             // 
@@ -407,7 +406,7 @@ namespace StoreManager.App
             this.button17.ForeColor = System.Drawing.Color.Honeydew;
             this.button17.Location = new System.Drawing.Point(0, 107);
             this.button17.Name = "button17";
-            this.button17.Size = new System.Drawing.Size(217, 44);
+            this.button17.Size = new System.Drawing.Size(217, 38);
             this.button17.TabIndex = 5;
             this.button17.Text = "text";
             this.button17.UseVisualStyleBackColor = false;
@@ -441,7 +440,8 @@ namespace StoreManager.App
             this.button19.Name = "button19";
             this.button19.Size = new System.Drawing.Size(217, 38);
             this.button19.TabIndex = 3;
-            this.button19.Text = "Uers List";
+            this.button19.TabStop = false;
+            this.button19.Text = "text";
             this.button19.UseVisualStyleBackColor = false;
             // 
             // button20
@@ -457,7 +457,7 @@ namespace StoreManager.App
             this.button20.Name = "button20";
             this.button20.Size = new System.Drawing.Size(217, 31);
             this.button20.TabIndex = 2;
-            this.button20.Text = "Add";
+            this.button20.Text = "text";
             this.button20.UseVisualStyleBackColor = false;
             // 
             // btnLogOut
@@ -471,7 +471,7 @@ namespace StoreManager.App
             this.btnLogOut.ForeColor = System.Drawing.Color.White;
             this.btnLogOut.Image = global::StoreManager.App.Properties.Resources.LogOuts;
             this.btnLogOut.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.btnLogOut.Location = new System.Drawing.Point(0, 832);
+            this.btnLogOut.Location = new System.Drawing.Point(0, 842);
             this.btnLogOut.Name = "btnLogOut";
             this.btnLogOut.Size = new System.Drawing.Size(217, 38);
             this.btnLogOut.TabIndex = 11;
@@ -548,21 +548,11 @@ namespace StoreManager.App
             this.pnlMainForm.Size = new System.Drawing.Size(996, 680);
             this.pnlMainForm.TabIndex = 6;
             // 
-            // pnlTop
-            // 
-            this.pnlTop.BackColor = System.Drawing.Color.LightSeaGreen;
-            this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlTop.Location = new System.Drawing.Point(234, 0);
-            this.pnlTop.Name = "pnlTop";
-            this.pnlTop.Size = new System.Drawing.Size(996, 10);
-            this.pnlTop.TabIndex = 7;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1230, 680);
-            this.Controls.Add(this.pnlTop);
             this.Controls.Add(this.pnlMainForm);
             this.Controls.Add(this.pnlSubsMenu);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -613,7 +603,6 @@ namespace StoreManager.App
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button btnLogOut;
         private System.Windows.Forms.PictureBox pcbLogo;
-        private System.Windows.Forms.FlowLayoutPanel pnlTop;
     }
 }
 

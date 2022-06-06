@@ -68,7 +68,7 @@ namespace DataHelper
         public SqlDependency GetSqlDependency(string commandText)
         {
             SqlDependency.Start(ConnectionString);
-            var cmd = GetCommand(commandText);
+            var cmd = GetCommand(commandText,CommandType.StoredProcedure);
             SqlDependency _sqlDependency = new SqlDependency(cmd);
             cmd.Connection.Open();
             cmd.ExecuteReader(CommandBehavior.CloseConnection);

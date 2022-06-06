@@ -13,7 +13,7 @@ namespace StoreManager.Services
         {
             return _repository.SelectRolePermissions(userId);
         }
-        public void StartDableDependenc()
+        public void StartTableDependenc()
         {
             _repository.StartTableDependency();
         }

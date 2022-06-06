@@ -15,7 +15,7 @@ namespace StoreManager.App
         {
             InitializeComponent();
             _rolePermissionsService = new RolePermissionsService();
-            _rolePermissionsService.StartDableDependenc();
+            _rolePermissionsService.StartTableDependenc();
         }
 
         private void BtnSubUser_Click(object sender, EventArgs e)
@@ -62,6 +62,11 @@ namespace StoreManager.App
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            
+        }
+
+        private void btnLogOut_Click(object sender, EventArgs e)
         {
             
         }

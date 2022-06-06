@@ -1,8 +1,8 @@
-﻿using System;
+﻿using StoreManager.Models;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using StoreManager.Models;
 
 namespace StoreManager.Repositories
 {
@@ -22,10 +22,17 @@ namespace StoreManager.Repositories
 
         public void StartTableDependency()
         {
+            /*
+          create  procedure  SelectTableDependecy_SP
+          as 
+          begin 
+	             select UserID, RoleID from dbo.UserRoles;
+	             select RoleID, PermissionID from dbo.RolePermissions
+          end
+            */
             try
             {
-                var dependecy = _database.GetSqlDependency("select UserID, RoleID from dbo.UserRoles;" +
-                                                           "select RoleID, PermissionID from dbo.RolePermissions");
+                var dependecy = _database.GetSqlDependency("SelectTableDependecy_SP");
                 dependecy.OnChange += new OnChangeEventHandler(StartDableDependenc_OnChange);
             }
             catch (Exception ex)
