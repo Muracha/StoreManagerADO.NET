@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace StoreManager.App
 {
-    public partial class Home : Form
+    public partial class ProductList : Form
     {
-        public Home()
+        public ProductList()
         {
             InitializeComponent();
         }

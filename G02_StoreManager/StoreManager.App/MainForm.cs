@@ -1,9 +1,6 @@
-﻿using System;
-using StoreManager.Services;
-using StoreManager.Models;
+﻿using StoreManager.Services;
+using System;
 using System.Windows.Forms;
-using TableDependency.SqlClient.Base.Enums;
-using TableDependency.SqlClient.Base.EventArgs;
 
 namespace StoreManager.App
 {
@@ -18,57 +15,71 @@ namespace StoreManager.App
             _rolePermissionsService.StartTableDependenc();
         }
 
-        private void BtnSubUser_Click(object sender, EventArgs e)
-        {
-            ShowSubMenu(pnlMenuUser);
-        }
-
-        private void BtnMainEmployees_Click(object sender, EventArgs e)
-        {
-            ShowSubMenu(pnlMenuEmployees);
-        }
-
-        private void BtnProducts_Click(object sender, EventArgs e)
-        {
-            ShowSubMenu(pnlMenuProduct);
-        }
-
-        private void BtnCategories_Click(object sender, EventArgs e)
-        {
-            ShowSubMenu(pnlMenuCategories);
-        }
-
         private void MainFormLoad(object sender, EventArgs e)
         {
-            OpenFormToMainPanel(new Home());
-        }
-        private void OpenFormToMainPanel(Form childForm)
-        {
-            childForm.TopLevel = false;
-            childForm.FormBorderStyle = FormBorderStyle.None;
-            childForm.Dock = DockStyle.Fill;
-            pnlMainForm.Controls.Add(childForm);
-            pnlMainForm.Tag = childForm;
-            childForm.BringToFront();
-            childForm.Show();
+
         }
 
-        public void ShowSubMenu(Panel subMenu)
+        private void verticaleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (subMenu.Visible == false)
-                subMenu.Visible = true;
-            else
-                subMenu.Visible = false;
+            LayoutMdi(MdiLayout.TileVertical);
         }
 
-        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        private void horizontalToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+            LayoutMdi(MdiLayout.TileHorizontal);
         }
 
-        private void btnLogOut_Click(object sender, EventArgs e)
+        private void casadeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+            LayoutMdi(MdiLayout.Cascade);
+        }
+
+        private void colseAllToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            while (MdiChildren.Length > 0)
+            {
+                ActiveMdiChild.Close();
+            }
+        }
+
+        private void productListToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ProductList productList = new ProductList();
+            productList.MdiParent = this;
+            productList.Show();
+        }
+
+        private void userListToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UserList userList = new UserList();
+            userList.MdiParent = this;
+            userList.Show();
+        }
+
+        private void newToolStripButton_Click(object sender, EventArgs e)
+        {
+            if (MdiChildren.Length > 0)
+                DesingerFormOpenen();
+                
+        }
+
+        private void DesingerFormOpenen()
+        {
+            string text = ActiveMdiChild.Text.Substring(0, ActiveMdiChild.Text.Length - 4);
+            var form = Activator.CreateInstance(Type.GetType("StoreManager.App." + $"{text}Details")) as Form;
+            form.ShowDialog();
+        }
+
+        private void Delete_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Update_Click(object sender, EventArgs e)
+        {
+            if (MdiChildren.Length > 0)
+                DesingerFormOpenen();
         }
     }
 }
