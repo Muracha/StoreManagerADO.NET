@@ -8,8 +8,6 @@ using System.Data.SqlClient;
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
-using TableDependency.SqlClient;
-using TableDependency.SqlClient.Base.EventArgs;
 
 namespace StoreManager.Repositories
 {
@@ -41,24 +39,13 @@ namespace StoreManager.Repositories
 
         public virtual IEnumerable<TModel> Select()
         {
-            IList<TModel> list = new List<TModel>();
-
-            try
+            var table = _database.GetTable($"Select{GetPluralize(_objectName)}_SP", CommandType.StoredProcedure);
+            if (table.Rows.Count > 0)
             {
-                var table = _database.GetTable($"Select{GetPluralize(_objectName)}_SP", CommandType.StoredProcedure);
-                if (table.Rows.Count > 0)
+                foreach (DataRow row in table.Rows)
                 {
-                    foreach (DataRow row in table.Rows)
-                    {
-                        list.Add(GetItem(row));
-                    }
-                    return list;
+                    yield return GetItem(row);
                 }
-                return null;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
             }
         }
 
@@ -118,7 +105,7 @@ namespace StoreManager.Repositories
                 }
             }
         }
-        
+
         public void Dispose()
         {
             _database.Dispose();

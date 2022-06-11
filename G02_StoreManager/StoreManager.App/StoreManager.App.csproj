@@ -82,10 +82,10 @@
     <Compile Include="ProductDetails.Designer.cs">
       <DependentUpon>ProductDetails.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProductList.cs">
+    <Compile Include="ListForm\ProductList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ProductList.Designer.cs">
+    <Compile Include="ListForm\ProductList.Designer.cs">
       <DependentUpon>ProductList.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -101,10 +101,10 @@
     <Compile Include="UserDetails.Designer.cs">
       <DependentUpon>UserDetails.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserList.cs">
+    <Compile Include="ListForm\UserList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UserList.Designer.cs">
+    <Compile Include="ListForm\UserList.Designer.cs">
       <DependentUpon>UserList.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="LoginForm.resx">
@@ -113,7 +113,7 @@
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProductList.resx">
+    <EmbeddedResource Include="ListForm\ProductList.resx">
       <DependentUpon>ProductList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -121,8 +121,11 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserList.resx">
+    <EmbeddedResource Include="ListForm\UserList.resx">
       <DependentUpon>UserList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserDetails.resx">
+      <DependentUpon>UserDetails.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\Home.datasource" />

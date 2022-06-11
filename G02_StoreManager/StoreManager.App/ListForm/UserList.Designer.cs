@@ -35,6 +35,7 @@
             this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IsActive = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IsDeleted = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Delete = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.grdUserList)).BeginInit();
             this.SuspendLayout();
             // 
@@ -48,42 +49,57 @@
             this.Password,
             this.CreateDate,
             this.IsActive,
-            this.IsDeleted});
+            this.IsDeleted,
+            this.Delete});
             this.grdUserList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grdUserList.Location = new System.Drawing.Point(0, 0);
             this.grdUserList.Name = "grdUserList";
             this.grdUserList.Size = new System.Drawing.Size(800, 450);
             this.grdUserList.TabIndex = 0;
+            this.grdUserList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdUserList_CellClick);
             // 
             // ID
             // 
+            this.ID.DataPropertyName = "ID";
             this.ID.HeaderText = "User ID";
             this.ID.Name = "ID";
             // 
             // UserName
             // 
+            this.UserName.DataPropertyName = "Username";
             this.UserName.HeaderText = "User Name";
             this.UserName.Name = "UserName";
             // 
             // Password
             // 
+            this.Password.DataPropertyName = "Password";
             this.Password.HeaderText = "Password";
             this.Password.Name = "Password";
             // 
             // CreateDate
             // 
+            this.CreateDate.DataPropertyName = "CreateDate";
             this.CreateDate.HeaderText = "Create Date";
             this.CreateDate.Name = "CreateDate";
             // 
             // IsActive
             // 
+            this.IsActive.DataPropertyName = "IsActive";
             this.IsActive.HeaderText = "Is Active";
             this.IsActive.Name = "IsActive";
             // 
             // IsDeleted
             // 
+            this.IsDeleted.DataPropertyName = "IsDeleted";
             this.IsDeleted.HeaderText = "Is Deleted";
             this.IsDeleted.Name = "IsDeleted";
+            // 
+            // Delete
+            // 
+            this.Delete.HeaderText = "Delete";
+            this.Delete.Image = global::StoreManager.App.Properties.Resources.BtnCancel;
+            this.Delete.Name = "Delete";
+            this.Delete.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // UserList
             // 
@@ -93,19 +109,20 @@
             this.Controls.Add(this.grdUserList);
             this.Name = "UserList";
             this.Text = "UserList";
+            this.Load += new System.EventHandler(this.UserList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grdUserList)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView grdUserList;
+        public System.Windows.Forms.DataGridView grdUserList;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn UserName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Password;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn IsActive;
         private System.Windows.Forms.DataGridViewTextBoxColumn IsDeleted;
+        private System.Windows.Forms.DataGridViewImageColumn Delete;
     }
 }

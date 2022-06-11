@@ -7,11 +7,14 @@ namespace StoreManager.App
     public partial class MainForm : Form
     {
         private readonly RolePermissionsService _rolePermissionsService;
+        private readonly UserService _userService;
+        public static bool _updatebuttonClick;
 
         public MainForm()
         {
             InitializeComponent();
             _rolePermissionsService = new RolePermissionsService();
+            _userService = new UserService();
             _rolePermissionsService.StartTableDependenc();
         }
 
@@ -59,27 +62,36 @@ namespace StoreManager.App
 
         private void newToolStripButton_Click(object sender, EventArgs e)
         {
+            DesingerFormOpenen("Details");
+        }
+
+        private void DesingerFormOpenen(string text)
+        {
             if (MdiChildren.Length > 0)
-                DesingerFormOpenen();
-                
-        }
-
-        private void DesingerFormOpenen()
-        {
-            string text = ActiveMdiChild.Text.Substring(0, ActiveMdiChild.Text.Length - 4);
-            var form = Activator.CreateInstance(Type.GetType("StoreManager.App." + $"{text}Details")) as Form;
-            form.ShowDialog();
-        }
-
-        private void Delete_Click(object sender, EventArgs e)
-        {
-
+            {
+                string formNameText = ActiveMdiChild.Text.Substring(0, ActiveMdiChild.Text.Length - 4) + text;
+                var form = Activator.CreateInstance(Type.GetType("StoreManager.App." + $"{formNameText}")) as Form;
+                form.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Please select a list!");
+            }
         }
 
         private void Update_Click(object sender, EventArgs e)
         {
-            if (MdiChildren.Length > 0)
-                DesingerFormOpenen();
+            _updatebuttonClick=true;
+            DesingerFormOpenen("Details");
         }
+
+
+        private void Delete_Click(object sender, EventArgs e)
+        {
+            DesingerFormOpenen("List");
+
+        }
+
+       
     }
 }
