@@ -1,11 +1,12 @@
-﻿using StoreManager.Repositories;
-using System;
+﻿using System;
 using System.Linq;
 using System.Windows.Forms;
+using StoreManager.App.Interfaces;
+using StoreManager.Repositories;
 
 namespace StoreManager.App
 {
-    public partial class UserList : Form
+    public partial class UserList : Form, IListForm
     {
         private readonly UserRepository _userRepository;
         public static DataGridView grdtable { get; set; }
@@ -18,7 +19,7 @@ namespace StoreManager.App
         }
         private void UserList_Load(object sender, System.EventArgs e)
         {
-            ShowUsersData();
+            //ShowUsersData();
         }
 
         public void ShowUsersData()
@@ -49,5 +50,28 @@ namespace StoreManager.App
 
         }
 
+        public void InsertRecord()
+        {
+            UserDetails userDetails = new UserDetails();
+            if (userDetails.ShowDialog() != DialogResult.OK)
+            {
+
+            }
+        }
+
+        public void UpdateRecord()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteRecord()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SearchRecords()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

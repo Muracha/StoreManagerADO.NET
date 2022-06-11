@@ -558,7 +558,6 @@ namespace StoreManager.App
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
             this.Text = "Store";
-            this.Load += new System.EventHandler(this.MainFormLoad);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);

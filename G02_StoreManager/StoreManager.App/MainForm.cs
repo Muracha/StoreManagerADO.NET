@@ -1,4 +1,5 @@
-﻿using StoreManager.Services;
+﻿using StoreManager.App.Interfaces;
+using StoreManager.Services;
 using System;
 using System.Windows.Forms;
 
@@ -15,12 +16,7 @@ namespace StoreManager.App
             InitializeComponent();
             _rolePermissionsService = new RolePermissionsService();
             _userService = new UserService();
-            _rolePermissionsService.StartTableDependenc();
-        }
-
-        private void MainFormLoad(object sender, EventArgs e)
-        {
-
+            //_rolePermissionsService.StartTableDependenc();
         }
 
         private void verticaleToolStripMenuItem_Click(object sender, EventArgs e)
@@ -48,21 +44,29 @@ namespace StoreManager.App
 
         private void productListToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ProductList productList = new ProductList();
-            productList.MdiParent = this;
-            productList.Show();
+            OpenListForm<ProductList>();
         }
 
         private void userListToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            UserList userList = new UserList();
-            userList.MdiParent = this;
-            userList.Show();
+            OpenListForm<UserList>();
+        }
+
+        private void OpenListForm<T>() where T : Form, new()
+        {
+            T form = new T();
+            form.MdiParent = this;
+            form.Show();
         }
 
         private void newToolStripButton_Click(object sender, EventArgs e)
         {
-            DesingerFormOpenen("Details");
+            if (ActiveMdiChild != null && ActiveMdiChild is IListForm)
+            {
+                (ActiveMdiChild as IListForm).InsertRecord();
+            }
+
+            //DesingerFormOpenen("Details");
         }
 
         private void DesingerFormOpenen(string text)
@@ -81,17 +85,13 @@ namespace StoreManager.App
 
         private void Update_Click(object sender, EventArgs e)
         {
-            _updatebuttonClick=true;
+            _updatebuttonClick = true;
             DesingerFormOpenen("Details");
         }
-
 
         private void Delete_Click(object sender, EventArgs e)
         {
             DesingerFormOpenen("List");
-
         }
-
-       
     }
 }
