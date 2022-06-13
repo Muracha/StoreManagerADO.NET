@@ -75,9 +75,10 @@ namespace StoreManager.App
 
         private void Delete_Click(object sender, EventArgs e)
         {
+
             if (ActiveMdiChild != null && ActiveMdiChild is IListForm)
             {
-                (ActiveMdiChild as IListForm).DeleteRecord();
+                (ActiveMdiChild as IListForm).RefreshRecords();
             }
         }
     }

@@ -1,8 +1,12 @@
-﻿using StoreManager.App.Interfaces;
-using StoreManager.Repositories;
+﻿
 using System;
 using System.Linq;
 using System.Windows.Forms;
+using StoreManager.App.Interfaces;
+using StoreManager.App.ListForm.ListBase;
+using StoreManager.Repositories;
+using StoreManager.Models;
+using StoreManager.Services;
 
 namespace StoreManager.App
 {
@@ -10,10 +14,12 @@ namespace StoreManager.App
     {
         private readonly UserRepository _userRepository;
         public static int RowIndex { get; set; }
+        ListBase<UserDetails, User, UserService, UserRepository, DataGridView> listBase;
 
         public UserList()
         {
             InitializeComponent();
+            listBase = new ListBase<UserDetails, User, UserService, UserRepository, DataGridView>();
             _userRepository = new UserRepository();
         }
         private void UserList_Load(object sender, System.EventArgs e)
@@ -81,6 +87,11 @@ namespace StoreManager.App
         private void grdUserList_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        public void RefreshRecords()
+        {
+            listBase.RefreshRecords();
         }
     }
 }

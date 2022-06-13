@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interfaces\IListForm.cs" />
+    <Compile Include="ListForm\ListBase\ListBase.cs" />
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,10 +78,10 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProductDetails.cs">
+    <Compile Include="DetailsForm\ProductDetails.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ProductDetails.Designer.cs">
+    <Compile Include="DetailsForm\ProductDetails.Designer.cs">
       <DependentUpon>ProductDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="ListForm\ProductList.cs">
@@ -96,10 +97,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="UserDetails.cs">
+    <Compile Include="DetailsForm\UserDetails.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UserDetails.Designer.cs">
+    <Compile Include="DetailsForm\UserDetails.Designer.cs">
       <DependentUpon>UserDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="ListForm\UserList.cs">
@@ -125,7 +126,7 @@
     <EmbeddedResource Include="ListForm\UserList.resx">
       <DependentUpon>UserList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserDetails.resx">
+    <EmbeddedResource Include="DetailsForm\UserDetails.resx">
       <DependentUpon>UserDetails.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />

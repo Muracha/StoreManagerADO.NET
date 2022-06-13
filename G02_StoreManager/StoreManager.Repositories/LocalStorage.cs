@@ -16,5 +16,6 @@ namespace StoreManager.Repositories
         /// </summary>
         /// 
         public static IEnumerable<int> Permissions { get; set; } = new List<int>();
+        public static object Record { get; set; }
     }
 }
