@@ -1,16 +1,15 @@
-﻿using System;
+﻿using StoreManager.App.Interfaces;
+using StoreManager.Repositories;
+using System;
 using System.Linq;
 using System.Windows.Forms;
-using StoreManager.App.Interfaces;
-using StoreManager.Repositories;
 
 namespace StoreManager.App
 {
     public partial class UserList : Form, IListForm
     {
         private readonly UserRepository _userRepository;
-        public static DataGridView grdtable { get; set; }
-        public static  int RowIndex { get; set; }
+        public static int RowIndex { get; set; }
 
         public UserList()
         {
@@ -19,7 +18,7 @@ namespace StoreManager.App
         }
         private void UserList_Load(object sender, System.EventArgs e)
         {
-            //ShowUsersData();
+            ShowUsersData();
         }
 
         public void ShowUsersData()
@@ -27,7 +26,6 @@ namespace StoreManager.App
             try
             {
                 grdUserList.DataSource = _userRepository.Select().ToList();
-                grdtable = grdUserList;
             }
             catch (Exception ex)
             {
@@ -39,29 +37,35 @@ namespace StoreManager.App
         {
             RowIndex = e.RowIndex;
 
-            if (e.ColumnIndex==0)
-            {
-                if (MessageBox.Show("Are you sure you want to delete this User?", "Confirm Detetion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-                    _userRepository.Delete(grdtable.Rows[RowIndex].Cells[1].Value.ToString());
-                    MessageBox.Show("Successfully deleted!");
-                }
-            }
-
+            //if (e.ColumnIndex==0)
+            //{
+            //    if (MessageBox.Show("Are you sure you want to delete this User?", "Confirm Detetion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            //    {
+            //        _userRepository.Delete(grdtable.Rows[RowIndex].Cells[1].Value.ToString());
+            //        MessageBox.Show("Successfully deleted!");
+            //    }
+            //}
         }
 
         public void InsertRecord()
         {
-            UserDetails userDetails = new UserDetails();
+            var userDetails = new UserDetails();
+            userDetails.btnUpdate.Enabled = false;
             if (userDetails.ShowDialog() != DialogResult.OK)
             {
-
             }
         }
 
         public void UpdateRecord()
         {
-            throw new NotImplementedException();
+            var userDetails = new UserDetails();
+            userDetails.btnAdd.Enabled = false;
+            userDetails.txtUserID.Enabled = false;
+            userDetails.txtPassword.Enabled = false;
+            if (userDetails.ShowDialog() != DialogResult.OK)
+            {
+                userDetails.Close();
+            }
         }
 
         public void DeleteRecord()
@@ -72,6 +76,11 @@ namespace StoreManager.App
         public void SearchRecords()
         {
             throw new NotImplementedException();
+        }
+
+        private void grdUserList_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

@@ -35,7 +35,6 @@
             this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IsActive = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IsDeleted = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Delete = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.grdUserList)).BeginInit();
             this.SuspendLayout();
             // 
@@ -49,14 +48,14 @@
             this.Password,
             this.CreateDate,
             this.IsActive,
-            this.IsDeleted,
-            this.Delete});
+            this.IsDeleted});
             this.grdUserList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grdUserList.Location = new System.Drawing.Point(0, 0);
             this.grdUserList.Name = "grdUserList";
             this.grdUserList.Size = new System.Drawing.Size(800, 450);
             this.grdUserList.TabIndex = 0;
             this.grdUserList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdUserList_CellClick);
+            this.grdUserList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdUserList_CellContentClick);
             // 
             // ID
             // 
@@ -94,13 +93,6 @@
             this.IsDeleted.HeaderText = "Is Deleted";
             this.IsDeleted.Name = "IsDeleted";
             // 
-            // Delete
-            // 
-            this.Delete.HeaderText = "Delete";
-            this.Delete.Image = global::StoreManager.App.Properties.Resources.BtnCancel;
-            this.Delete.Name = "Delete";
-            this.Delete.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
             // UserList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -123,6 +115,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn IsActive;
         private System.Windows.Forms.DataGridViewTextBoxColumn IsDeleted;
-        private System.Windows.Forms.DataGridViewImageColumn Delete;
     }
 }

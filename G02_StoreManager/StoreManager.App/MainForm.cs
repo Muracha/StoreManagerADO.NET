@@ -8,14 +8,12 @@ namespace StoreManager.App
     public partial class MainForm : Form
     {
         private readonly RolePermissionsService _rolePermissionsService;
-        private readonly UserService _userService;
         public static bool _updatebuttonClick;
 
         public MainForm()
         {
             InitializeComponent();
             _rolePermissionsService = new RolePermissionsService();
-            _userService = new UserService();
             //_rolePermissionsService.StartTableDependenc();
         }
 
@@ -65,33 +63,22 @@ namespace StoreManager.App
             {
                 (ActiveMdiChild as IListForm).InsertRecord();
             }
-
-            //DesingerFormOpenen("Details");
         }
-
-        private void DesingerFormOpenen(string text)
-        {
-            if (MdiChildren.Length > 0)
-            {
-                string formNameText = ActiveMdiChild.Text.Substring(0, ActiveMdiChild.Text.Length - 4) + text;
-                var form = Activator.CreateInstance(Type.GetType("StoreManager.App." + $"{formNameText}")) as Form;
-                form.ShowDialog();
-            }
-            else
-            {
-                MessageBox.Show("Please select a list!");
-            }
-        }
-
+    
         private void Update_Click(object sender, EventArgs e)
         {
-            _updatebuttonClick = true;
-            DesingerFormOpenen("Details");
+            if (ActiveMdiChild != null && ActiveMdiChild is IListForm)
+            {
+                (ActiveMdiChild as IListForm).UpdateRecord();
+            }
         }
 
         private void Delete_Click(object sender, EventArgs e)
         {
-            DesingerFormOpenen("List");
+            if (ActiveMdiChild != null && ActiveMdiChild is IListForm)
+            {
+                (ActiveMdiChild as IListForm).DeleteRecord();
+            }
         }
     }
 }
