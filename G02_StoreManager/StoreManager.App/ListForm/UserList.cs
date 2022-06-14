@@ -1,28 +1,30 @@
 ﻿
+using StoreManager.App.Interfaces;
+using StoreManager.App.ListForm.ListBase;
+using StoreManager.Models;
+using StoreManager.Repositories;
+using StoreManager.Services;
 using System;
 using System.Linq;
 using System.Windows.Forms;
-using StoreManager.App.Interfaces;
-using StoreManager.App.ListForm.ListBase;
-using StoreManager.Repositories;
-using StoreManager.Models;
-using StoreManager.Services;
 
 namespace StoreManager.App
 {
     public partial class UserList : Form, IListForm
     {
+        public int TableRowIndex { get; private set; }
         private readonly UserRepository _userRepository;
-        public static int RowIndex { get; set; }
-        ListBase<UserDetails, User, UserService, UserRepository, DataGridView> listBase;
+        private readonly ListBase<UserDetails, User, UserService, UserRepository> listBase;
+        private readonly UserDetails _userDetails;
 
         public UserList()
         {
             InitializeComponent();
-            listBase = new ListBase<UserDetails, User, UserService, UserRepository, DataGridView>();
             _userRepository = new UserRepository();
+            _userDetails = new UserDetails();
+            listBase = new ListBase<UserDetails, User, UserService, UserRepository>();
         }
-        private void UserList_Load(object sender, System.EventArgs e)
+        private void UserList_Load(object sender, EventArgs e)
         {
             ShowUsersData();
         }
@@ -39,18 +41,9 @@ namespace StoreManager.App
             }
         }
 
-        private void grdUserList_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void GrdUserList_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            RowIndex = e.RowIndex;
-
-            //if (e.ColumnIndex==0)
-            //{
-            //    if (MessageBox.Show("Are you sure you want to delete this User?", "Confirm Detetion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            //    {
-            //        _userRepository.Delete(grdtable.Rows[RowIndex].Cells[1].Value.ToString());
-            //        MessageBox.Show("Successfully deleted!");
-            //    }
-            //}
+            TableRowIndex = e.RowIndex;
         }
 
         public void InsertRecord()
@@ -59,24 +52,38 @@ namespace StoreManager.App
             userDetails.btnUpdate.Enabled = false;
             if (userDetails.ShowDialog() != DialogResult.OK)
             {
+                ShowUsersData();
             }
+            //listBase.InsertRecord();
         }
 
         public void UpdateRecord()
         {
-            var userDetails = new UserDetails();
-            userDetails.btnAdd.Enabled = false;
-            userDetails.txtUserID.Enabled = false;
-            userDetails.txtPassword.Enabled = false;
-            if (userDetails.ShowDialog() != DialogResult.OK)
+            _userDetails.btnAdd.Enabled = false;
+            _userDetails.btnDelete.Enabled = false;
+            _userDetails.txtUserID.Enabled = false;
+            _userDetails.txtPassword.Enabled = false;
+            _userDetails.SelectRowFromTable(this);
+            if (_userDetails.ShowDialog() != DialogResult.OK)
             {
-                userDetails.Close();
+                ShowUsersData();
             }
+            //listBase.UpdateRecord();
         }
 
         public void DeleteRecord()
         {
-            throw new NotImplementedException();
+            _userDetails.btnAdd.Enabled = false;
+            _userDetails.btnUpdate.Enabled = false;
+            _userDetails.txtUserID.Enabled = false;
+            _userDetails.txtUserName.Enabled = false;
+            _userDetails.txtPassword.Enabled = false;
+            _userDetails.cmbIsActive.Enabled = false;
+            _userDetails.SelectRowFromTable(this);
+            if (_userDetails.ShowDialog() != DialogResult.OK)
+            {
+                ShowUsersData();
+            }
         }
 
         public void SearchRecords()
@@ -84,14 +91,9 @@ namespace StoreManager.App
             throw new NotImplementedException();
         }
 
-        private void grdUserList_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         public void RefreshRecords()
         {
-            listBase.RefreshRecords();
+            ShowUsersData();
         }
     }
 }

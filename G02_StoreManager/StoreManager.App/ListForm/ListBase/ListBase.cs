@@ -4,45 +4,56 @@ using StoreManager.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace StoreManager.App.ListForm.ListBase
 {
-    public class ListBase<TDetails, TModel, TService, TRepository, TDataGridView> : IListForm
-        where TDataGridView : DataGridView, new()
+    public class ListBase<TDetails, TModel, TService, TRepository>
         where TDetails : Form, new()
         where TModel : class, new()
         where TRepository : RepositoryBase<TModel>, new()
         where TService : ServiceRepositoryBase<TModel, TRepository>, new()
     {
-        public TService Service { get; set; }
+        public TService _service;
+
         public ListBase()
         {
-            Service = new TService();
+            _service = new TService();
         }
 
-        public void DeleteRecord()
+        public void DeleteRecord(object id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                _service.Delete(id);    
+            }
+            catch (Exception ex)
+            {
+               throw ex;
+            }
         }
 
         public void InsertRecord()
         {
-            TDetails details = new TDetails();
-            if (details.ShowDialog() == DialogResult.OK)
+            try
             {
-                var record = (LocalStorage.Record as TModel);
-                Service.Insert(record);
-                LocalStorage.Record = null;
+                TDetails details = new TDetails();
+                if (details.ShowDialog() == DialogResult.OK)
+                {
+                    _service.Insert((LocalStorage.Record as TModel));
+                    LocalStorage.Record = null;
+                    MessageBox.Show("Successfully Added!");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
             }
         }
 
-        public void RefreshRecords()
+        public List<TModel> RefreshRecords()
         {
-            TDataGridView data = new TDataGridView();
-            data.DataSource = Service.Select().ToList();
+            return _service.Select().ToList();
         }
 
         public void SearchRecords()
@@ -51,7 +62,7 @@ namespace StoreManager.App.ListForm.ListBase
             if (details.ShowDialog() == DialogResult.OK)
             {
                 var record = (LocalStorage.Record as TModel);
-                Service.Get(record.GetType().GetProperties()); // ID s dabruneba gvchirdeba
+                _service.Get(record.GetType().GetProperties()); // ID s dabruneba gvchirdeba
                 LocalStorage.Record = null;
             }
         }
@@ -62,7 +73,7 @@ namespace StoreManager.App.ListForm.ListBase
             if (details.ShowDialog() == DialogResult.OK)
             {
                 var record = (LocalStorage.Record as TModel);
-                Service.Update(record);
+                _service.Update(record);
                 LocalStorage.Record = null;
                 details.Close();
             }

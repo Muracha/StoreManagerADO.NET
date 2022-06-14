@@ -17,22 +17,22 @@ namespace StoreManager.App
             //_rolePermissionsService.StartTableDependenc();
         }
 
-        private void verticaleToolStripMenuItem_Click(object sender, EventArgs e)
+        private void VerticaleToolStripMenuItem_Click(object sender, EventArgs e)
         {
             LayoutMdi(MdiLayout.TileVertical);
         }
 
-        private void horizontalToolStripMenuItem_Click(object sender, EventArgs e)
+        private void HorizontalToolStripMenuItem_Click(object sender, EventArgs e)
         {
             LayoutMdi(MdiLayout.TileHorizontal);
         }
 
-        private void casadeToolStripMenuItem_Click(object sender, EventArgs e)
+        private void CasadeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             LayoutMdi(MdiLayout.Cascade);
         }
 
-        private void colseAllToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ColseAllToolStripMenuItem_Click(object sender, EventArgs e)
         {
             while (MdiChildren.Length > 0)
             {
@@ -40,24 +40,26 @@ namespace StoreManager.App
             }
         }
 
-        private void productListToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ProductListToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenListForm<ProductList>();
         }
 
-        private void userListToolStripMenuItem_Click(object sender, EventArgs e)
+        private void UserListToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenListForm<UserList>();
         }
 
         private void OpenListForm<T>() where T : Form, new()
         {
-            T form = new T();
-            form.MdiParent = this;
+            T form = new T
+            {
+                MdiParent = this
+            };
             form.Show();
         }
 
-        private void newToolStripButton_Click(object sender, EventArgs e)
+        private void NewToolStripButton_Click(object sender, EventArgs e)
         {
             if (ActiveMdiChild != null && ActiveMdiChild is IListForm)
             {
@@ -75,7 +77,14 @@ namespace StoreManager.App
 
         private void Delete_Click(object sender, EventArgs e)
         {
+            if (ActiveMdiChild != null && ActiveMdiChild is IListForm)
+            {
+                (ActiveMdiChild as IListForm).DeleteRecord();
+            }
+        }
 
+        private void Refresh_Click(object sender, EventArgs e)
+        {
             if (ActiveMdiChild != null && ActiveMdiChild is IListForm)
             {
                 (ActiveMdiChild as IListForm).RefreshRecords();

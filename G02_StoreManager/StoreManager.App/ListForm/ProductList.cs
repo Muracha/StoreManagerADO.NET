@@ -41,5 +41,10 @@ namespace StoreManager.App
         {
             throw new NotImplementedException();
         }
+
+        public void RefreshRecords()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

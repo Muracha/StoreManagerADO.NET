@@ -1,5 +1,5 @@
-﻿using StoreManager.App.Interfaces;
-using StoreManager.Models;
+﻿using StoreManager.Models;
+using StoreManager.Repositories;
 using StoreManager.Services;
 using System;
 using System.Linq;
@@ -7,10 +7,10 @@ using System.Windows.Forms;
 
 namespace StoreManager.App
 {
-    public partial class UserDetails : Form, IListForm
+    public partial class UserDetails : Form
     {
-        private User _user;
-        private UserService _userService;
+        private readonly User _user;
+        private readonly UserService _userService;
 
         public UserDetails()
         {
@@ -18,25 +18,7 @@ namespace StoreManager.App
             _user = new User();
             _userService = new UserService();
         }
-
-        private void btnAdd_Click(object sender, EventArgs e)
-        {
-            if (CheckTextBox())
-            {
-                _user.ID = int.Parse(txtUserID.Text);
-                _user.Username = txtUserName.Text;
-                _user.Password = txtPassword.Text;
-                _userService.Insert(_user);
-                MessageBox.Show("Successfully Added!");
-                ClearAllTextBox();
-            }
-            else
-            {
-                MessageBox.Show("Fill the missed lines !!!");
-            }
-        }
-
-        private bool CheckTextBox()
+        private bool CheckAllTextBox()
         {
             foreach (var txtBox in this.Controls.OfType<TextBox>())
             {
@@ -56,9 +38,41 @@ namespace StoreManager.App
             }
         }
 
-        private void btnUpdate_Click(object sender, EventArgs e)
+        public void SelectRowFromTable(UserList userList)
         {
-            if (CheckTextBox())
+            try
+            {
+                txtUserID.Text = userList.grdUserList.Rows[userList.TableRowIndex].Cells["ID"].Value.ToString();
+                txtUserName.Text = userList.grdUserList.Rows[userList.TableRowIndex].Cells["UserName"].Value.ToString();
+                txtPassword.Text = userList.grdUserList.Rows[userList.TableRowIndex].Cells["Password"].Value.ToString();
+                cmbIsActive.Text = userList.grdUserList.Rows[userList.TableRowIndex].Cells["IsActive"].Value.ToString();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        private void BtnAdd_Click(object sender, EventArgs e)
+        {
+            if (CheckAllTextBox())
+            {
+                _user.ID = int.Parse(txtUserID.Text);
+                _user.Username = txtUserName.Text;
+                _user.Password = txtPassword.Text;
+                _userService.Insert(_user);
+                //LocalStorage.Record = _user;
+                ClearAllTextBox();
+            }
+            else
+            {
+                MessageBox.Show("Fill the missed lines !!!");
+            }
+        }
+
+        private void BtnUpdate_Click(object sender, EventArgs e)
+        {
+            if (CheckAllTextBox())
             {
                 _user.ID = int.Parse(txtUserID.Text);
                 _user.Username = txtUserName.Text;
@@ -69,48 +83,19 @@ namespace StoreManager.App
             }
         }
 
-        private void SelectRowToTextBox()
-        {
-            //var index = UserList.RowIndex;
-            //txtUserID.Text = UserList.grdtable.Rows[index].Cells[1].Value.ToString();
-            //txtUserName.Text = UserList.grdtable.Rows[index].Cells[2].Value.ToString();
-            //txtPassword.Text = UserList.grdtable.Rows[index].Cells[3].Value.ToString();
-            //cmbIsActive.Text = UserList.grdtable.Rows[index].Cells[5].Value.ToString();
-        }
 
-        private void UserDetails_Load(object sender, EventArgs e)
-        {
-          
-        }
 
-        private void btnDelete_Click(object sender, EventArgs e)
+        private void BtnDelete_Click(object sender, EventArgs e)
         {
-            if (CheckTextBox())
+            if (CheckAllTextBox())
             {
-                _userService.Delete(txtUserID.Text);
-                MessageBox.Show("Successfully Deleted!");
-                this.Close();
+                if (MessageBox.Show("Are you sure you want to delete this User?", "Confirm Deletion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    _userService.Delete(txtUserID.Text);
+                    MessageBox.Show("Successfully Deleted!");
+                    this.Close();
+                }
             }
-        }
-
-        public void InsertRecord()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UpdateRecord()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void DeleteRecord()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void SearchRecords()
-        {
-            throw new NotImplementedException();
         }
     }
 }

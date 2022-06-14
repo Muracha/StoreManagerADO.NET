@@ -293,5 +293,8 @@
   <ItemGroup>
     <None Include="Resources\Update.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Refresh.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

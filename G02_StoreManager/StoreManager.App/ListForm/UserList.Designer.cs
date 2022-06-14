@@ -54,8 +54,8 @@
             this.grdUserList.Name = "grdUserList";
             this.grdUserList.Size = new System.Drawing.Size(800, 450);
             this.grdUserList.TabIndex = 0;
-            this.grdUserList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdUserList_CellClick);
-            this.grdUserList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdUserList_CellContentClick);
+            this.grdUserList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GrdUserList_CellClick);
+        
             // 
             // ID
             // 
