@@ -15,5 +15,17 @@ namespace StoreManager.Repositories
                 new SqlParameter("@Password", password));
             return result;
         }
+
+        public IEnumerable<User> SelectAll()
+        {
+            var table = _database.GetTable($"Select * from Users", CommandType.Text);
+            if (table.Rows.Count > 0)
+            {
+                foreach (DataRow row in table.Rows)
+                {
+                    yield return GetItem(row);
+                }
+            }
+        }
     }
 }

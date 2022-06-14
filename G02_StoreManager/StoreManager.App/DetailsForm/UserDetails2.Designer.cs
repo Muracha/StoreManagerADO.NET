@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.cmbIsActive = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -38,29 +37,16 @@
             this.txtUserID = new System.Windows.Forms.TextBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnOk = new System.Windows.Forms.Button();
+            this.ckbIsActive = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
-            // 
-            // cmbIsActive
-            // 
-            this.cmbIsActive.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmbIsActive.FormattingEnabled = true;
-            this.cmbIsActive.Items.AddRange(new object[] {
-            "False",
-            "True"});
-            this.cmbIsActive.Location = new System.Drawing.Point(139, 136);
-            this.cmbIsActive.Name = "cmbIsActive";
-            this.cmbIsActive.Size = new System.Drawing.Size(302, 21);
-            this.cmbIsActive.TabIndex = 24;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(59, 139);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(45, 13);
+            this.label5.Size = new System.Drawing.Size(0, 13);
             this.label5.TabIndex = 23;
-            this.label5.Text = "IsActive";
             // 
             // label3
             // 
@@ -122,7 +108,7 @@
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(366, 167);
+            this.btnCancel.Location = new System.Drawing.Point(366, 196);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 16;
@@ -133,13 +119,23 @@
             // 
             this.btnOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnOk.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnOk.Location = new System.Drawing.Point(285, 167);
+            this.btnOk.Location = new System.Drawing.Point(285, 196);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(75, 23);
             this.btnOk.TabIndex = 15;
             this.btnOk.Text = "Save";
             this.btnOk.UseVisualStyleBackColor = true;
-            this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
+            this.btnOk.Click += new System.EventHandler(this.BtnOk_Click);
+            // 
+            // ckbIsActive
+            // 
+            this.ckbIsActive.AutoSize = true;
+            this.ckbIsActive.Location = new System.Drawing.Point(139, 139);
+            this.ckbIsActive.Name = "ckbIsActive";
+            this.ckbIsActive.Size = new System.Drawing.Size(64, 17);
+            this.ckbIsActive.TabIndex = 25;
+            this.ckbIsActive.Text = "IsActive";
+            this.ckbIsActive.UseVisualStyleBackColor = true;
             // 
             // UserDetails2
             // 
@@ -148,7 +144,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(500, 248);
-            this.Controls.Add(this.cmbIsActive);
+            this.Controls.Add(this.ckbIsActive);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -166,7 +162,6 @@
         }
 
         #endregion
-        public System.Windows.Forms.ComboBox cmbIsActive;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
@@ -176,5 +171,6 @@
         public System.Windows.Forms.TextBox txtUserID;
         public System.Windows.Forms.Button btnCancel;
         public System.Windows.Forms.Button btnOk;
+        private System.Windows.Forms.CheckBox ckbIsActive;
     }
 }

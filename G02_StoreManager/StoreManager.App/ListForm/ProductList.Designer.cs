@@ -124,7 +124,7 @@
         private System.Windows.Forms.DataGridView grdProductList;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductID;
         private System.Windows.Forms.DataGridViewTextBoxColumn CategoryID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ProductName;
+        private new System.Windows.Forms.DataGridViewTextBoxColumn ProductName;
         private System.Windows.Forms.DataGridViewTextBoxColumn SupplierID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Description;
         private System.Windows.Forms.DataGridViewTextBoxColumn Price;
