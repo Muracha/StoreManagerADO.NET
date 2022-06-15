@@ -11,7 +11,7 @@ namespace StoreManager.App.Interfaces
         void InsertRecord();
         void UpdateRecord();
         void DeleteRecord();
-        void SearchRecords();
+        void SearchRecords(string text);
         void RefreshRecords();
     }
 }

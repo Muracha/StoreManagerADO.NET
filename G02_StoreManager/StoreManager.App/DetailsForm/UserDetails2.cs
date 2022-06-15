@@ -69,13 +69,9 @@ namespace StoreManager.App.DetailsForm
             ValidateData();
 
             if (!EditMode)
-            {
                 _userService.Insert(LoadUserModel());
-            }
             else
-            {
                 _userService.Update(LoadUserModel());
-            }      
         }
 
         /// <summary>
@@ -119,13 +115,9 @@ namespace StoreManager.App.DetailsForm
             foreach (var txtBox in this.Controls.OfType<TextBox>())
             {
                 if (string.IsNullOrWhiteSpace(txtBox.Text))
-                {
                     _errorProvider.SetError(txtBox, "Fill the missed lines !!!");
-                }
                 else
-                {
                     _errorProvider.SetError(txtBox, string.Empty);
-                }
             }
         }
 
@@ -148,11 +140,23 @@ namespace StoreManager.App.DetailsForm
         // ვერსია 2 SelectAll() მეთოდის და LINQ-ის  გამოყენებით .
         private void CheckDuplicateUserName()
         {
-            var result =_userService.SelectAll().
+            var result = _userService.SelectAll().
                 Where(r => (r.Username == txtUserName.Text && r.ID != int.Parse(txtUserID.Text)));
-           
+
             if (result.Count() >= 1)
                 throw new Exception("A similar User name already exists!!!");
+        }
+
+        /// <summary>
+        /// ასუფთავებს ErrorProvider-ის ძახილის ნიშნებს.
+        /// </summary>
+        /// 
+        private void ClearErrorProvider(object sender, EventArgs e)
+        {
+            foreach (var txtBox in this.Controls.OfType<TextBox>())
+            {
+                _errorProvider.SetError(txtBox, string.Empty);
+            }
         }
     }
 }

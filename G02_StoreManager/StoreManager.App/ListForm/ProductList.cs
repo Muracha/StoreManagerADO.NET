@@ -37,12 +37,12 @@ namespace StoreManager.App
             throw new NotImplementedException();
         }
 
-        public void SearchRecords()
+        public void RefreshRecords()
         {
             throw new NotImplementedException();
         }
 
-        public void RefreshRecords()
+        public void SearchRecords(string text)
         {
             throw new NotImplementedException();
         }

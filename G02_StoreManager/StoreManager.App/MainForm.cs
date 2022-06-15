@@ -90,5 +90,13 @@ namespace StoreManager.App
                 (ActiveMdiChild as IListForm).RefreshRecords();
             }
         }
+
+        private void TxtSearch_TextChanged(object sender, EventArgs e)
+        {
+            if (ActiveMdiChild != null && ActiveMdiChild is IListForm)
+            {
+                (ActiveMdiChild as IListForm).SearchRecords(txtSearch.Text);
+            }
+        }
     }
 }

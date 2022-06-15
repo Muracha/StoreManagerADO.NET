@@ -1,10 +1,7 @@
 ﻿
 using StoreManager.App.DetailsForm;
 using StoreManager.App.Interfaces;
-using StoreManager.App.ListForm.ListBase;
-using StoreManager.Models;
 using StoreManager.Repositories;
-using StoreManager.Services;
 using System;
 using System.Linq;
 using System.Windows.Forms;
@@ -15,7 +12,7 @@ namespace StoreManager.App
     {
         public int TableRowIndex { get; private set; }
         private readonly UserRepository _userRepository;
-        private  UserDetails2 _userDetails;
+        private UserDetails2 _userDetails;
 
         public UserList()
         {
@@ -47,6 +44,7 @@ namespace StoreManager.App
 
         public void InsertRecord()
         {
+            _userDetails = new UserDetails2();
             if (_userDetails.ShowDialog() == DialogResult.OK)
             {
                 ShowUsersData();
@@ -55,6 +53,7 @@ namespace StoreManager.App
 
         public void UpdateRecord()
         {
+            _userDetails = new UserDetails2();
             _userDetails = new UserDetails2(int.Parse(grdUserList.Rows[TableRowIndex].Cells["ID"].Value.ToString()));
             if (_userDetails.ShowDialog() == DialogResult.OK)
             {
@@ -64,20 +63,39 @@ namespace StoreManager.App
 
         public void DeleteRecord()
         {
-            if (_userDetails.ShowDialog() == DialogResult.OK)
+            _userDetails = new UserDetails2();
+            if (MessageBox.Show("Are you sure you want to delete this User?", "Confirm Deletion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                ShowUsersData();
-            }
+                _userRepository.Delete(grdUserList.Rows[TableRowIndex].Cells["ID"].Value.ToString());
+                DialogResult = DialogResult.OK;
+                RefreshRecords();
+                this.Close();
+            }  
         }
 
-        public void SearchRecords()
+        public void SearchRecords(string text)
         {
-            throw new NotImplementedException();
+            foreach (DataGridViewRow row in grdUserList.Rows)
+            {
+                foreach (DataGridViewCell cell in row.Cells)
+                {
+                    if (cell.Value.ToString().Contains(text) && text != string.Empty)
+                    {
+                        row.Selected = true;
+                        break;
+                    }
+                    else
+                    {
+                        row.Selected = false;
+                    }
+                }
+            }
         }
 
         public void RefreshRecords()
         {
             ShowUsersData();
         }
+
     }
 }

@@ -84,6 +84,7 @@
             this.txtPassword.Size = new System.Drawing.Size(302, 20);
             this.txtPassword.TabIndex = 19;
             this.txtPassword.UseSystemPasswordChar = true;
+            this.txtPassword.Click += new System.EventHandler(this.ClearErrorProvider);
             // 
             // txtUserName
             // 
@@ -93,6 +94,7 @@
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.Size = new System.Drawing.Size(302, 20);
             this.txtUserName.TabIndex = 18;
+            this.txtUserName.Click += new System.EventHandler(this.ClearErrorProvider);
             // 
             // txtUserID
             // 
@@ -102,6 +104,7 @@
             this.txtUserID.Name = "txtUserID";
             this.txtUserID.Size = new System.Drawing.Size(302, 20);
             this.txtUserID.TabIndex = 17;
+            this.txtUserID.Click += new System.EventHandler(this.ClearErrorProvider);
             // 
             // btnCancel
             // 
