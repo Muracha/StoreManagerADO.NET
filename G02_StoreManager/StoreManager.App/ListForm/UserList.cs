@@ -1,8 +1,11 @@
 ﻿
 using StoreManager.App.DetailsForm;
 using StoreManager.App.Interfaces;
+using StoreManager.Models;
 using StoreManager.Repositories;
 using System;
+using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -13,13 +16,16 @@ namespace StoreManager.App
         public int TableRowIndex { get; private set; }
         private readonly UserRepository _userRepository;
         private UserDetails2 _userDetails;
+        private List<User> _userLits;
 
         public UserList()
         {
             InitializeComponent();
+            _userLits = new List<User>();
             _userRepository = new UserRepository();
             _userDetails = new UserDetails2();
         }
+
         private void UserList_Load(object sender, EventArgs e)
         {
             ShowUsersData();
@@ -29,7 +35,8 @@ namespace StoreManager.App
         {
             try
             {
-                grdUserList.DataSource = _userRepository.Select().ToList();
+                _userLits = _userRepository.Select().ToList();
+                grdUserList.DataSource = _userLits;
             }
             catch (Exception ex)
             {
@@ -53,7 +60,6 @@ namespace StoreManager.App
 
         public void UpdateRecord()
         {
-            _userDetails = new UserDetails2();
             _userDetails = new UserDetails2(int.Parse(grdUserList.Rows[TableRowIndex].Cells["ID"].Value.ToString()));
             if (_userDetails.ShowDialog() == DialogResult.OK)
             {
@@ -63,33 +69,18 @@ namespace StoreManager.App
 
         public void DeleteRecord()
         {
-            _userDetails = new UserDetails2();
             if (MessageBox.Show("Are you sure you want to delete this User?", "Confirm Deletion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 _userRepository.Delete(grdUserList.Rows[TableRowIndex].Cells["ID"].Value.ToString());
                 DialogResult = DialogResult.OK;
                 RefreshRecords();
                 this.Close();
-            }  
+            }
         }
 
         public void SearchRecords(string text)
         {
-            foreach (DataGridViewRow row in grdUserList.Rows)
-            {
-                foreach (DataGridViewCell cell in row.Cells)
-                {
-                    if (cell.Value.ToString().Contains(text) && text != string.Empty)
-                    {
-                        row.Selected = true;
-                        break;
-                    }
-                    else
-                    {
-                        row.Selected = false;
-                    }
-                }
-            }
+            grdUserList.DataSource = _userLits.Where(x => x.Username.Contains(text)|| x.ID.ToString().Contains(text)).ToList();
         }
 
         public void RefreshRecords()
