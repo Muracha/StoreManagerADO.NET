@@ -31,7 +31,7 @@ namespace StoreManager.App
             ShowUsersData();
         }
 
-        public void ShowUsersData()
+        private  void ShowUsersData()
         {
             try
             {
@@ -60,7 +60,7 @@ namespace StoreManager.App
 
         public void UpdateRecord()
         {
-            _userDetails = new UserDetails2(int.Parse(grdUserList.Rows[TableRowIndex].Cells["ID"].Value.ToString()));
+            _userDetails = new UserDetails2(int.Parse(grdUserList.Rows[TableRowIndex].Cells["ID"].Value.ToString()));// dasaxvewia!!!
             if (_userDetails.ShowDialog() == DialogResult.OK)
             {
                 ShowUsersData();
@@ -80,7 +80,7 @@ namespace StoreManager.App
 
         public void SearchRecords(string text)
         {
-            grdUserList.DataSource = _userLits.Where(x => x.Username.Contains(text)|| x.ID.ToString().Contains(text)).ToList();
+            grdUserList.DataSource = _userLits.Where(x => x.Username.Contains(text) || x.ID.ToString().Contains(text)).ToList();
         }
 
         public void RefreshRecords()

@@ -56,5 +56,15 @@ namespace StoreManager.App.Properties {
                 this["FailedLoginDateTime"] = value;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-GGJH7CA;Initial Catalog=G02_Store;Integrated Security=True")]
+        public string G02_StoreConnectionString {
+            get {
+                return ((string)(this["G02_StoreConnectionString"]));
+            }
+        }
     }
 }

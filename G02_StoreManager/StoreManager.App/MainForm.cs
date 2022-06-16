@@ -14,7 +14,7 @@ namespace StoreManager.App
         {
             InitializeComponent();
             _rolePermissionsService = new RolePermissionsService();
-            _rolePermissionsService.StartTableDependenc();
+            //_rolePermissionsService.StartTableDependenc();
         }
 
         private void VerticaleToolStripMenuItem_Click(object sender, EventArgs e)

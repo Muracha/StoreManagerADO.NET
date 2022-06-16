@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.grdUserList = new System.Windows.Forms.DataGridView();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -40,8 +42,23 @@
             // 
             // grdUserList
             // 
+            this.grdUserList.AllowUserToAddRows = false;
+            this.grdUserList.AllowUserToDeleteRows = false;
+            this.grdUserList.AllowUserToResizeColumns = false;
+            this.grdUserList.AllowUserToResizeRows = false;
             this.grdUserList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.grdUserList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grdUserList.BackgroundColor = System.Drawing.Color.White;
+            this.grdUserList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.grdUserList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(96)))), ((int)(((byte)(232)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(96)))), ((int)(((byte)(232)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grdUserList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.grdUserList.ColumnHeadersHeight = 35;
             this.grdUserList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
             this.UserName,
@@ -49,9 +66,24 @@
             this.CreateDate,
             this.IsActive,
             this.IsDeleted});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(200)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(180)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grdUserList.DefaultCellStyle = dataGridViewCellStyle2;
             this.grdUserList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grdUserList.EnableHeadersVisualStyles = false;
             this.grdUserList.Location = new System.Drawing.Point(0, 0);
+            this.grdUserList.MultiSelect = false;
             this.grdUserList.Name = "grdUserList";
+            this.grdUserList.ReadOnly = true;
+            this.grdUserList.RowHeadersVisible = false;
+            this.grdUserList.RowHeadersWidth = 25;
+            this.grdUserList.RowTemplate.Height = 25;
+            this.grdUserList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grdUserList.Size = new System.Drawing.Size(800, 450);
             this.grdUserList.TabIndex = 0;
             this.grdUserList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GrdUserList_CellClick);
@@ -61,36 +93,42 @@
             this.ID.DataPropertyName = "ID";
             this.ID.HeaderText = "User ID";
             this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
             // 
             // UserName
             // 
             this.UserName.DataPropertyName = "Username";
             this.UserName.HeaderText = "User Name";
             this.UserName.Name = "UserName";
+            this.UserName.ReadOnly = true;
             // 
             // Password
             // 
             this.Password.DataPropertyName = "Password";
             this.Password.HeaderText = "Password";
             this.Password.Name = "Password";
+            this.Password.ReadOnly = true;
             // 
             // CreateDate
             // 
             this.CreateDate.DataPropertyName = "CreateDate";
             this.CreateDate.HeaderText = "Create Date";
             this.CreateDate.Name = "CreateDate";
+            this.CreateDate.ReadOnly = true;
             // 
             // IsActive
             // 
             this.IsActive.DataPropertyName = "IsActive";
             this.IsActive.HeaderText = "Is Active";
             this.IsActive.Name = "IsActive";
+            this.IsActive.ReadOnly = true;
             // 
             // IsDeleted
             // 
             this.IsDeleted.DataPropertyName = "IsDeleted";
             this.IsDeleted.HeaderText = "Is Deleted";
             this.IsDeleted.Name = "IsDeleted";
+            this.IsDeleted.ReadOnly = true;
             // 
             // UserList
             // 

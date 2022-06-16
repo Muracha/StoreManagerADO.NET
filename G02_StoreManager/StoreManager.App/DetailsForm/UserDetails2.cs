@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace StoreManager.App.DetailsForm
 {
-    public partial class UserDetails2 : Form
+    public partial class UserDetails2 : Form,IDisposable
     {
         private readonly int _id;
         private readonly UserService _userService;
@@ -81,7 +81,7 @@ namespace StoreManager.App.DetailsForm
         {
             var user = new User();
             if (!EditMode)
-            {
+            {    
                 user.ID = int.Parse(txtUserID.Text);
                 user.Username = txtUserName.Text;
                 user.Password = txtPassword.Text;
@@ -157,6 +157,12 @@ namespace StoreManager.App.DetailsForm
             {
                 _errorProvider.SetError(txtBox, string.Empty);
             }
+        }
+
+        private void UserDetails2_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'g02_StoreDataSet.Employees' table. You can move, or remove it, as needed.
+            this.employeesTableAdapter.Fill(this.g02_StoreDataSet.Employees);
         }
     }
 }
