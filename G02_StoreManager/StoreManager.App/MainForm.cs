@@ -8,7 +8,7 @@ namespace StoreManager.App
     public partial class MainForm : Form
     {
         private readonly RolePermissionsService _rolePermissionsService;
-        public static bool _updatebuttonClick;
+        public static bool updateButtonClick;
 
         public MainForm()
         {
@@ -71,6 +71,7 @@ namespace StoreManager.App
         {
             if (ActiveMdiChild != null && ActiveMdiChild is IListForm)
             {
+                updateButtonClick = true;
                 (ActiveMdiChild as IListForm).UpdateRecord();
             }
         }
@@ -92,6 +93,14 @@ namespace StoreManager.App
         }
 
         private void TxtSearch_TextChanged(object sender, EventArgs e)
+        {
+            if (ActiveMdiChild != null && ActiveMdiChild is IListForm)
+            {
+                (ActiveMdiChild as IListForm).SearchRecords(txtSearch.Text);
+            }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
         {
             if (ActiveMdiChild != null && ActiveMdiChild is IListForm)
             {

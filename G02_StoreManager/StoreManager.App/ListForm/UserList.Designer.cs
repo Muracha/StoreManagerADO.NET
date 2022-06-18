@@ -77,6 +77,7 @@
             this.grdUserList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grdUserList.EnableHeadersVisualStyles = false;
             this.grdUserList.Location = new System.Drawing.Point(0, 0);
+            this.grdUserList.Margin = new System.Windows.Forms.Padding(4);
             this.grdUserList.MultiSelect = false;
             this.grdUserList.Name = "grdUserList";
             this.grdUserList.ReadOnly = true;
@@ -84,7 +85,7 @@
             this.grdUserList.RowHeadersWidth = 25;
             this.grdUserList.RowTemplate.Height = 25;
             this.grdUserList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grdUserList.Size = new System.Drawing.Size(800, 450);
+            this.grdUserList.Size = new System.Drawing.Size(1067, 554);
             this.grdUserList.TabIndex = 0;
             this.grdUserList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GrdUserList_CellClick);
             // 
@@ -92,6 +93,7 @@
             // 
             this.ID.DataPropertyName = "ID";
             this.ID.HeaderText = "User ID";
+            this.ID.MinimumWidth = 6;
             this.ID.Name = "ID";
             this.ID.ReadOnly = true;
             // 
@@ -99,6 +101,7 @@
             // 
             this.UserName.DataPropertyName = "Username";
             this.UserName.HeaderText = "User Name";
+            this.UserName.MinimumWidth = 6;
             this.UserName.Name = "UserName";
             this.UserName.ReadOnly = true;
             // 
@@ -106,6 +109,7 @@
             // 
             this.Password.DataPropertyName = "Password";
             this.Password.HeaderText = "Password";
+            this.Password.MinimumWidth = 6;
             this.Password.Name = "Password";
             this.Password.ReadOnly = true;
             // 
@@ -113,6 +117,7 @@
             // 
             this.CreateDate.DataPropertyName = "CreateDate";
             this.CreateDate.HeaderText = "Create Date";
+            this.CreateDate.MinimumWidth = 6;
             this.CreateDate.Name = "CreateDate";
             this.CreateDate.ReadOnly = true;
             // 
@@ -120,6 +125,7 @@
             // 
             this.IsActive.DataPropertyName = "IsActive";
             this.IsActive.HeaderText = "Is Active";
+            this.IsActive.MinimumWidth = 6;
             this.IsActive.Name = "IsActive";
             this.IsActive.ReadOnly = true;
             // 
@@ -127,15 +133,17 @@
             // 
             this.IsDeleted.DataPropertyName = "IsDeleted";
             this.IsDeleted.HeaderText = "Is Deleted";
+            this.IsDeleted.MinimumWidth = 6;
             this.IsDeleted.Name = "IsDeleted";
             this.IsDeleted.ReadOnly = true;
             // 
             // UserList
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.grdUserList);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UserList";
             this.Text = "UserList";
             this.Load += new System.EventHandler(this.UserList_Load);

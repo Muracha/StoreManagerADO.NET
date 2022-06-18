@@ -64,19 +64,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DetailsForm\UserDetails2.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DetailsForm\UserDetails2.Designer.cs">
-      <DependentUpon>UserDetails2.cs</DependentUpon>
-    </Compile>
     <Compile Include="G02_StoreDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>G02_StoreDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\IListForm.cs" />
-    <Compile Include="ListForm\ListBase\ListBase.cs" />
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,9 +113,6 @@
     <Compile Include="ListForm\UserList.Designer.cs">
       <DependentUpon>UserList.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="DetailsForm\UserDetails2.resx">
-      <DependentUpon>UserDetails2.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
