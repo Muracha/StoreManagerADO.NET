@@ -18,7 +18,8 @@ namespace StoreManager.App.ListForm
 {
     public partial class EmployeeList : Form, IListForm
     {
-        private ListHelper<EmployeeDetails, Employee, EmployeeRepository, EmployeeService> _listHelper;
+        private readonly ListHelper<EmployeeDetails, Employee, EmployeeRepository, EmployeeService> _listHelper;
+
         public EmployeeList()
         {
             InitializeComponent();
@@ -26,34 +27,11 @@ namespace StoreManager.App.ListForm
             RefreshRecords();
         }
 
-        public void InsertRecord()
-        {
-            _listHelper.InsertRecord();
-        }
-
-        public void UpdateRecord()
-        {
-            _listHelper.UpdateRecord();
-        }
-
-        public void DeleteRecord()
-        {
-            _listHelper.DeleteRecord();
-        }
-
-        public void RefreshRecords()
-        {
-            _listHelper.RefreshRecords();
-        }
-
-        public void SearchRecords(string text)
-        {
-            _listHelper.SearchRecords(text);
-        }
-
-        private void dgEmployeeList_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            _listHelper.ClickedModelID = e.RowIndex;
-        }
+        public void InsertRecord() => _listHelper.InsertRecord();
+        public void UpdateRecord() => _listHelper.UpdateRecord();
+        public void DeleteRecord() => _listHelper.DeleteRecord();
+        public void RefreshRecords() => _listHelper.RefreshRecords();
+        public void SearchRecords(string text) => _listHelper.SearchRecords(text);
+        private void dgEmployeeList_CellClick(object sender, DataGridViewCellEventArgs e) => _listHelper.ClickedModelID = e.RowIndex;
     }
 }

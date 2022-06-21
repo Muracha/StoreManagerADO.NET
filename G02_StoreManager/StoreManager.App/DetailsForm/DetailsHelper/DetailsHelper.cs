@@ -17,9 +17,11 @@ namespace StoreManager.App.DetailsForm.DetailsHelper
         where TRepository : RepositoryBase<TModel>, new()
         where TService : ServiceRepositoryBase<TModel, TRepository>, new()
     {
+        private TModel _model;
+
         private readonly Form _detailsForm;
         private readonly TService _service;
-        private TModel _model;
+
         public DetailsHelper(Form form)
         {
             _detailsForm = form;

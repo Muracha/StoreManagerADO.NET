@@ -1,8 +1,8 @@
-﻿using StoreManager.Repositories;
-using StoreManager.Services;
-using System;
+﻿using System;
 using System.Linq;
 using System.Windows.Forms;
+using StoreManager.Repositories;
+using StoreManager.Services;
 
 namespace StoreManager.App.ListForm.ListHelper
 {
@@ -12,28 +12,30 @@ namespace StoreManager.App.ListForm.ListHelper
         where TRepository : RepositoryBase<TModel>, new()
         where TService : ServiceRepositoryBase<TModel, TRepository>, new()
     {
+        private int _id = 0;
+
         private readonly TService _service;
         private readonly DataGridView _dataGridView;
-        private int _id = 0;
-        public int ClickedModelID 
-        { 
-            get 
+
+        public int ClickedModelID
+        {
+            get
             {
                 return _id;
-            } 
-            set 
+            }
+            set
             {
                 if (value > -1)
                 {
                     _id = Convert.ToInt32(_dataGridView.Rows[value].Cells["ID"].Value);
                 }
-            } 
+            }
         }
 
-        public ListHelper(DataGridView value)
+        public ListHelper(DataGridView grid)
         {
             _service = new TService();
-            _dataGridView = value;
+            _dataGridView = grid;
         }
 
         public void InsertRecord()
@@ -45,28 +47,28 @@ namespace StoreManager.App.ListForm.ListHelper
                 RefreshRecords();
             }
         }
+
         public void UpdateRecord()
         {
-            if (CheckClick())
+            if (!ValidateSelection())
             {
-                var details = (TDetails)Activator.CreateInstance(typeof(TDetails), new object[] { ClickedModelID });
-                if (details.ShowDialog() == DialogResult.OK)
-                {
-                    _service.Update(LocalStorage.Record as TModel);
-                    RefreshRecords();
-                }
+                return;
+            }
+
+            var details = (TDetails)Activator.CreateInstance(typeof(TDetails), new object[] { ClickedModelID });
+            if (details.ShowDialog() == DialogResult.OK)
+            {
+                _service.Update(LocalStorage.Record as TModel);
+                RefreshRecords();
             }
         }
 
         public void DeleteRecord()
         {
-            if (CheckClick())
+            if (ValidateSelection() && MessageBox.Show($"Are you sure you want to delete this User with {ClickedModelID} ID?", "Confirm Deletion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                if (MessageBox.Show($"Are you sure you want to delete this User with {ClickedModelID} ID?", "Confirm Deletion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-                    _service.Delete(ClickedModelID);
-                    RefreshRecords();
-                }
+                _service.Delete(ClickedModelID);
+                RefreshRecords();
             }
         }
 
@@ -80,7 +82,7 @@ namespace StoreManager.App.ListForm.ListHelper
 
         }
 
-        private bool CheckClick()
+        private bool ValidateSelection()
         {
             if (ClickedModelID > 0)
                 return true;

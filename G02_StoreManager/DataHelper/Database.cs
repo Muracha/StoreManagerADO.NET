@@ -164,7 +164,7 @@ namespace DataHelper
         #endregion
 
         #region GetTable
-        //todo: დაასრულეთ ეს მეთოდი!
+    
         public DataTable GetTable(string commandText, CommandType commandType, params SqlParameter[] parameters)
         {
             SqlDataReader reader = ExecuteReader(commandText, commandType, parameters);

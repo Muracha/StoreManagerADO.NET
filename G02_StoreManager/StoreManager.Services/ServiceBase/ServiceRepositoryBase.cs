@@ -19,6 +19,7 @@ namespace StoreManager.Services
             return _repository.Get(id);
         }
 
+        //todo: დასახვეწია. ძებნის ფუნქციონალი უნდა გადავიტანოთ ბაზებში.
         public virtual IEnumerable<TModel> Select()
         {
             return _repository.Select();
