@@ -1,21 +1,28 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using StoreManager.App.Interfaces;
-using StoreManager.App.ListForm.ListHelper;
 using StoreManager.Models;
 using StoreManager.Repositories;
 using StoreManager.Services;
+using StoreManager.App.ListForm.ListHelper;
+using StoreManager.App.DetailsForm;
 
-namespace StoreManager.App
+namespace StoreManager.App.ListForm
 {
-    public partial class UserList : Form, IListForm
+    public partial class EmployeeList : Form, IListForm
     {
-        public ListHelper<UserDetails, User, UserRepository, UserService> _listHelper;
-        public UserList()
+        private ListHelper<EmployeeDetails, Employee, EmployeeRepository, EmployeeService> _listHelper;
+        public EmployeeList()
         {
             InitializeComponent();
-            _listHelper = new ListHelper<UserDetails, User, UserRepository, UserService>(grdUserList);
+            _listHelper = new ListHelper<EmployeeDetails, Employee, EmployeeRepository, EmployeeService>(dgEmployeeList);
             RefreshRecords();
         }
 
@@ -27,13 +34,11 @@ namespace StoreManager.App
         public void UpdateRecord()
         {
             _listHelper.UpdateRecord();
-
         }
 
         public void DeleteRecord()
         {
             _listHelper.DeleteRecord();
-
         }
 
         public void RefreshRecords()
@@ -46,7 +51,7 @@ namespace StoreManager.App
             _listHelper.SearchRecords(text);
         }
 
-        private void GrdUserList_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dgEmployeeList_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             _listHelper.ClickedModelID = e.RowIndex;
         }

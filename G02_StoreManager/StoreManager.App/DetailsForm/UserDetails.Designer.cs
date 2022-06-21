@@ -31,7 +31,7 @@ namespace StoreManager.App
         {
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.txtUserID = new System.Windows.Forms.TextBox();
+            this.txtID = new System.Windows.Forms.TextBox();
             this.txtUserName = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -39,6 +39,7 @@ namespace StoreManager.App
             this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.cmbIsActive = new System.Windows.Forms.ComboBox();
+            this.txtIsActive = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnSave
@@ -58,6 +59,7 @@ namespace StoreManager.App
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.Location = new System.Drawing.Point(425, 149);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancel.Name = "btnCancel";
@@ -65,18 +67,18 @@ namespace StoreManager.App
             this.btnCancel.TabIndex = 1;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // txtUserID
+            // txtID
             // 
-            this.txtUserID.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtID.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtUserID.Location = new System.Drawing.Point(123, 15);
-            this.txtUserID.Margin = new System.Windows.Forms.Padding(4);
-            this.txtUserID.Name = "txtUserID";
-            this.txtUserID.Size = new System.Drawing.Size(401, 22);
-            this.txtUserID.TabIndex = 2;
-            this.txtUserID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUserID_KeyPress);
+            this.txtID.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtID.Location = new System.Drawing.Point(123, 15);
+            this.txtID.Margin = new System.Windows.Forms.Padding(4);
+            this.txtID.Name = "txtID";
+            this.txtID.Size = new System.Drawing.Size(401, 22);
+            this.txtID.TabIndex = 2;
+            this.txtID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUserID_KeyPress);
             // 
             // txtUserName
             // 
@@ -105,9 +107,9 @@ namespace StoreManager.App
             this.label1.Location = new System.Drawing.Point(16, 18);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(49, 16);
+            this.label1.Size = new System.Drawing.Size(20, 16);
             this.label1.TabIndex = 8;
-            this.label1.Text = "UserID";
+            this.label1.Text = "ID";
             // 
             // label2
             // 
@@ -115,9 +117,9 @@ namespace StoreManager.App
             this.label2.Location = new System.Drawing.Point(16, 50);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(73, 16);
+            this.label2.Size = new System.Drawing.Size(70, 16);
             this.label2.TabIndex = 9;
-            this.label2.Text = "UserName";
+            this.label2.Text = "Username";
             // 
             // label3
             // 
@@ -153,12 +155,24 @@ namespace StoreManager.App
             this.cmbIsActive.Name = "cmbIsActive";
             this.cmbIsActive.Size = new System.Drawing.Size(401, 24);
             this.cmbIsActive.TabIndex = 13;
+            this.cmbIsActive.SelectedIndexChanged += new System.EventHandler(this.cmbIsActive_SelectedIndexChanged);
+            // 
+            // txtIsActive
+            // 
+            this.txtIsActive.Location = new System.Drawing.Point(123, 111);
+            this.txtIsActive.Name = "txtIsActive";
+            this.txtIsActive.Size = new System.Drawing.Size(100, 22);
+            this.txtIsActive.TabIndex = 14;
+            this.txtIsActive.Visible = false;
+            this.txtIsActive.TextChanged += new System.EventHandler(this.txtIsActive_TextChanged);
             // 
             // UserDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(541, 192);
+            this.Controls.Add(this.txtIsActive);
             this.Controls.Add(this.cmbIsActive);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label3);
@@ -166,7 +180,7 @@ namespace StoreManager.App
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.txtUserName);
-            this.Controls.Add(this.txtUserID);
+            this.Controls.Add(this.txtID);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -176,7 +190,6 @@ namespace StoreManager.App
             this.Name = "UserDetails";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "UserDetails";
-            this.Load += new System.EventHandler(this.UserDetails_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -189,9 +202,10 @@ namespace StoreManager.App
         private System.Windows.Forms.Label label5;
         public System.Windows.Forms.Button btnSave;
         public System.Windows.Forms.Button btnCancel;
-        public System.Windows.Forms.TextBox txtUserID;
+        public System.Windows.Forms.TextBox txtID;
         public System.Windows.Forms.TextBox txtUserName;
         public System.Windows.Forms.TextBox txtPassword;
         public System.Windows.Forms.ComboBox cmbIsActive;
+        private System.Windows.Forms.TextBox txtIsActive;
     }
 }

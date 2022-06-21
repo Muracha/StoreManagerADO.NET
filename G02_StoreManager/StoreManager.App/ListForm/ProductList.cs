@@ -8,43 +8,51 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using StoreManager.App.Interfaces;
+using StoreManager.App.ListForm.ListHelper;
+using StoreManager.Models;
+using StoreManager.Repositories;
+using StoreManager.Services;
 
 namespace StoreManager.App
 {
     public partial class ProductList : Form, IListForm
     {
+        private readonly ListHelper<ProductDetails, Product, ProductRepository, ProductService> _listHelper;
         public ProductList()
         {
             InitializeComponent();
+            _listHelper = new ListHelper<ProductDetails, Product, ProductRepository, ProductService>(grdProductList);
+            RefreshRecords();
         }
 
         public void InsertRecord()
         {
-            ProductDetails productDetails = new ProductDetails();
-            if (productDetails.ShowDialog() != DialogResult.OK)
-            {
-
-            }
+            _listHelper.InsertRecord();
         }
 
         public void UpdateRecord()
         {
-            throw new NotImplementedException();
+            _listHelper.UpdateRecord();
         }
 
         public void DeleteRecord()
         {
-            throw new NotImplementedException();
+            _listHelper.DeleteRecord();
         }
 
         public void RefreshRecords()
         {
-            throw new NotImplementedException();
+            _listHelper.RefreshRecords();
         }
 
         public void SearchRecords(string text)
         {
-            throw new NotImplementedException();
+            _listHelper.SearchRecords(text);
+        }
+
+        private void grdProductList_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            _listHelper.ClickedModelID = e.RowIndex;
         }
     }
 }

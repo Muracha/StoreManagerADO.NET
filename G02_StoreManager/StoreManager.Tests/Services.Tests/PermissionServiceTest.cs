@@ -15,8 +15,8 @@ namespace StoreManager.Tests.Services.Tests
     {
         private Permission permission = new Permission()
         {
-            Name = "123",
-            Code = 0001,
+            PermissionName = "123",
+            PermissionCode = 0001,
             Description = "for officers"
         };
         public PermissionServiceTest()
@@ -32,14 +32,14 @@ namespace StoreManager.Tests.Services.Tests
                 try
                 {
                     permission.ID = ModelID;
-                    permission.Name = "3232";
-                    permission.Code = 0002;
+                    permission.PermissionName = "3232";
+                    permission.PermissionCode = 0002;
                     permission.Description = "Not for Officers";
                     base._service.Update(permission);
                     var record = base._service.Get(permission);
 
-                    Assert.IsTrue(permission.Name == record.Name &&
-                                  permission.Code == record.Code &&
+                    Assert.IsTrue(permission.PermissionName == record.PermissionName &&
+                                  permission.PermissionCode == record.PermissionCode &&
                                   permission.Description == record.Description);
                 }
                 catch

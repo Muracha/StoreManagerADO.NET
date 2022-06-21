@@ -57,7 +57,7 @@ namespace StoreManager.Repositories
                 {
                     string objectName = $"Insert{_objectName}_SP";
                     database.BeginTransaction();
-                    int id = (int)database.ExecuteScalar(objectName, CommandType.StoredProcedure, GetParametrs(record, objectName).ToArray());
+                    int id = Convert.ToInt32(database.ExecuteScalar(objectName, CommandType.StoredProcedure, GetParametrs(record, objectName).ToArray()));
                     database.CommitTransaction();
                     return id;
                 }

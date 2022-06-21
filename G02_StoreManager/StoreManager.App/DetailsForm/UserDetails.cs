@@ -1,98 +1,43 @@
 ﻿using System;
 using System.Linq;
 using System.Windows.Forms;
+using StoreManager.App.DetailsForm.DetailsHelper;
+using StoreManager.App.Interfaces;
 using StoreManager.Models;
 using StoreManager.Repositories;
 using StoreManager.Services;
 
 namespace StoreManager.App
 {
-    public partial class UserDetails : Form
+    public partial class UserDetails : Form, IDetailsForm
     {
-        private readonly UserService _userService;
-
-        public UserDetails(UserService service)
+        private DetailsHelper<User, UserRepository, UserService> _detailsHelper;
+        public UserDetails()
         {
             InitializeComponent();
-            _userService = service;
+            _detailsHelper = new DetailsHelper<User, UserRepository, UserService>(this);
         }
 
-        private void UserDetails_Load(object sender, EventArgs e)
+        public UserDetails(int id)
         {
-            if (MainForm.updateButtonClick)
-            {
-                LoadData();
-                MainForm.updateButtonClick = false;
-            }
+            InitializeComponent();
+            _detailsHelper = new DetailsHelper<User, UserRepository, UserService>(this);
+            LoadData(id);
         }
 
-        /// <summary>
-        /// კითხულობს მონაცემთა ბაზიდან ჩანაწერს და ასახავს ვიზუალურ კომპონენტებში.
-        /// </summary>
-        private void LoadData()
+        public void LoadData(int id)
         {
-            var _user = new User();
-            _user = _userService.Get(UserList.clickedUserID);
-            txtUserID.Text = _user.ID.ToString();
-            txtPassword.Text = _user.Password;
-            txtUserName.Text = _user.Username;
-            cmbIsActive.Text = _user.IsActive.ToString();
+            _detailsHelper.LoadData(id);
         }
 
-        /// <summary>
-        /// ქმნის ობიექტს ვიზუალურ კომპონენტებში შეყვანილი ინფორმაციის საფუძველზე
-        /// და წერს მონაცემთა ბაზაში.
-        /// </summary>
-        private void SaveData()
+        public void SaveData()
         {
-            if (ValidateData())
-            {
-                var _user = new User();
-                _user.ID = int.Parse(txtUserID.Text);
-                _user.Username = txtUserName.Text;
-                _user.Password = txtPassword.Text;
-                _user.IsActive = Convert.ToBoolean(cmbIsActive.Text);
-                LocalStorage.Record = _user;
-                DialogResult = DialogResult.OK;
-            }
-        }
-
-
-        /// <summary>
-        /// ამოწმებს შეყვანილ ინფორმაციას მართებულობაზე.
-        /// </summary>
-        private bool ValidateData()
-        {
-            if (CheckAllTextBox())
-            {
-                return true;
-            }
-
-            return false;
-        }
-
-        private bool CheckAllTextBox()
-        {
-            foreach (var txtBox in this.Controls.OfType<TextBox>())
-            {
-                if (txtBox.Text == string.Empty)
-                {
-                    MessageBox.Show("Fill the missed lines.");
-                    return false;
-                }
-            }
-
-            return true;
+            _detailsHelper.SaveData();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
             SaveData();
-        }
-
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            DialogResult = DialogResult.Cancel;
         }
 
         private void txtUserID_KeyPress(object sender, KeyPressEventArgs e)
@@ -101,6 +46,16 @@ namespace StoreManager.App
             {
                 e.Handled = true;
             }
+        }
+
+        private void cmbIsActive_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtIsActive.Text = cmbIsActive.SelectedItem.ToString();
+        }
+
+        private void txtIsActive_TextChanged(object sender, EventArgs e)
+        {
+            cmbIsActive.Text = txtIsActive.Text;
         }
     }
 }

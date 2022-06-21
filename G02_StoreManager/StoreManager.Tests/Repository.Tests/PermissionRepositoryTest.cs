@@ -9,8 +9,8 @@ namespace StoreManager.Tests
     {
         private Permission permission = new Permission()
         {
-            Name = "123",
-            Code = 0001,
+            PermissionName = "123",
+            PermissionCode = 0001,
             Description = "for officers"
         };
         public PermissionRepositoryTest()
@@ -26,14 +26,14 @@ namespace StoreManager.Tests
                 try
                 {
                     permission.ID = ModelID;
-                    permission.Name = "3232";
-                    permission.Code = 0002;
+                    permission.PermissionName = "3232";
+                    permission.PermissionCode = 0002;
                     permission.Description = "Not for Officers";
                     base._repository.Update(permission);
                     var record = base._repository.Get(permission);
 
-                    Assert.IsTrue(permission.Name == record.Name &&
-                                  permission.Code == record.Code &&
+                    Assert.IsTrue(permission.PermissionName == record.PermissionName &&
+                                  permission.PermissionCode == record.PermissionCode &&
                                   permission.Description == record.Description);
                 }
                 catch

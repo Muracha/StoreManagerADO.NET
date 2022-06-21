@@ -57,7 +57,7 @@ namespace StoreManager.App
             this.productListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.employeListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contactInfoListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.suppliersListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.PermissionListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.customizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -277,7 +277,7 @@ namespace StoreManager.App
             this.productListToolStripMenuItem,
             this.employeListToolStripMenuItem,
             this.contactInfoListToolStripMenuItem,
-            this.suppliersListToolStripMenuItem});
+            this.PermissionListToolStripMenuItem});
             this.listsToolStripMenuItem.Name = "listsToolStripMenuItem";
             this.listsToolStripMenuItem.Size = new System.Drawing.Size(51, 24);
             this.listsToolStripMenuItem.Text = "Lists";
@@ -285,34 +285,37 @@ namespace StoreManager.App
             // userListToolStripMenuItem
             // 
             this.userListToolStripMenuItem.Name = "userListToolStripMenuItem";
-            this.userListToolStripMenuItem.Size = new System.Drawing.Size(199, 26);
+            this.userListToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.userListToolStripMenuItem.Text = "User List";
             this.userListToolStripMenuItem.Click += new System.EventHandler(this.UserListToolStripMenuItem_Click);
             // 
             // productListToolStripMenuItem
             // 
             this.productListToolStripMenuItem.Name = "productListToolStripMenuItem";
-            this.productListToolStripMenuItem.Size = new System.Drawing.Size(199, 26);
+            this.productListToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.productListToolStripMenuItem.Text = "Product List";
             this.productListToolStripMenuItem.Click += new System.EventHandler(this.ProductListToolStripMenuItem_Click);
             // 
             // employeListToolStripMenuItem
             // 
             this.employeListToolStripMenuItem.Name = "employeListToolStripMenuItem";
-            this.employeListToolStripMenuItem.Size = new System.Drawing.Size(199, 26);
+            this.employeListToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.employeListToolStripMenuItem.Text = "Employee List";
+            this.employeListToolStripMenuItem.Click += new System.EventHandler(this.employeListToolStripMenuItem_Click);
             // 
             // contactInfoListToolStripMenuItem
             // 
             this.contactInfoListToolStripMenuItem.Name = "contactInfoListToolStripMenuItem";
-            this.contactInfoListToolStripMenuItem.Size = new System.Drawing.Size(199, 26);
+            this.contactInfoListToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.contactInfoListToolStripMenuItem.Text = "ContactInfo List ";
+            this.contactInfoListToolStripMenuItem.Click += new System.EventHandler(this.contactInfoListToolStripMenuItem_Click);
             // 
-            // suppliersListToolStripMenuItem
+            // PermissionListToolStripMenuItem
             // 
-            this.suppliersListToolStripMenuItem.Name = "suppliersListToolStripMenuItem";
-            this.suppliersListToolStripMenuItem.Size = new System.Drawing.Size(199, 26);
-            this.suppliersListToolStripMenuItem.Text = "Supplier List";
+            this.PermissionListToolStripMenuItem.Name = "PermissionListToolStripMenuItem";
+            this.PermissionListToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.PermissionListToolStripMenuItem.Text = "Permission List";
+            this.PermissionListToolStripMenuItem.Click += new System.EventHandler(this.PermissionListToolStripMenuItem_Click);
             // 
             // toolsToolStripMenuItem
             // 
@@ -665,7 +668,7 @@ namespace StoreManager.App
         private System.Windows.Forms.ToolStripMenuItem horizontalToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem employeListToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem contactInfoListToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem suppliersListToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem PermissionListToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton Delete;
         private System.Windows.Forms.ToolTip toolTip1;
         private new System.Windows.Forms.ToolStripButton Refresh;

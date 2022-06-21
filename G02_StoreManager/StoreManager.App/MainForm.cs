@@ -1,4 +1,5 @@
 ﻿using StoreManager.App.Interfaces;
+using StoreManager.App.ListForm;
 using StoreManager.Services;
 using System;
 using System.Windows.Forms;
@@ -8,7 +9,6 @@ namespace StoreManager.App
     public partial class MainForm : Form
     {
         private readonly RolePermissionsService _rolePermissionsService;
-        public static bool updateButtonClick;
 
         public MainForm()
         {
@@ -50,6 +50,21 @@ namespace StoreManager.App
             OpenListForm<UserList>();
         }
 
+        private void employeListToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenListForm<EmployeeList>();
+        }
+
+        private void contactInfoListToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenListForm<ContactInfoList>();
+        }
+
+        private void PermissionListToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenListForm<PermissionList>();
+        }
+
         private void OpenListForm<T>() where T : Form, new()
         {
             T form = new T
@@ -71,7 +86,6 @@ namespace StoreManager.App
         {
             if (ActiveMdiChild != null && ActiveMdiChild is IListForm)
             {
-                updateButtonClick = true;
                 (ActiveMdiChild as IListForm).UpdateRecord();
             }
         }

@@ -7,31 +7,30 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using StoreManager.App.DetailsForm.DetailsHelper;
 using StoreManager.App.Interfaces;
 using StoreManager.Models;
 using StoreManager.Repositories;
 using StoreManager.Services;
+using StoreManager.App.DetailsForm.DetailsHelper;
 
-
-namespace StoreManager.App
+namespace StoreManager.App.DetailsForm
 {
-    public partial class ProductDetails : Form, IDetailsForm
+    public partial class PermissionDetails : Form, IDetailsForm
     {
-        private DetailsHelper<Product, ProductRepository, ProductService> detailsHelper;
-        public ProductDetails()
+        private DetailsHelper<Permission, PermissionRepository, PermissionService> detailsHelper;
+        public PermissionDetails()
         {
             InitializeComponent();
-            detailsHelper = new DetailsHelper<Product, ProductRepository, ProductService>(this);
+            detailsHelper = new DetailsHelper<Permission, PermissionRepository, PermissionService>(this);
         }
 
-        public ProductDetails(int id)
+        public PermissionDetails(int id)
         {
             InitializeComponent();
-            detailsHelper = new DetailsHelper<Product, ProductRepository, ProductService>(this);
+            detailsHelper = new DetailsHelper<Permission, PermissionRepository, PermissionService>(this);
             LoadData(id);
         }
-        
+
         public void LoadData(int id)
         {
             detailsHelper.LoadData(id);

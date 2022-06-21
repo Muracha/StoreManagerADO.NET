@@ -64,12 +64,51 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DetailsForm\ContactInfoDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DetailsForm\ContactInfoDetails.Designer.cs">
+      <DependentUpon>ContactInfoDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DetailsForm\DetailsHelper\DetailsHelper.cs" />
+    <Compile Include="DetailsForm\EmployeeDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DetailsForm\EmployeeDetails.Designer.cs">
+      <DependentUpon>EmployeeDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DetailsForm\PermissionDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DetailsForm\PermissionDetails.Designer.cs">
+      <DependentUpon>PermissionDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="G02_StoreDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>G02_StoreDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\IListForm.cs" />
+    <Compile Include="Interfaces\IDetailsForm.cs" />
+    <Compile Include="ListForm\ContactInfoList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListForm\ContactInfoList.Designer.cs">
+      <DependentUpon>ContactInfoList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ListForm\EmployeeList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListForm\EmployeeList.Designer.cs">
+      <DependentUpon>EmployeeList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ListForm\ListHelper\ListHelper.cs" />
+    <Compile Include="ListForm\PermissionList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListForm\PermissionList.Designer.cs">
+      <DependentUpon>PermissionList.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,6 +152,27 @@
     <Compile Include="ListForm\UserList.Designer.cs">
       <DependentUpon>UserList.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="DetailsForm\ContactInfoDetails.resx">
+      <DependentUpon>ContactInfoDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DetailsForm\EmployeeDetails.resx">
+      <DependentUpon>EmployeeDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DetailsForm\PermissionDetails.resx">
+      <DependentUpon>PermissionDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DetailsForm\ProductDetails.resx">
+      <DependentUpon>ProductDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListForm\ContactInfoList.resx">
+      <DependentUpon>ContactInfoList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListForm\EmployeeList.resx">
+      <DependentUpon>EmployeeList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListForm\PermissionList.resx">
+      <DependentUpon>PermissionList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>

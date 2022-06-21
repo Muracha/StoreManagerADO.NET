@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.grdProductList = new System.Windows.Forms.DataGridView();
-            this.ProductID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CategoryID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SupplierID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,7 +46,7 @@
             this.grdProductList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.grdProductList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdProductList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ProductID,
+            this.ID,
             this.CategoryID,
             this.ProductName,
             this.SupplierID,
@@ -57,61 +57,83 @@
             this.IsDeleted});
             this.grdProductList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grdProductList.Location = new System.Drawing.Point(0, 0);
+            this.grdProductList.Margin = new System.Windows.Forms.Padding(4);
             this.grdProductList.Name = "grdProductList";
-            this.grdProductList.Size = new System.Drawing.Size(773, 509);
+            this.grdProductList.RowHeadersWidth = 51;
+            this.grdProductList.Size = new System.Drawing.Size(1031, 626);
             this.grdProductList.TabIndex = 0;
+            this.grdProductList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdProductList_CellClick);
             // 
-            // ProductID
+            // ID
             // 
-            this.ProductID.HeaderText = "Product ID";
-            this.ProductID.Name = "ProductID";
+            this.ID.DataPropertyName = "ID";
+            this.ID.HeaderText = "ID";
+            this.ID.MinimumWidth = 6;
+            this.ID.Name = "ID";
             // 
             // CategoryID
             // 
+            this.CategoryID.DataPropertyName = "CategoryID";
             this.CategoryID.HeaderText = "Category ID";
+            this.CategoryID.MinimumWidth = 6;
             this.CategoryID.Name = "CategoryID";
             // 
             // ProductName
             // 
+            this.ProductName.DataPropertyName = "ProductName";
             this.ProductName.HeaderText = "Product Name";
+            this.ProductName.MinimumWidth = 6;
             this.ProductName.Name = "ProductName";
             // 
             // SupplierID
             // 
+            this.SupplierID.DataPropertyName = "SupplierID";
             this.SupplierID.HeaderText = "Supplier ID";
+            this.SupplierID.MinimumWidth = 6;
             this.SupplierID.Name = "SupplierID";
             // 
             // Description
             // 
+            this.Description.DataPropertyName = "Description";
             this.Description.HeaderText = "Description";
+            this.Description.MinimumWidth = 6;
             this.Description.Name = "Description";
             // 
             // Price
             // 
+            this.Price.DataPropertyName = "Price";
             this.Price.HeaderText = "Price";
+            this.Price.MinimumWidth = 6;
             this.Price.Name = "Price";
             // 
             // Quantity
             // 
+            this.Quantity.DataPropertyName = "Quantity";
             this.Quantity.HeaderText = "Quantity";
+            this.Quantity.MinimumWidth = 6;
             this.Quantity.Name = "Quantity";
             // 
             // CreateDate
             // 
+            this.CreateDate.DataPropertyName = "CreateDate";
             this.CreateDate.HeaderText = "Create Date";
+            this.CreateDate.MinimumWidth = 6;
             this.CreateDate.Name = "CreateDate";
             // 
             // IsDeleted
             // 
+            this.IsDeleted.DataPropertyName = "IsDeleted";
             this.IsDeleted.HeaderText = "Is Deleted";
+            this.IsDeleted.MinimumWidth = 6;
             this.IsDeleted.Name = "IsDeleted";
             // 
             // ProductList
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(773, 509);
+            this.ClientSize = new System.Drawing.Size(1031, 626);
             this.Controls.Add(this.grdProductList);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ProductList";
             this.Text = "ProductList";
             ((System.ComponentModel.ISupportInitialize)(this.grdProductList)).EndInit();
@@ -122,9 +144,9 @@
         #endregion
 
         private System.Windows.Forms.DataGridView grdProductList;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ProductID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn CategoryID;
-        private new System.Windows.Forms.DataGridViewTextBoxColumn ProductName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductName;
         private System.Windows.Forms.DataGridViewTextBoxColumn SupplierID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Description;
         private System.Windows.Forms.DataGridViewTextBoxColumn Price;
