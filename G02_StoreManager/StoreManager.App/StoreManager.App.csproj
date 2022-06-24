@@ -102,12 +102,24 @@
     <Compile Include="ListForm\EmployeeList.Designer.cs">
       <DependentUpon>EmployeeList.cs</DependentUpon>
     </Compile>
+    <Compile Include="ListForm\ListBase\ListBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListForm\ListBase\ListBase.Designer.cs">
+      <DependentUpon>ListBase.cs</DependentUpon>
+    </Compile>
     <Compile Include="ListForm\ListHelper\ListHelper.cs" />
     <Compile Include="ListForm\PermissionList.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ListForm\PermissionList.Designer.cs">
       <DependentUpon>PermissionList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ListForm\UserListTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListForm\UserListTest.Designer.cs">
+      <DependentUpon>UserListTest.cs</DependentUpon>
     </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
@@ -169,6 +181,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ListForm\EmployeeList.resx">
       <DependentUpon>EmployeeList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListForm\ListBase\ListBase.resx">
+      <DependentUpon>ListBase.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ListForm\PermissionList.resx">
       <DependentUpon>PermissionList.cs</DependentUpon>

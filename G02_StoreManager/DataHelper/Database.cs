@@ -136,7 +136,7 @@ namespace DataHelper
         {
             SqlCommand command = GetCommand(commandText, commandType, parameters);
             command.Connection.Open();
-            return command.ExecuteReader(CommandBehavior.CloseConnection);
+         return command.ExecuteReader(CommandBehavior.CloseConnection);
         }
 
         public SqlDataReader ExecuteReader(string commandText, params SqlParameter[] parameters)

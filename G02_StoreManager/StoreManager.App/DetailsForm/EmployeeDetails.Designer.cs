@@ -32,14 +32,12 @@
             this.lblLastName = new System.Windows.Forms.Label();
             this.lblBirthDate = new System.Windows.Forms.Label();
             this.lblHireDate = new System.Windows.Forms.Label();
-            this.dtBirthDate = new System.Windows.Forms.DateTimePicker();
-            this.txtFirstName = new System.Windows.Forms.TextBox();
-            this.txtLastName = new System.Windows.Forms.TextBox();
-            this.dtHireDate = new System.Windows.Forms.DateTimePicker();
+            this.ditBirthDateValue = new System.Windows.Forms.DateTimePicker();
+            this.txtFirstNameValue = new System.Windows.Forms.TextBox();
+            this.txtLastNameValue = new System.Windows.Forms.TextBox();
+            this.ditHireDateValue = new System.Windows.Forms.DateTimePicker();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.txtBirthDate = new System.Windows.Forms.TextBox();
-            this.txtHireDate = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // lblFirstName
@@ -78,43 +76,41 @@
             this.lblHireDate.TabIndex = 3;
             this.lblHireDate.Text = "Hire Date";
             // 
-            // dtBirthDate
+            // ditBirthDateValue
             // 
-            this.dtBirthDate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.ditBirthDateValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtBirthDate.Location = new System.Drawing.Point(142, 80);
-            this.dtBirthDate.Name = "dtBirthDate";
-            this.dtBirthDate.Size = new System.Drawing.Size(268, 22);
-            this.dtBirthDate.TabIndex = 5;
-            this.dtBirthDate.ValueChanged += new System.EventHandler(this.dtBirthDate_ValueChanged);
+            this.ditBirthDateValue.Location = new System.Drawing.Point(142, 80);
+            this.ditBirthDateValue.Name = "ditBirthDateValue";
+            this.ditBirthDateValue.Size = new System.Drawing.Size(268, 22);
+            this.ditBirthDateValue.TabIndex = 5;
             // 
-            // txtFirstName
+            // txtFirstNameValue
             // 
-            this.txtFirstName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtFirstNameValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtFirstName.Location = new System.Drawing.Point(142, 19);
-            this.txtFirstName.Name = "txtFirstName";
-            this.txtFirstName.Size = new System.Drawing.Size(268, 22);
-            this.txtFirstName.TabIndex = 6;
+            this.txtFirstNameValue.Location = new System.Drawing.Point(142, 19);
+            this.txtFirstNameValue.Name = "txtFirstNameValue";
+            this.txtFirstNameValue.Size = new System.Drawing.Size(268, 22);
+            this.txtFirstNameValue.TabIndex = 6;
             // 
-            // txtLastName
+            // txtLastNameValue
             // 
-            this.txtLastName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtLastNameValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtLastName.Location = new System.Drawing.Point(142, 52);
-            this.txtLastName.Name = "txtLastName";
-            this.txtLastName.Size = new System.Drawing.Size(268, 22);
-            this.txtLastName.TabIndex = 7;
+            this.txtLastNameValue.Location = new System.Drawing.Point(142, 52);
+            this.txtLastNameValue.Name = "txtLastNameValue";
+            this.txtLastNameValue.Size = new System.Drawing.Size(268, 22);
+            this.txtLastNameValue.TabIndex = 7;
             // 
-            // dtHireDate
+            // ditHireDateValue
             // 
-            this.dtHireDate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.ditHireDateValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtHireDate.Location = new System.Drawing.Point(142, 109);
-            this.dtHireDate.Name = "dtHireDate";
-            this.dtHireDate.Size = new System.Drawing.Size(268, 22);
-            this.dtHireDate.TabIndex = 8;
-            this.dtHireDate.ValueChanged += new System.EventHandler(this.dtHireDate_ValueChanged);
+            this.ditHireDateValue.Location = new System.Drawing.Point(142, 109);
+            this.ditHireDateValue.Name = "ditHireDateValue";
+            this.ditHireDateValue.Size = new System.Drawing.Size(268, 22);
+            this.ditHireDateValue.TabIndex = 8;
             // 
             // btnSave
             // 
@@ -139,37 +135,17 @@
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
-            // txtBirthDate
-            // 
-            this.txtBirthDate.Location = new System.Drawing.Point(310, 80);
-            this.txtBirthDate.Name = "txtBirthDate";
-            this.txtBirthDate.Size = new System.Drawing.Size(100, 22);
-            this.txtBirthDate.TabIndex = 11;
-            this.txtBirthDate.Visible = false;
-            this.txtBirthDate.TextChanged += new System.EventHandler(this.txtBirthDate_TextChanged);
-            // 
-            // txtHireDate
-            // 
-            this.txtHireDate.Location = new System.Drawing.Point(310, 109);
-            this.txtHireDate.Name = "txtHireDate";
-            this.txtHireDate.Size = new System.Drawing.Size(100, 22);
-            this.txtHireDate.TabIndex = 12;
-            this.txtHireDate.Visible = false;
-            this.txtHireDate.TextChanged += new System.EventHandler(this.txtHireDate_TextChanged);
-            // 
             // EmployeeDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(422, 207);
-            this.Controls.Add(this.txtHireDate);
-            this.Controls.Add(this.txtBirthDate);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.dtHireDate);
-            this.Controls.Add(this.txtLastName);
-            this.Controls.Add(this.txtFirstName);
-            this.Controls.Add(this.dtBirthDate);
+            this.Controls.Add(this.ditHireDateValue);
+            this.Controls.Add(this.txtLastNameValue);
+            this.Controls.Add(this.txtFirstNameValue);
+            this.Controls.Add(this.ditBirthDateValue);
             this.Controls.Add(this.lblHireDate);
             this.Controls.Add(this.lblBirthDate);
             this.Controls.Add(this.lblLastName);
@@ -187,13 +163,11 @@
         private System.Windows.Forms.Label lblLastName;
         private System.Windows.Forms.Label lblBirthDate;
         private System.Windows.Forms.Label lblHireDate;
-        private System.Windows.Forms.DateTimePicker dtBirthDate;
-        private System.Windows.Forms.TextBox txtFirstName;
-        private System.Windows.Forms.TextBox txtLastName;
-        private System.Windows.Forms.DateTimePicker dtHireDate;
+        private System.Windows.Forms.DateTimePicker ditBirthDateValue;
+        private System.Windows.Forms.TextBox txtFirstNameValue;
+        private System.Windows.Forms.TextBox txtLastNameValue;
+        private System.Windows.Forms.DateTimePicker ditHireDateValue;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.TextBox txtBirthDate;
-        private System.Windows.Forms.TextBox txtHireDate;
     }
 }

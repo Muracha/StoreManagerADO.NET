@@ -34,11 +34,11 @@ namespace StoreManager.App.DetailsForm.DetailsHelper
             _model = _service.Get(id);
             foreach (PropertyInfo propertyInfo in _model.GetType().GetProperties())
             {
-                foreach (var txtBox in _detailsForm.Controls.OfType<TextBox>())
+                foreach (Control control in _detailsForm.Controls)
                 {
-                    if (txtBox.Name.ToLower().Substring(3).Equals(propertyInfo.Name.ToLower()))
+                    if (control.Name.ToLower().Substring(3).Equals(propertyInfo.Name.ToLower() + "value"))
                     {
-                        txtBox.Text = Convert.ToString(propertyInfo.GetValue(_model));
+                        control.Text = Convert.ToString(propertyInfo.GetValue(_model));
                         break;
                     }
                 }
@@ -49,13 +49,13 @@ namespace StoreManager.App.DetailsForm.DetailsHelper
         {
             if (ValidateData())
             {
-                foreach (var txtBox in _detailsForm.Controls.OfType<TextBox>())
+                foreach (Control control in _detailsForm.Controls)
                 {
                     foreach (PropertyInfo propertyInfo in _model.GetType().GetProperties())
                     {
-                        if (txtBox.Name.ToLower().Substring(3).Equals(propertyInfo.Name.ToLower()))
+                        if (control.Name.ToLower().Substring(3).Equals(propertyInfo.Name.ToLower() + "value"))
                         {
-                            propertyInfo.SetValue(_model, Convert.ChangeType(txtBox.Text, propertyInfo.PropertyType));
+                            propertyInfo.SetValue(_model, Convert.ChangeType(control.Text, propertyInfo.PropertyType));
                             break;
                         }
                     }

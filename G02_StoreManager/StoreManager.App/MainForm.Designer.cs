@@ -89,7 +89,7 @@ namespace StoreManager.App
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.txtSearch = new System.Windows.Forms.TextBox();
-            this.btnSearch = new System.Windows.Forms.Button();
+            this.lblSearch = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -285,35 +285,35 @@ namespace StoreManager.App
             // userListToolStripMenuItem
             // 
             this.userListToolStripMenuItem.Name = "userListToolStripMenuItem";
-            this.userListToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.userListToolStripMenuItem.Size = new System.Drawing.Size(199, 26);
             this.userListToolStripMenuItem.Text = "User List";
             this.userListToolStripMenuItem.Click += new System.EventHandler(this.UserListToolStripMenuItem_Click);
             // 
             // productListToolStripMenuItem
             // 
             this.productListToolStripMenuItem.Name = "productListToolStripMenuItem";
-            this.productListToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.productListToolStripMenuItem.Size = new System.Drawing.Size(199, 26);
             this.productListToolStripMenuItem.Text = "Product List";
             this.productListToolStripMenuItem.Click += new System.EventHandler(this.ProductListToolStripMenuItem_Click);
             // 
             // employeListToolStripMenuItem
             // 
             this.employeListToolStripMenuItem.Name = "employeListToolStripMenuItem";
-            this.employeListToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.employeListToolStripMenuItem.Size = new System.Drawing.Size(199, 26);
             this.employeListToolStripMenuItem.Text = "Employee List";
             this.employeListToolStripMenuItem.Click += new System.EventHandler(this.employeListToolStripMenuItem_Click);
             // 
             // contactInfoListToolStripMenuItem
             // 
             this.contactInfoListToolStripMenuItem.Name = "contactInfoListToolStripMenuItem";
-            this.contactInfoListToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.contactInfoListToolStripMenuItem.Size = new System.Drawing.Size(199, 26);
             this.contactInfoListToolStripMenuItem.Text = "ContactInfo List ";
             this.contactInfoListToolStripMenuItem.Click += new System.EventHandler(this.contactInfoListToolStripMenuItem_Click);
             // 
             // PermissionListToolStripMenuItem
             // 
             this.PermissionListToolStripMenuItem.Name = "PermissionListToolStripMenuItem";
-            this.PermissionListToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.PermissionListToolStripMenuItem.Size = new System.Drawing.Size(199, 26);
             this.PermissionListToolStripMenuItem.Text = "Permission List";
             this.PermissionListToolStripMenuItem.Click += new System.EventHandler(this.PermissionListToolStripMenuItem_Click);
             // 
@@ -470,7 +470,7 @@ namespace StoreManager.App
             this.Delete.Name = "Delete";
             this.Delete.Size = new System.Drawing.Size(29, 24);
             this.Delete.Text = "toolStripButton1";
-            this.Delete.ToolTipText = "Deleted";
+            this.Delete.ToolTipText = "Delete";
             this.Delete.Click += new System.EventHandler(this.Delete_Click);
             // 
             // Refresh
@@ -570,7 +570,7 @@ namespace StoreManager.App
             // 
             this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearch.Location = new System.Drawing.Point(1084, 30);
+            this.txtSearch.Location = new System.Drawing.Point(1111, 26);
             this.txtSearch.Margin = new System.Windows.Forms.Padding(4);
             this.txtSearch.Multiline = true;
             this.txtSearch.Name = "txtSearch";
@@ -578,15 +578,15 @@ namespace StoreManager.App
             this.txtSearch.TabIndex = 4;
             this.txtSearch.TextChanged += new System.EventHandler(this.TxtSearch_TextChanged);
             // 
-            // btnSearch
+            // lblSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(1406, 30);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(75, 23);
-            this.btnSearch.TabIndex = 9;
-            this.btnSearch.Text = "Search";
-            this.btnSearch.UseVisualStyleBackColor = true;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            this.lblSearch.AutoSize = true;
+            this.lblSearch.BackColor = System.Drawing.SystemColors.Control;
+            this.lblSearch.Location = new System.Drawing.Point(1431, 32);
+            this.lblSearch.Name = "lblSearch";
+            this.lblSearch.Size = new System.Drawing.Size(50, 16);
+            this.lblSearch.TabIndex = 11;
+            this.lblSearch.Text = "Search";
             // 
             // MainForm
             // 
@@ -594,7 +594,7 @@ namespace StoreManager.App
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1493, 837);
-            this.Controls.Add(this.btnSearch);
+            this.Controls.Add(this.lblSearch);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.toolStrip1);
@@ -673,8 +673,8 @@ namespace StoreManager.App
         private System.Windows.Forms.ToolTip toolTip1;
         private new System.Windows.Forms.ToolStripButton Refresh;
         private System.Windows.Forms.TextBox txtSearch;
-        private System.Windows.Forms.Button btnSearch;
         public System.Windows.Forms.ToolStripButton Update;
+        private System.Windows.Forms.Label lblSearch;
     }
 }
 

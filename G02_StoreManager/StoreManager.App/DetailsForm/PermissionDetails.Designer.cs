@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtPermissionCode = new System.Windows.Forms.TextBox();
-            this.txtPermissionName = new System.Windows.Forms.TextBox();
-            this.txtDescription = new System.Windows.Forms.TextBox();
+            this.txtPermissionCodeValue = new System.Windows.Forms.TextBox();
+            this.txtPermissionNameValue = new System.Windows.Forms.TextBox();
+            this.txtDescriptionValue = new System.Windows.Forms.TextBox();
             this.lblPermissionName = new System.Windows.Forms.Label();
             this.lblPermissionCode = new System.Windows.Forms.Label();
             this.lblDescription = new System.Windows.Forms.Label();
@@ -38,33 +38,33 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // txtPermissionCode
+            // txtPermissionCodeValue
             // 
-            this.txtPermissionCode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtPermissionCodeValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPermissionCode.Location = new System.Drawing.Point(212, 37);
-            this.txtPermissionCode.Name = "txtPermissionCode";
-            this.txtPermissionCode.Size = new System.Drawing.Size(240, 22);
-            this.txtPermissionCode.TabIndex = 0;
+            this.txtPermissionCodeValue.Location = new System.Drawing.Point(212, 37);
+            this.txtPermissionCodeValue.Name = "txtPermissionCodeValue";
+            this.txtPermissionCodeValue.Size = new System.Drawing.Size(240, 22);
+            this.txtPermissionCodeValue.TabIndex = 0;
             // 
-            // txtPermissionName
+            // txtPermissionNameValue
             // 
-            this.txtPermissionName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtPermissionNameValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPermissionName.Location = new System.Drawing.Point(212, 6);
-            this.txtPermissionName.Name = "txtPermissionName";
-            this.txtPermissionName.Size = new System.Drawing.Size(240, 22);
-            this.txtPermissionName.TabIndex = 1;
+            this.txtPermissionNameValue.Location = new System.Drawing.Point(212, 6);
+            this.txtPermissionNameValue.Name = "txtPermissionNameValue";
+            this.txtPermissionNameValue.Size = new System.Drawing.Size(240, 22);
+            this.txtPermissionNameValue.TabIndex = 1;
             // 
-            // txtDescription
+            // txtDescriptionValue
             // 
-            this.txtDescription.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtDescriptionValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtDescription.Location = new System.Drawing.Point(212, 68);
-            this.txtDescription.Multiline = true;
-            this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(240, 67);
-            this.txtDescription.TabIndex = 2;
+            this.txtDescriptionValue.Location = new System.Drawing.Point(212, 68);
+            this.txtDescriptionValue.Multiline = true;
+            this.txtDescriptionValue.Name = "txtDescriptionValue";
+            this.txtDescriptionValue.Size = new System.Drawing.Size(240, 67);
+            this.txtDescriptionValue.TabIndex = 2;
             // 
             // lblPermissionName
             // 
@@ -124,9 +124,9 @@
             this.Controls.Add(this.lblDescription);
             this.Controls.Add(this.lblPermissionCode);
             this.Controls.Add(this.lblPermissionName);
-            this.Controls.Add(this.txtDescription);
-            this.Controls.Add(this.txtPermissionName);
-            this.Controls.Add(this.txtPermissionCode);
+            this.Controls.Add(this.txtDescriptionValue);
+            this.Controls.Add(this.txtPermissionNameValue);
+            this.Controls.Add(this.txtPermissionCodeValue);
             this.Name = "PermissionDetails";
             this.Text = "PermissionDetails";
             this.ResumeLayout(false);
@@ -136,9 +136,9 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox txtPermissionCode;
-        private System.Windows.Forms.TextBox txtPermissionName;
-        private System.Windows.Forms.TextBox txtDescription;
+        private System.Windows.Forms.TextBox txtPermissionCodeValue;
+        private System.Windows.Forms.TextBox txtPermissionNameValue;
+        private System.Windows.Forms.TextBox txtDescriptionValue;
         private System.Windows.Forms.Label lblPermissionName;
         private System.Windows.Forms.Label lblPermissionCode;
         private System.Windows.Forms.Label lblDescription;

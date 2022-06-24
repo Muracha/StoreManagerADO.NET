@@ -47,7 +47,7 @@ namespace StoreManager.App
 
         private void UserListToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenListForm<UserList>();
+            OpenListForm<UserListTest>();
         }
 
         private void employeListToolStripMenuItem_Click(object sender, EventArgs e)

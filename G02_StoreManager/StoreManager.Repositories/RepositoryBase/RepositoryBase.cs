@@ -37,9 +37,9 @@ namespace StoreManager.Repositories
             }
         }
 
-        public virtual IEnumerable<TModel> Select()
+        public virtual IEnumerable<TModel> Select(string text = null)
         {
-            var table = _database.GetTable($"Select{GetPluralize(_objectName)}_SP", CommandType.StoredProcedure);
+            var table = _database.GetTable($"Select{GetPluralize(_objectName)}_SP", CommandType.StoredProcedure, new SqlParameter("@Text", text));
             if (table.Rows.Count > 0)
             {
                 foreach (DataRow row in table.Rows)

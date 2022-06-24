@@ -45,25 +45,5 @@ namespace StoreManager.App.DetailsForm
         {
             SaveData();
         }
-
-        private void dtBirthDate_ValueChanged(object sender, EventArgs e)
-        {
-            txtBirthDate.Text = dtBirthDate.Value.ToString();
-        }
-
-        private void txtBirthDate_TextChanged(object sender, EventArgs e)
-        {
-            dtBirthDate.Value = Convert.ToDateTime(txtBirthDate.Text);
-        }
-
-        private void dtHireDate_ValueChanged(object sender, EventArgs e)
-        {
-            txtHireDate.Text = dtHireDate.Value.ToString();
-        }
-
-        private void txtHireDate_TextChanged(object sender, EventArgs e)
-        {
-            dtHireDate.Value = Convert.ToDateTime(txtHireDate.Text);
-        }
     }
 }

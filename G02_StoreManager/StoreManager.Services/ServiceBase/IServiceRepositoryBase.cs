@@ -7,7 +7,7 @@ namespace StoreManager.Services
         void Delete(object id);
         TModel Get(object id);
         int Insert(TModel record);
-        IEnumerable<TModel> Select();
+        IEnumerable<TModel> Select(string text = null);
         void Update(TModel record);
     }
 }

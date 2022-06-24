@@ -28,45 +28,44 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtEmployeeID = new System.Windows.Forms.TextBox();
-            this.txtContactType = new System.Windows.Forms.TextBox();
-            this.txtContactData = new System.Windows.Forms.TextBox();
+            this.txtEmployeeIDValue = new System.Windows.Forms.TextBox();
+            this.txtContactTypeValue = new System.Windows.Forms.TextBox();
+            this.txtContactDataValue = new System.Windows.Forms.TextBox();
             this.lblEmployeeID = new System.Windows.Forms.Label();
             this.lblContactType = new System.Windows.Forms.Label();
             this.lblContactData = new System.Windows.Forms.Label();
             this.lblIsPrimary = new System.Windows.Forms.Label();
-            this.cbIsPrimary = new System.Windows.Forms.ComboBox();
+            this.cmbIsPrimaryValue = new System.Windows.Forms.ComboBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.txtIsPrimary = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // txtEmployeeID
+            // txtEmployeeIDValue
             // 
-            this.txtEmployeeID.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtEmployeeIDValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtEmployeeID.Location = new System.Drawing.Point(125, 6);
-            this.txtEmployeeID.Name = "txtEmployeeID";
-            this.txtEmployeeID.Size = new System.Drawing.Size(344, 22);
-            this.txtEmployeeID.TabIndex = 0;
+            this.txtEmployeeIDValue.Location = new System.Drawing.Point(125, 6);
+            this.txtEmployeeIDValue.Name = "txtEmployeeIDValue";
+            this.txtEmployeeIDValue.Size = new System.Drawing.Size(344, 22);
+            this.txtEmployeeIDValue.TabIndex = 0;
             // 
-            // txtContactType
+            // txtContactTypeValue
             // 
-            this.txtContactType.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtContactTypeValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtContactType.Location = new System.Drawing.Point(125, 34);
-            this.txtContactType.Name = "txtContactType";
-            this.txtContactType.Size = new System.Drawing.Size(344, 22);
-            this.txtContactType.TabIndex = 1;
+            this.txtContactTypeValue.Location = new System.Drawing.Point(125, 34);
+            this.txtContactTypeValue.Name = "txtContactTypeValue";
+            this.txtContactTypeValue.Size = new System.Drawing.Size(344, 22);
+            this.txtContactTypeValue.TabIndex = 1;
             // 
-            // txtContactData
+            // txtContactDataValue
             // 
-            this.txtContactData.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtContactDataValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtContactData.Location = new System.Drawing.Point(125, 62);
-            this.txtContactData.Name = "txtContactData";
-            this.txtContactData.Size = new System.Drawing.Size(344, 22);
-            this.txtContactData.TabIndex = 2;
+            this.txtContactDataValue.Location = new System.Drawing.Point(125, 62);
+            this.txtContactDataValue.Name = "txtContactDataValue";
+            this.txtContactDataValue.Size = new System.Drawing.Size(344, 22);
+            this.txtContactDataValue.TabIndex = 2;
             // 
             // lblEmployeeID
             // 
@@ -104,20 +103,19 @@
             this.lblIsPrimary.TabIndex = 7;
             this.lblIsPrimary.Text = "Primary";
             // 
-            // cbIsPrimary
+            // cmbIsPrimaryValue
             // 
-            this.cbIsPrimary.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.cmbIsPrimaryValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbIsPrimary.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbIsPrimary.FormattingEnabled = true;
-            this.cbIsPrimary.Items.AddRange(new object[] {
+            this.cmbIsPrimaryValue.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbIsPrimaryValue.FormattingEnabled = true;
+            this.cmbIsPrimaryValue.Items.AddRange(new object[] {
             "False",
             "True"});
-            this.cbIsPrimary.Location = new System.Drawing.Point(125, 90);
-            this.cbIsPrimary.Name = "cbIsPrimary";
-            this.cbIsPrimary.Size = new System.Drawing.Size(344, 24);
-            this.cbIsPrimary.TabIndex = 8;
-            this.cbIsPrimary.SelectedIndexChanged += new System.EventHandler(this.cbIsPrimary_SelectedIndexChanged);
+            this.cmbIsPrimaryValue.Location = new System.Drawing.Point(125, 90);
+            this.cmbIsPrimaryValue.Name = "cmbIsPrimaryValue";
+            this.cmbIsPrimaryValue.Size = new System.Drawing.Size(344, 24);
+            this.cmbIsPrimaryValue.TabIndex = 8;
             // 
             // btnSave
             // 
@@ -141,32 +139,22 @@
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
-            // txtIsPrimary
-            // 
-            this.txtIsPrimary.Location = new System.Drawing.Point(369, 90);
-            this.txtIsPrimary.Name = "txtIsPrimary";
-            this.txtIsPrimary.Size = new System.Drawing.Size(100, 22);
-            this.txtIsPrimary.TabIndex = 11;
-            this.txtIsPrimary.Visible = false;
-            this.txtIsPrimary.TextChanged += new System.EventHandler(this.txtPrimary_TextChanged);
-            // 
             // ContactInfoDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(481, 169);
-            this.Controls.Add(this.txtIsPrimary);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.cbIsPrimary);
+            this.Controls.Add(this.cmbIsPrimaryValue);
             this.Controls.Add(this.lblIsPrimary);
             this.Controls.Add(this.lblContactData);
             this.Controls.Add(this.lblContactType);
             this.Controls.Add(this.lblEmployeeID);
-            this.Controls.Add(this.txtContactData);
-            this.Controls.Add(this.txtContactType);
-            this.Controls.Add(this.txtEmployeeID);
+            this.Controls.Add(this.txtContactDataValue);
+            this.Controls.Add(this.txtContactTypeValue);
+            this.Controls.Add(this.txtEmployeeIDValue);
             this.Name = "ContactInfoDetails";
             this.Text = "ContactInfoDetails";
             this.ResumeLayout(false);
@@ -176,16 +164,15 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox txtEmployeeID;
-        private System.Windows.Forms.TextBox txtContactType;
-        private System.Windows.Forms.TextBox txtContactData;
+        private System.Windows.Forms.TextBox txtEmployeeIDValue;
+        private System.Windows.Forms.TextBox txtContactTypeValue;
+        private System.Windows.Forms.TextBox txtContactDataValue;
         private System.Windows.Forms.Label lblEmployeeID;
         private System.Windows.Forms.Label lblContactType;
         private System.Windows.Forms.Label lblContactData;
         private System.Windows.Forms.Label lblIsPrimary;
-        private System.Windows.Forms.ComboBox cbIsPrimary;
+        private System.Windows.Forms.ComboBox cmbIsPrimaryValue;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.TextBox txtIsPrimary;
     }
 }

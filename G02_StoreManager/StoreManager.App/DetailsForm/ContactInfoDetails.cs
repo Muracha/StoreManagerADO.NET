@@ -45,15 +45,5 @@ namespace StoreManager.App.DetailsForm
         {
             SaveData();
         }
-
-        private void cbIsPrimary_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            txtIsPrimary.Text = cbIsPrimary.SelectedItem.ToString();
-        }
-
-        private void txtPrimary_TextChanged(object sender, EventArgs e)
-        {
-            cbIsPrimary.Text = txtIsPrimary.Text;
-        }
     }
 }

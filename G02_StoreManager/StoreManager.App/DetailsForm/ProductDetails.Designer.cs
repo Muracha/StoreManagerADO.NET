@@ -33,14 +33,14 @@
             this.lblSupplierID = new System.Windows.Forms.Label();
             this.lblDescription = new System.Windows.Forms.Label();
             this.lblPrice = new System.Windows.Forms.Label();
-            this.txtCategoryID = new System.Windows.Forms.TextBox();
-            this.txtSupplierID = new System.Windows.Forms.TextBox();
-            this.txtProductName = new System.Windows.Forms.TextBox();
-            this.txtPrice = new System.Windows.Forms.TextBox();
-            this.txtDescription = new System.Windows.Forms.TextBox();
+            this.txtCategoryIDValue = new System.Windows.Forms.TextBox();
+            this.txtSupplierIDValue = new System.Windows.Forms.TextBox();
+            this.txtProductNameValue = new System.Windows.Forms.TextBox();
+            this.txtPriceValue = new System.Windows.Forms.TextBox();
+            this.txtDescriptionValue = new System.Windows.Forms.TextBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.txtQuantity = new System.Windows.Forms.TextBox();
+            this.txtQuantityValue = new System.Windows.Forms.TextBox();
             this.lblQuantity = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -89,51 +89,51 @@
             this.lblPrice.TabIndex = 4;
             this.lblPrice.Text = "Price";
             // 
-            // txtCategoryID
+            // txtCategoryIDValue
             // 
-            this.txtCategoryID.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtCategoryIDValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtCategoryID.Location = new System.Drawing.Point(125, 18);
-            this.txtCategoryID.Name = "txtCategoryID";
-            this.txtCategoryID.Size = new System.Drawing.Size(367, 22);
-            this.txtCategoryID.TabIndex = 5;
+            this.txtCategoryIDValue.Location = new System.Drawing.Point(125, 18);
+            this.txtCategoryIDValue.Name = "txtCategoryIDValue";
+            this.txtCategoryIDValue.Size = new System.Drawing.Size(367, 22);
+            this.txtCategoryIDValue.TabIndex = 5;
             // 
-            // txtSupplierID
+            // txtSupplierIDValue
             // 
-            this.txtSupplierID.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtSupplierIDValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSupplierID.Location = new System.Drawing.Point(125, 46);
-            this.txtSupplierID.Name = "txtSupplierID";
-            this.txtSupplierID.Size = new System.Drawing.Size(367, 22);
-            this.txtSupplierID.TabIndex = 6;
+            this.txtSupplierIDValue.Location = new System.Drawing.Point(125, 46);
+            this.txtSupplierIDValue.Name = "txtSupplierIDValue";
+            this.txtSupplierIDValue.Size = new System.Drawing.Size(367, 22);
+            this.txtSupplierIDValue.TabIndex = 6;
             // 
-            // txtProductName
+            // txtProductNameValue
             // 
-            this.txtProductName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtProductNameValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtProductName.Location = new System.Drawing.Point(125, 78);
-            this.txtProductName.Name = "txtProductName";
-            this.txtProductName.Size = new System.Drawing.Size(367, 22);
-            this.txtProductName.TabIndex = 7;
+            this.txtProductNameValue.Location = new System.Drawing.Point(125, 78);
+            this.txtProductNameValue.Name = "txtProductNameValue";
+            this.txtProductNameValue.Size = new System.Drawing.Size(367, 22);
+            this.txtProductNameValue.TabIndex = 7;
             // 
-            // txtPrice
+            // txtPriceValue
             // 
-            this.txtPrice.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtPriceValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPrice.Location = new System.Drawing.Point(125, 107);
-            this.txtPrice.Name = "txtPrice";
-            this.txtPrice.Size = new System.Drawing.Size(367, 22);
-            this.txtPrice.TabIndex = 8;
+            this.txtPriceValue.Location = new System.Drawing.Point(125, 107);
+            this.txtPriceValue.Name = "txtPriceValue";
+            this.txtPriceValue.Size = new System.Drawing.Size(367, 22);
+            this.txtPriceValue.TabIndex = 8;
             // 
-            // txtDescription
+            // txtDescriptionValue
             // 
-            this.txtDescription.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtDescriptionValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtDescription.Location = new System.Drawing.Point(125, 163);
-            this.txtDescription.Multiline = true;
-            this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(367, 86);
-            this.txtDescription.TabIndex = 9;
+            this.txtDescriptionValue.Location = new System.Drawing.Point(125, 163);
+            this.txtDescriptionValue.Multiline = true;
+            this.txtDescriptionValue.Name = "txtDescriptionValue";
+            this.txtDescriptionValue.Size = new System.Drawing.Size(367, 86);
+            this.txtDescriptionValue.TabIndex = 9;
             // 
             // btnSave
             // 
@@ -157,14 +157,14 @@
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
-            // txtQuantity
+            // txtQuantityValue
             // 
-            this.txtQuantity.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtQuantityValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtQuantity.Location = new System.Drawing.Point(125, 135);
-            this.txtQuantity.Name = "txtQuantity";
-            this.txtQuantity.Size = new System.Drawing.Size(367, 22);
-            this.txtQuantity.TabIndex = 12;
+            this.txtQuantityValue.Location = new System.Drawing.Point(125, 135);
+            this.txtQuantityValue.Name = "txtQuantityValue";
+            this.txtQuantityValue.Size = new System.Drawing.Size(367, 22);
+            this.txtQuantityValue.TabIndex = 12;
             // 
             // lblQuantity
             // 
@@ -182,14 +182,14 @@
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(504, 290);
             this.Controls.Add(this.lblQuantity);
-            this.Controls.Add(this.txtQuantity);
+            this.Controls.Add(this.txtQuantityValue);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.txtDescription);
-            this.Controls.Add(this.txtPrice);
-            this.Controls.Add(this.txtProductName);
-            this.Controls.Add(this.txtSupplierID);
-            this.Controls.Add(this.txtCategoryID);
+            this.Controls.Add(this.txtDescriptionValue);
+            this.Controls.Add(this.txtPriceValue);
+            this.Controls.Add(this.txtProductNameValue);
+            this.Controls.Add(this.txtSupplierIDValue);
+            this.Controls.Add(this.txtCategoryIDValue);
             this.Controls.Add(this.lblPrice);
             this.Controls.Add(this.lblDescription);
             this.Controls.Add(this.lblSupplierID);
@@ -209,14 +209,14 @@
         private System.Windows.Forms.Label lblSupplierID;
         private System.Windows.Forms.Label lblDescription;
         private System.Windows.Forms.Label lblPrice;
-        private System.Windows.Forms.TextBox txtCategoryID;
-        private System.Windows.Forms.TextBox txtSupplierID;
-        private System.Windows.Forms.TextBox txtProductName;
-        private System.Windows.Forms.TextBox txtPrice;
-        private System.Windows.Forms.TextBox txtDescription;
+        private System.Windows.Forms.TextBox txtCategoryIDValue;
+        private System.Windows.Forms.TextBox txtSupplierIDValue;
+        private System.Windows.Forms.TextBox txtProductNameValue;
+        private System.Windows.Forms.TextBox txtPriceValue;
+        private System.Windows.Forms.TextBox txtDescriptionValue;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.TextBox txtQuantity;
+        private System.Windows.Forms.TextBox txtQuantityValue;
         private System.Windows.Forms.Label lblQuantity;
     }
 }

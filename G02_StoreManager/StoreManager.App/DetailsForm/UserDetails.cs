@@ -22,6 +22,7 @@ namespace StoreManager.App
         {
             InitializeComponent();
             _detailsHelper = new DetailsHelper<User, UserRepository, UserService>(this);
+            txtPasswordValue.Enabled = false;
             LoadData(id);
         }
 
@@ -46,16 +47,6 @@ namespace StoreManager.App
             {
                 e.Handled = true;
             }
-        }
-
-        private void cmbIsActive_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            txtIsActive.Text = cmbIsActive.SelectedItem.ToString();
-        }
-
-        private void txtIsActive_TextChanged(object sender, EventArgs e)
-        {
-            cmbIsActive.Text = txtIsActive.Text;
         }
     }
 }

@@ -31,15 +31,14 @@ namespace StoreManager.App
         {
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.txtID = new System.Windows.Forms.TextBox();
-            this.txtUserName = new System.Windows.Forms.TextBox();
-            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.txtIDValue = new System.Windows.Forms.TextBox();
+            this.txtUserNameValue = new System.Windows.Forms.TextBox();
+            this.txtPasswordValue = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.cmbIsActive = new System.Windows.Forms.ComboBox();
-            this.txtIsActive = new System.Windows.Forms.TextBox();
+            this.cmbIsActiveValue = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // btnSave
@@ -68,38 +67,38 @@ namespace StoreManager.App
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
-            // txtID
+            // txtIDValue
             // 
-            this.txtID.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtIDValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtID.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtID.Location = new System.Drawing.Point(123, 15);
-            this.txtID.Margin = new System.Windows.Forms.Padding(4);
-            this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(401, 22);
-            this.txtID.TabIndex = 2;
-            this.txtID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUserID_KeyPress);
+            this.txtIDValue.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtIDValue.Location = new System.Drawing.Point(123, 15);
+            this.txtIDValue.Margin = new System.Windows.Forms.Padding(4);
+            this.txtIDValue.Name = "txtIDValue";
+            this.txtIDValue.Size = new System.Drawing.Size(401, 22);
+            this.txtIDValue.TabIndex = 2;
+            this.txtIDValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUserID_KeyPress);
             // 
-            // txtUserName
+            // txtUserNameValue
             // 
-            this.txtUserName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtUserNameValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtUserName.Location = new System.Drawing.Point(123, 47);
-            this.txtUserName.Margin = new System.Windows.Forms.Padding(4);
-            this.txtUserName.Name = "txtUserName";
-            this.txtUserName.Size = new System.Drawing.Size(401, 22);
-            this.txtUserName.TabIndex = 3;
+            this.txtUserNameValue.Location = new System.Drawing.Point(123, 47);
+            this.txtUserNameValue.Margin = new System.Windows.Forms.Padding(4);
+            this.txtUserNameValue.Name = "txtUserNameValue";
+            this.txtUserNameValue.Size = new System.Drawing.Size(401, 22);
+            this.txtUserNameValue.TabIndex = 3;
             // 
-            // txtPassword
+            // txtPasswordValue
             // 
-            this.txtPassword.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtPasswordValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPassword.Location = new System.Drawing.Point(123, 79);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(4);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(401, 22);
-            this.txtPassword.TabIndex = 5;
-            this.txtPassword.UseSystemPasswordChar = true;
+            this.txtPasswordValue.Location = new System.Drawing.Point(123, 79);
+            this.txtPasswordValue.Margin = new System.Windows.Forms.Padding(4);
+            this.txtPasswordValue.Name = "txtPasswordValue";
+            this.txtPasswordValue.Size = new System.Drawing.Size(401, 22);
+            this.txtPasswordValue.TabIndex = 5;
+            this.txtPasswordValue.UseSystemPasswordChar = true;
             // 
             // label1
             // 
@@ -141,30 +140,20 @@ namespace StoreManager.App
             this.label5.TabIndex = 12;
             this.label5.Text = "IsActive";
             // 
-            // cmbIsActive
+            // cmbIsActiveValue
             // 
-            this.cmbIsActive.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.cmbIsActiveValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmbIsActive.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbIsActive.FormattingEnabled = true;
-            this.cmbIsActive.Items.AddRange(new object[] {
+            this.cmbIsActiveValue.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbIsActiveValue.FormattingEnabled = true;
+            this.cmbIsActiveValue.Items.AddRange(new object[] {
             "False",
             "True"});
-            this.cmbIsActive.Location = new System.Drawing.Point(123, 111);
-            this.cmbIsActive.Margin = new System.Windows.Forms.Padding(4);
-            this.cmbIsActive.Name = "cmbIsActive";
-            this.cmbIsActive.Size = new System.Drawing.Size(401, 24);
-            this.cmbIsActive.TabIndex = 13;
-            this.cmbIsActive.SelectedIndexChanged += new System.EventHandler(this.cmbIsActive_SelectedIndexChanged);
-            // 
-            // txtIsActive
-            // 
-            this.txtIsActive.Location = new System.Drawing.Point(123, 111);
-            this.txtIsActive.Name = "txtIsActive";
-            this.txtIsActive.Size = new System.Drawing.Size(100, 22);
-            this.txtIsActive.TabIndex = 14;
-            this.txtIsActive.Visible = false;
-            this.txtIsActive.TextChanged += new System.EventHandler(this.txtIsActive_TextChanged);
+            this.cmbIsActiveValue.Location = new System.Drawing.Point(123, 111);
+            this.cmbIsActiveValue.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbIsActiveValue.Name = "cmbIsActiveValue";
+            this.cmbIsActiveValue.Size = new System.Drawing.Size(401, 24);
+            this.cmbIsActiveValue.TabIndex = 13;
             // 
             // UserDetails
             // 
@@ -172,15 +161,14 @@ namespace StoreManager.App
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(541, 192);
-            this.Controls.Add(this.txtIsActive);
-            this.Controls.Add(this.cmbIsActive);
+            this.Controls.Add(this.cmbIsActiveValue);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtPassword);
-            this.Controls.Add(this.txtUserName);
-            this.Controls.Add(this.txtID);
+            this.Controls.Add(this.txtPasswordValue);
+            this.Controls.Add(this.txtUserNameValue);
+            this.Controls.Add(this.txtIDValue);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -202,10 +190,9 @@ namespace StoreManager.App
         private System.Windows.Forms.Label label5;
         public System.Windows.Forms.Button btnSave;
         public System.Windows.Forms.Button btnCancel;
-        public System.Windows.Forms.TextBox txtID;
-        public System.Windows.Forms.TextBox txtUserName;
-        public System.Windows.Forms.TextBox txtPassword;
-        public System.Windows.Forms.ComboBox cmbIsActive;
-        private System.Windows.Forms.TextBox txtIsActive;
+        public System.Windows.Forms.TextBox txtIDValue;
+        public System.Windows.Forms.TextBox txtUserNameValue;
+        public System.Windows.Forms.TextBox txtPasswordValue;
+        public System.Windows.Forms.ComboBox cmbIsActiveValue;
     }
 }

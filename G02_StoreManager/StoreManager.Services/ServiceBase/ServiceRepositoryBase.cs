@@ -20,9 +20,9 @@ namespace StoreManager.Services
         }
 
         //todo: დასახვეწია. ძებნის ფუნქციონალი უნდა გადავიტანოთ ბაზებში.
-        public virtual IEnumerable<TModel> Select()
+        public virtual IEnumerable<TModel> Select(string text = null)
         {
-            return _repository.Select();
+            return _repository.Select(text);
         }
 
         public virtual int Insert(TModel record)
