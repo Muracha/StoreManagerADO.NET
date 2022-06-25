@@ -36,10 +36,21 @@ namespace StoreManager.App.DetailsForm.DetailsHelper
             {
                 foreach (Control control in _detailsForm.Controls)
                 {
-                    if (control.Name.ToLower().Substring(3).Equals(propertyInfo.Name.ToLower() + "value"))
+                    if (control is TextBox)
                     {
-                        control.Text = Convert.ToString(propertyInfo.GetValue(_model));
-                        break;
+                        if (control.Name.ToLower().Substring(3).Equals(propertyInfo.Name.ToLower() + "value"))
+                        {
+                            control.Text = Convert.ToString(propertyInfo.GetValue(_model));
+                            break;
+                        }
+                    }
+                    else if (control is CheckBox)
+                    {
+                        if (control.Name.ToLower().Substring(3).Equals(propertyInfo.Name.ToLower() + "value"))
+                        {
+                            (control as CheckBox).Checked = Convert.ToBoolean(propertyInfo.GetValue(_model));
+                            break;
+                        }
                     }
                 }
             }
