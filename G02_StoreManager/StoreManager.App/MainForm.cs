@@ -1,8 +1,8 @@
-﻿using StoreManager.App.Interfaces;
+﻿using System;
+using System.Windows.Forms;
+using StoreManager.App.Interfaces;
 using StoreManager.App.ListForm;
 using StoreManager.Services;
-using System;
-using System.Windows.Forms;
 
 namespace StoreManager.App
 {

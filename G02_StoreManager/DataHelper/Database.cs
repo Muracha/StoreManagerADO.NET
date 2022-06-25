@@ -1,8 +1,8 @@
-﻿using DataHelper.Facade;
-using System;
+﻿using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Runtime.CompilerServices;
+using DataHelper.Facade;
 
 [assembly: InternalsVisibleTo("DataHelper.Factory")]
 

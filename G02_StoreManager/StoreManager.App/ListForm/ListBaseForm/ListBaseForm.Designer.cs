@@ -1,6 +1,6 @@
 ﻿namespace StoreManager.App.ListForm
 {
-    partial class ListBase<TDetails, TModel, TRepository, TService>
+    partial class ListBaseForm<TDetails, TModel, TRepository, TService>
     {
         /// <summary>
         /// Required designer variable.

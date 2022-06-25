@@ -1,7 +1,7 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using StoreManager.Models;
 using StoreManager.Repositories;
-using System;
 
 namespace StoreManager.Tests
 {

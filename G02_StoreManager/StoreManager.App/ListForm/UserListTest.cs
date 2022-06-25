@@ -13,7 +13,7 @@ using StoreManager.Services;
 
 namespace StoreManager.App.ListForm
 {
-    public partial class UserListTest : ListBase<UserDetails, User, UserRepository, UserService>
+    public partial class UserListTest : ListBaseForm<UserDetails, User, UserRepository, UserService>
     {
         public UserListTest()
         {

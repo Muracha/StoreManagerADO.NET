@@ -13,7 +13,7 @@ using StoreManager.App.Interfaces;
 
 namespace StoreManager.App.ListForm
 {
-    public partial class ListBase<TDetails, TModel, TRepository, TService> : Form, IListForm
+    public partial class ListBaseForm<TDetails, TModel, TRepository, TService> : Form, IListForm
         where TDetails : Form, new()
         where TModel : class, new()
         where TRepository : RepositoryBase<TModel>, new()
@@ -22,7 +22,7 @@ namespace StoreManager.App.ListForm
         protected readonly TService _service;
         protected int _clickedModelID;
 
-        public ListBase()
+        public ListBaseForm()
         {
             InitializeComponent();
             _service = new TService();

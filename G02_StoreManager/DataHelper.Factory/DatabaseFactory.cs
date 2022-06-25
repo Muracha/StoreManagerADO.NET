@@ -1,5 +1,5 @@
-﻿using DataHelper.Facade;
-using System.Configuration;
+﻿using System.Configuration;
+using DataHelper.Facade;
 
 namespace DataHelper.Factory
 {

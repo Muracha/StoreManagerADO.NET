@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using StoreManager.Services;
 using System.Drawing;
 using System.Windows.Forms;
 using StoreManager.Repositories;
+using StoreManager.Services;
 
 namespace StoreManager.App
 {
