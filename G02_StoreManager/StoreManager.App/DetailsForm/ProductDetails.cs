@@ -16,7 +16,7 @@ using StoreManager.Services;
 
 namespace StoreManager.App
 {
-    public partial class ProductDetails : Form, IDetailsForm
+    public partial class ProductDetails : Form, IDetailsForm<Product>
     {
         private DetailsHelper<Product, ProductRepository, ProductService> detailsHelper;
         public ProductDetails()
@@ -37,9 +37,10 @@ namespace StoreManager.App
             detailsHelper.LoadData(id);
         }
 
-        public void SaveData()
+        public Product SaveData()
         {
             detailsHelper.SaveData();
+            return null;
         }
 
         private void btnSave_Click(object sender, EventArgs e)

@@ -9,12 +9,16 @@ using StoreManager.Services;
 
 namespace StoreManager.App
 {
-    public partial class UserDetails : Form, IDetailsForm
+    public partial class UserDetails : Form, IDetailsForm<User>
     {
         private DetailsHelper<User, UserRepository, UserService> _detailsHelper;
+        private readonly UserService _userService;
+        private User _user;
         public UserDetails()
         {
             InitializeComponent();
+            _user = new User();
+            _userService = new UserService();
             _detailsHelper = new DetailsHelper<User, UserRepository, UserService>(this);
         }
 
@@ -28,12 +32,20 @@ namespace StoreManager.App
 
         public void LoadData(int id)
         {
-            _detailsHelper.LoadData(id);
+            LoadUserModel(id);
         }
 
-        public void SaveData()
+        public User SaveData()
         {
-            _detailsHelper.SaveData();
+            var _save = SaveUserModel();
+            if (_save != null)
+            {
+                DialogResult = DialogResult.OK;
+                return _save;
+            }
+
+            DialogResult = DialogResult.Cancel;
+            return null;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -47,6 +59,42 @@ namespace StoreManager.App
             {
                 e.Handled = true;
             }
+        }
+        private void LoadUserModel(int id)
+        {
+            _user = _userService.Get(id);
+            txtIDValue.Enabled = false;
+            txtPasswordValue.Enabled = false;
+            txtIDValue.Text = _user.ID.ToString();
+            txtUserNameValue.Text = _user.Username.ToString();
+            txtPasswordValue.Text = _user.Password.ToString();
+        }
+
+        private User SaveUserModel()
+        {
+            if (!ValidateData())
+            {
+                return null;
+            }
+
+            _user.ID = int.Parse(txtIDValue.Text);
+            _user.Username = txtUserNameValue.Text;
+            _user.Password = txtPasswordValue.Text;
+            return _user;
+        }
+
+        private bool ValidateData()
+        {
+            foreach (var txtBox in this.Controls.OfType<TextBox>())
+            {
+                if (txtBox.Text == string.Empty)
+                {
+                    MessageBox.Show("Fill the missed lines, next time.");
+                    return false;
+                }
+            }
+
+            return true;
         }
     }
 }

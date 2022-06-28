@@ -15,7 +15,7 @@ using StoreManager.App.DetailsForm.DetailsHelper;
 
 namespace StoreManager.App.DetailsForm
 {
-    public partial class ContactInfoDetails : Form, IDetailsForm
+    public partial class ContactInfoDetails : Form, IDetailsForm<ContactInfo>
     {
         private DetailsHelper<ContactInfo, ContactInfoRepository, ContactInfoService> _detailsHelper;
         public ContactInfoDetails()
@@ -36,9 +36,10 @@ namespace StoreManager.App.DetailsForm
             _detailsHelper.LoadData(id);
         }
 
-        public void SaveData()
+        public ContactInfo SaveData()
         {
             _detailsHelper.SaveData();
+            return null;
         }
 
         private void btnSave_Click(object sender, EventArgs e)

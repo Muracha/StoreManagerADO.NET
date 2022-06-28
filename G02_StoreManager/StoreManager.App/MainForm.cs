@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Linq;
 using System.Windows.Forms;
 using StoreManager.App.Interfaces;
 using StoreManager.App.ListForm;
+using StoreManager.Repositories;
 using StoreManager.Services;
 
 namespace StoreManager.App
@@ -15,6 +17,8 @@ namespace StoreManager.App
             InitializeComponent();
             _rolePermissionsService = new RolePermissionsService();
             //_rolePermissionsService.StartTableDependenc();
+            LocalStorage.Permissions.ToList().Add(1);
+            LocalStorage.Permissions.ToList().Add(3);
         }
 
         private void VerticaleToolStripMenuItem_Click(object sender, EventArgs e)
@@ -47,7 +51,7 @@ namespace StoreManager.App
 
         private void UserListToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenListForm<UserListTest>();
+            OpenListForm<UserList>();
         }
 
         private void employeListToolStripMenuItem_Click(object sender, EventArgs e)
@@ -120,6 +124,43 @@ namespace StoreManager.App
             {
                 (ActiveMdiChild as IListForm).SearchRecords(txtSearch.Text);
             }
+        }
+
+        private void addToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (ActiveMdiChild != null && ActiveMdiChild is IListForm)
+            {
+                (ActiveMdiChild as IListForm).InsertRecord();
+            }
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            if (e.ClickedItem is ToolStripMenuItem)
+            {
+                CheckTags(e.ClickedItem as ToolStripMenuItem);
+            }
+        }
+
+        private void CheckTags(ToolStripMenuItem toolStripMenuItem)
+        {
+            foreach (var dropDownItem in toolStripMenuItem.DropDownItems)
+            {
+                if ((dropDownItem as ToolStripMenuItem) == null)
+                    continue;
+
+                if ((dropDownItem as ToolStripMenuItem).Tag != null && (dropDownItem as ToolStripMenuItem).Tag != string.Empty)
+                {
+                    if ((dropDownItem as ToolStripMenuItem).DropDownItems != null)
+                    {
+                        CheckTags((dropDownItem as ToolStripMenuItem));
+                    }
+                    if (!LocalStorage.Permissions.ToList<int>().Contains((Convert.ToInt32((dropDownItem as ToolStripMenuItem).Tag))))
+                    {
+                        (dropDownItem as ToolStripMenuItem).Visible = false;
+                    }
+                }
+             }
         }
     }
 }

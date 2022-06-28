@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Linq;
 using System.Windows.Forms;
+using StoreManager.App.Interfaces;
 using StoreManager.Repositories;
 using StoreManager.Services;
 
 namespace StoreManager.App.ListForm.ListHelper
 {
     public class ListHelper<TDetails, TModel, TRepository, TService>
-        where TDetails : Form, new()
+        where TDetails : Form, IDetailsForm<TModel>, new()
         where TModel : class, new()
         where TRepository : RepositoryBase<TModel>, new()
         where TService : ServiceRepositoryBase<TModel, TRepository>, new()
@@ -41,10 +42,13 @@ namespace StoreManager.App.ListForm.ListHelper
         public void InsertRecord()
         {
             var details = new TDetails();
-            if (details.ShowDialog() == DialogResult.OK)
+            if (details is IDetailsForm<TModel>)
             {
-                _service.Insert(LocalStorage.Record as TModel);
-                RefreshRecords();
+                if (details.ShowDialog() == DialogResult.OK)
+                {
+                    _service.Insert((details as IDetailsForm<TModel>).SaveData());
+                    RefreshRecords();
+                }
             }
         }
 
@@ -55,11 +59,15 @@ namespace StoreManager.App.ListForm.ListHelper
                 return;
             }
 
-            var details = (TDetails)Activator.CreateInstance(typeof(TDetails), new object[] { ClickedModelID });
-            if (details.ShowDialog() == DialogResult.OK)
+            var details = new TDetails();
+            if (details is IDetailsForm<TModel>)
             {
-                _service.Update(LocalStorage.Record as TModel);
-                RefreshRecords();
+                (details as IDetailsForm<TModel>).LoadData(ClickedModelID);
+                if (details.ShowDialog() == DialogResult.OK)
+                {
+                    _service.Update((details as IDetailsForm<TModel>).SaveData());
+                    RefreshRecords();
+                }
             }
         }
 
@@ -79,7 +87,10 @@ namespace StoreManager.App.ListForm.ListHelper
 
         public void SearchRecords(string text)
         {
-
+            if (text == string.Empty)
+                RefreshRecords();
+            else
+                _dataGridView.DataSource = _service.Select($"\"{text}*\"").ToList();
         }
 
         private bool ValidateSelection()

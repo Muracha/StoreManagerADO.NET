@@ -15,7 +15,7 @@ using StoreManager.App.DetailsForm.DetailsHelper;
 
 namespace StoreManager.App.DetailsForm
 {
-    public partial class EmployeeDetails : Form, IDetailsForm
+    public partial class EmployeeDetails : Form, IDetailsForm<Employee>
     {
         private DetailsHelper<Employee, EmployeeRepository, EmployeeService> _detailsHelper;
         public EmployeeDetails()
@@ -36,9 +36,10 @@ namespace StoreManager.App.DetailsForm
             _detailsHelper.LoadData(id);
         }
 
-        public void SaveData()
+        public Employee SaveData()
         {
             _detailsHelper.SaveData();
+            return null;
         }
 
         private void btnSave_Click(object sender, EventArgs e)

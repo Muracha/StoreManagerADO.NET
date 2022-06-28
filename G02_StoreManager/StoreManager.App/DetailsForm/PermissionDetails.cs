@@ -15,7 +15,7 @@ using StoreManager.App.DetailsForm.DetailsHelper;
 
 namespace StoreManager.App.DetailsForm
 {
-    public partial class PermissionDetails : Form, IDetailsForm
+    public partial class PermissionDetails : Form, IDetailsForm<Permission>
     {
         private DetailsHelper<Permission, PermissionRepository, PermissionService> detailsHelper;
         public PermissionDetails()
@@ -36,9 +36,10 @@ namespace StoreManager.App.DetailsForm
             detailsHelper.LoadData(id);
         }
 
-        public void SaveData()
+        public Permission SaveData()
         {
             detailsHelper.SaveData();
+            return null;
         }
 
         private void btnSave_Click(object sender, EventArgs e)

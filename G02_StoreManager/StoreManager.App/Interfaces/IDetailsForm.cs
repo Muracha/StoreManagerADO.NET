@@ -1,8 +1,8 @@
 ﻿namespace StoreManager.App.Interfaces
 {
-    public interface IDetailsForm
+    public interface IDetailsForm<T>
     {
         void LoadData(int id);
-        void SaveData();
+        T SaveData();
     }
 }
