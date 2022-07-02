@@ -70,7 +70,6 @@
     <Compile Include="DetailsForm\ContactInfoDetails.Designer.cs">
       <DependentUpon>ContactInfoDetails.cs</DependentUpon>
     </Compile>
-    <Compile Include="DetailsForm\DetailsHelper\DetailsHelper.cs" />
     <Compile Include="DetailsForm\EmployeeDetails.cs">
       <SubType>Form</SubType>
     </Compile>

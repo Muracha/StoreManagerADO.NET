@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Linq;
 using System.Windows.Forms;
-using StoreManager.App.DetailsForm.DetailsHelper;
 using StoreManager.App.Interfaces;
 using StoreManager.Models;
 using StoreManager.Repositories;
@@ -50,6 +49,7 @@ namespace StoreManager.App
                 e.Handled = true;
             }
         }
+
         private void LoadUserModel(int id)
         {
             _user = _userService.Get(id);
@@ -77,9 +77,9 @@ namespace StoreManager.App
 
         private bool ValidateData()
         {
-            foreach (var txtBox in this.Controls.OfType<TextBox>())
+            foreach (Control control in this.Controls)
             {
-                if (txtBox.Text == string.Empty)
+                if (control.Text == string.Empty || control.Text == null)
                 {
                     MessageBox.Show("Fill the missed lines, next time.");
                     return false;

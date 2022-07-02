@@ -25,34 +25,11 @@ namespace StoreManager.App
             RefreshRecords();
         }
 
-        public void InsertRecord()
-        {
-            _listHelper.InsertRecord();
-        }
-
-        public void UpdateRecord()
-        {
-            _listHelper.UpdateRecord();
-        }
-
-        public void DeleteRecord()
-        {
-            _listHelper.DeleteRecord();
-        }
-
-        public void RefreshRecords()
-        {
-            _listHelper.RefreshRecords();
-        }
-
-        public void SearchRecords(string text)
-        {
-            _listHelper.SearchRecords(text);
-        }
-
-        private void grdProductList_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            _listHelper.ClickedModelID = e.RowIndex;
-        }
+        public void InsertRecord() => _listHelper.InsertRecord();
+        public void UpdateRecord() => _listHelper.UpdateRecord();
+        public void DeleteRecord() => _listHelper.DeleteRecord();
+        public void RefreshRecords() => _listHelper.RefreshRecords();
+        public void SearchRecords(string text) => _listHelper.SearchRecords(text);
+        private void grdProductList_CellClick(object sender, DataGridViewCellEventArgs e) =>_listHelper.ClickedModelID = e.RowIndex;
     }
 }

@@ -11,34 +11,24 @@ using StoreManager.App.Interfaces;
 using StoreManager.Models;
 using StoreManager.Repositories;
 using StoreManager.Services;
-using StoreManager.App.DetailsForm.DetailsHelper;
 
 namespace StoreManager.App.DetailsForm
 {
     public partial class EmployeeDetails : Form, IDetailsForm<Employee>
     {
-        private DetailsHelper<Employee, EmployeeRepository, EmployeeService> _detailsHelper;
         public EmployeeDetails()
         {
             InitializeComponent();
-            _detailsHelper = new DetailsHelper<Employee, EmployeeRepository, EmployeeService>(this);
-        }
-
-        public EmployeeDetails(int id)
-        {
-            InitializeComponent();
-            _detailsHelper = new DetailsHelper<Employee, EmployeeRepository, EmployeeService>(this);
-            LoadData(id);
+            
         }
 
         public void LoadData(int id)
         {
-            _detailsHelper.LoadData(id);
+            
         }
 
         public Employee SaveData()
         {
-            _detailsHelper.SaveData();
             return null;
         }
 

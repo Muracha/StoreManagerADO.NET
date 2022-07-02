@@ -46,7 +46,7 @@ namespace StoreManager.App.ListForm.ListHelper
             {
                 if (details.ShowDialog() == DialogResult.OK)
                 {
-                    _service.Insert((details as IDetailsForm<TModel>).SaveData());
+                    _service.Insert(details.SaveData());
                     RefreshRecords();
                 }
             }
@@ -62,10 +62,10 @@ namespace StoreManager.App.ListForm.ListHelper
             var details = new TDetails();
             if (details is IDetailsForm<TModel>)
             {
-                (details as IDetailsForm<TModel>).LoadData(ClickedModelID);
+                details.LoadData(ClickedModelID);
                 if (details.ShowDialog() == DialogResult.OK)
                 {
-                    _service.Update((details as IDetailsForm<TModel>).SaveData());
+                    _service.Update(details.SaveData());
                     RefreshRecords();
                 }
             }
@@ -90,7 +90,7 @@ namespace StoreManager.App.ListForm.ListHelper
             if (text == string.Empty)
                 RefreshRecords();
             else
-                _dataGridView.DataSource = _service.Select($"\"{text}*\"").ToList();
+                _dataGridView.DataSource = _service.Select(text).ToList();
         }
 
         private bool ValidateSelection()
