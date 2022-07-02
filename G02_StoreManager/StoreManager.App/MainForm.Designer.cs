@@ -55,6 +55,8 @@ namespace StoreManager.App
             this.listsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.userListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.updateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.productListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.employeListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contactInfoListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -75,8 +77,6 @@ namespace StoreManager.App
             this.horizontalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.newToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.Update = new System.Windows.Forms.ToolStripButton();
-            this.Delete = new System.Windows.Forms.ToolStripButton();
             this.Refresh = new System.Windows.Forms.ToolStripButton();
             this.openToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.saveToolStripButton = new System.Windows.Forms.ToolStripButton();
@@ -91,6 +91,9 @@ namespace StoreManager.App
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.lblSearch = new System.Windows.Forms.Label();
+            this.addToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.updateToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -287,7 +290,9 @@ namespace StoreManager.App
             // userListToolStripMenuItem
             // 
             this.userListToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addToolStripMenuItem});
+            this.addToolStripMenuItem,
+            this.updateToolStripMenuItem,
+            this.deleteToolStripMenuItem});
             this.userListToolStripMenuItem.Name = "userListToolStripMenuItem";
             this.userListToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.userListToolStripMenuItem.Tag = "1";
@@ -302,8 +307,26 @@ namespace StoreManager.App
             this.addToolStripMenuItem.Text = "Add";
             this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
+            // updateToolStripMenuItem
+            // 
+            this.updateToolStripMenuItem.Name = "updateToolStripMenuItem";
+            this.updateToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.updateToolStripMenuItem.Text = "Update";
+            this.updateToolStripMenuItem.Click += new System.EventHandler(this.updateToolStripMenuItem_Click);
+            // 
+            // deleteToolStripMenuItem
+            // 
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.deleteToolStripMenuItem.Text = "Delete";
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
+            // 
             // productListToolStripMenuItem
             // 
+            this.productListToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addToolStripMenuItem1,
+            this.updateToolStripMenuItem1,
+            this.deleteToolStripMenuItem1});
             this.productListToolStripMenuItem.Name = "productListToolStripMenuItem";
             this.productListToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.productListToolStripMenuItem.Tag = "2";
@@ -440,8 +463,6 @@ namespace StoreManager.App
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newToolStripButton,
-            this.Update,
-            this.Delete,
             this.Refresh,
             this.openToolStripButton,
             this.saveToolStripButton,
@@ -466,29 +487,6 @@ namespace StoreManager.App
             this.newToolStripButton.Name = "newToolStripButton";
             this.newToolStripButton.Size = new System.Drawing.Size(29, 24);
             this.newToolStripButton.Text = "&New";
-            this.newToolStripButton.Click += new System.EventHandler(this.NewToolStripButton_Click);
-            // 
-            // Update
-            // 
-            this.Update.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.Update.Image = global::StoreManager.App.Properties.Resources.Update;
-            this.Update.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.Update.Name = "Update";
-            this.Update.Size = new System.Drawing.Size(29, 24);
-            this.Update.Text = "toolStripButton1";
-            this.Update.ToolTipText = "Update";
-            this.Update.Click += new System.EventHandler(this.Update_Click);
-            // 
-            // Delete
-            // 
-            this.Delete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.Delete.Image = global::StoreManager.App.Properties.Resources.Delete;
-            this.Delete.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.Delete.Name = "Delete";
-            this.Delete.Size = new System.Drawing.Size(29, 24);
-            this.Delete.Text = "toolStripButton1";
-            this.Delete.ToolTipText = "Delete";
-            this.Delete.Click += new System.EventHandler(this.Delete_Click);
             // 
             // Refresh
             // 
@@ -605,6 +603,27 @@ namespace StoreManager.App
             this.lblSearch.TabIndex = 11;
             this.lblSearch.Text = "Search";
             // 
+            // addToolStripMenuItem1
+            // 
+            this.addToolStripMenuItem1.Name = "addToolStripMenuItem1";
+            this.addToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            this.addToolStripMenuItem1.Text = "Add";
+            this.addToolStripMenuItem1.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
+            // 
+            // updateToolStripMenuItem1
+            // 
+            this.updateToolStripMenuItem1.Name = "updateToolStripMenuItem1";
+            this.updateToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            this.updateToolStripMenuItem1.Text = "Update";
+            this.updateToolStripMenuItem1.Click += new System.EventHandler(this.updateToolStripMenuItem_Click);
+            // 
+            // deleteToolStripMenuItem1
+            // 
+            this.deleteToolStripMenuItem1.Name = "deleteToolStripMenuItem1";
+            this.deleteToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            this.deleteToolStripMenuItem1.Text = "Delete";
+            this.deleteToolStripMenuItem1.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -664,7 +683,6 @@ namespace StoreManager.App
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton newToolStripButton;
         private System.Windows.Forms.ToolStripButton openToolStripButton;
         private System.Windows.Forms.ToolStripButton saveToolStripButton;
         private System.Windows.Forms.ToolStripButton printToolStripButton;
@@ -686,13 +704,17 @@ namespace StoreManager.App
         private System.Windows.Forms.ToolStripMenuItem employeListToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem contactInfoListToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem PermissionListToolStripMenuItem;
-        private System.Windows.Forms.ToolStripButton Delete;
         private System.Windows.Forms.ToolTip toolTip1;
         private new System.Windows.Forms.ToolStripButton Refresh;
         private System.Windows.Forms.TextBox txtSearch;
-        public System.Windows.Forms.ToolStripButton Update;
         private System.Windows.Forms.Label lblSearch;
         private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem updateToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripButton newToolStripButton;
+        private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem updateToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem1;
     }
 }
 

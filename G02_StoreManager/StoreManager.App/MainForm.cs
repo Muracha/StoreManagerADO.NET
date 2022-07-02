@@ -17,7 +17,7 @@ namespace StoreManager.App
         {
             InitializeComponent();
             _rolePermissionsService = new RolePermissionsService();
-            //_rolePermissionsService.StartTableDependenc();
+            _rolePermissionsService.StartTableDependenc();
             LocalStorage.Permissions = new List<int>() { 1, 2, 3, 4, 5, 8 };
             GiveItemsToCheckTagsMethod(menuStrip1);
         }
@@ -70,24 +70,23 @@ namespace StoreManager.App
             }
         }
 
-        private void OpenListForm<T>() where T : Form, new()
+        private void Refresh_Click(object sender, EventArgs e)
         {
-            T form = new T
+            if (ActiveMdiChild != null && ActiveMdiChild is IListForm)
             {
-                MdiParent = this
-            };
-            form.Show();
+                (ActiveMdiChild as IListForm).RefreshRecords();
+            }
         }
 
-        private void NewToolStripButton_Click(object sender, EventArgs e)
+        private void addToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (ActiveMdiChild != null && ActiveMdiChild is IListForm)
             {
                 (ActiveMdiChild as IListForm).InsertRecord();
             }
         }
-    
-        private void Update_Click(object sender, EventArgs e)
+
+        private void updateToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (ActiveMdiChild != null && ActiveMdiChild is IListForm)
             {
@@ -95,19 +94,11 @@ namespace StoreManager.App
             }
         }
 
-        private void Delete_Click(object sender, EventArgs e)
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (ActiveMdiChild != null && ActiveMdiChild is IListForm)
             {
                 (ActiveMdiChild as IListForm).DeleteRecord();
-            }
-        }
-
-        private void Refresh_Click(object sender, EventArgs e)
-        {
-            if (ActiveMdiChild != null && ActiveMdiChild is IListForm)
-            {
-                (ActiveMdiChild as IListForm).RefreshRecords();
             }
         }
 
@@ -119,20 +110,13 @@ namespace StoreManager.App
             }
         }
 
-        private void btnSearch_Click(object sender, EventArgs e)
+        private void OpenListForm<T>() where T : Form, new()
         {
-            if (ActiveMdiChild != null && ActiveMdiChild is IListForm)
+            T form = new T
             {
-                (ActiveMdiChild as IListForm).SearchRecords(txtSearch.Text);
-            }
-        }
-
-        private void addToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (ActiveMdiChild != null && ActiveMdiChild is IListForm)
-            {
-                (ActiveMdiChild as IListForm).InsertRecord();
-            }
+                MdiParent = this
+            };
+            form.Show();
         }
 
         private void GiveItemsToCheckTagsMethod(MenuStrip menuStrip)
