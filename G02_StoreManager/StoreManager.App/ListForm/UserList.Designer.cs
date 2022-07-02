@@ -37,6 +37,7 @@
             this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IsActive = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IsDeleted = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.grdUserList)).BeginInit();
             this.SuspendLayout();
             // 
@@ -65,7 +66,8 @@
             this.Password,
             this.CreateDate,
             this.IsActive,
-            this.IsDeleted});
+            this.IsDeleted,
+            this.FullName});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -77,7 +79,6 @@
             this.grdUserList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grdUserList.EnableHeadersVisualStyles = false;
             this.grdUserList.Location = new System.Drawing.Point(0, 0);
-            this.grdUserList.Margin = new System.Windows.Forms.Padding(4);
             this.grdUserList.MultiSelect = false;
             this.grdUserList.Name = "grdUserList";
             this.grdUserList.ReadOnly = true;
@@ -85,7 +86,7 @@
             this.grdUserList.RowHeadersWidth = 25;
             this.grdUserList.RowTemplate.Height = 25;
             this.grdUserList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grdUserList.Size = new System.Drawing.Size(1067, 554);
+            this.grdUserList.Size = new System.Drawing.Size(800, 450);
             this.grdUserList.TabIndex = 0;
             this.grdUserList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GrdUserList_CellClick);
             // 
@@ -137,13 +138,19 @@
             this.IsDeleted.Name = "IsDeleted";
             this.IsDeleted.ReadOnly = true;
             // 
+            // FullName
+            // 
+            this.FullName.DataPropertyName = "FullName";
+            this.FullName.HeaderText = "FullName";
+            this.FullName.Name = "FullName";
+            this.FullName.ReadOnly = true;
+            // 
             // UserList
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.grdUserList);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UserList";
             this.Text = "UserList";
             ((System.ComponentModel.ISupportInitialize)(this.grdUserList)).EndInit();
@@ -159,5 +166,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn IsActive;
         private System.Windows.Forms.DataGridViewTextBoxColumn IsDeleted;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FullName;
     }
 }

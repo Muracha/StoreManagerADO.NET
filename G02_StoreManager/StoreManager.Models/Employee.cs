@@ -14,5 +14,6 @@ namespace StoreManager.Models
         public DateTime BirthDate { get; set; }
         public DateTime HireDate { get; set; }
         public DateTime CreateDate { get; set; }
+        public string FullName => ($"{FirstName} {LastName}");
     }
 }

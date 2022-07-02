@@ -37,8 +37,8 @@ namespace StoreManager.App
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.cmbSelectEmployee = new System.Windows.Forms.Label();
+            this.cmbSelectEmployee = new System.Windows.Forms.ComboBox();
+            this.lblSelectEmployee = new System.Windows.Forms.Label();
             this.ckBIsActive = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
@@ -123,23 +123,26 @@ namespace StoreManager.App
             this.label3.TabIndex = 10;
             this.label3.Text = "Password";
             // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(92, 18);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(285, 21);
-            this.comboBox1.TabIndex = 14;
-            // 
             // cmbSelectEmployee
             // 
-            this.cmbSelectEmployee.AutoSize = true;
-            this.cmbSelectEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbSelectEmployee.Location = new System.Drawing.Point(12, 18);
+            this.cmbSelectEmployee.DisplayMember = "FullNae";
+            this.cmbSelectEmployee.FormattingEnabled = true;
+            this.cmbSelectEmployee.Location = new System.Drawing.Point(92, 18);
             this.cmbSelectEmployee.Name = "cmbSelectEmployee";
-            this.cmbSelectEmployee.Size = new System.Drawing.Size(41, 15);
-            this.cmbSelectEmployee.TabIndex = 15;
-            this.cmbSelectEmployee.Text = "Select";
+            this.cmbSelectEmployee.Size = new System.Drawing.Size(285, 21);
+            this.cmbSelectEmployee.TabIndex = 14;
+            this.cmbSelectEmployee.ValueMember = "ID";
+            this.cmbSelectEmployee.SelectedIndexChanged += new System.EventHandler(this.cmbSelectEmployee_SelectedIndexChanged);
+            // 
+            // lblSelectEmployee
+            // 
+            this.lblSelectEmployee.AutoSize = true;
+            this.lblSelectEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSelectEmployee.Location = new System.Drawing.Point(12, 18);
+            this.lblSelectEmployee.Name = "lblSelectEmployee";
+            this.lblSelectEmployee.Size = new System.Drawing.Size(41, 15);
+            this.lblSelectEmployee.TabIndex = 15;
+            this.lblSelectEmployee.Text = "Select";
             // 
             // ckBIsActive
             // 
@@ -158,8 +161,8 @@ namespace StoreManager.App
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(389, 191);
             this.Controls.Add(this.ckBIsActive);
+            this.Controls.Add(this.lblSelectEmployee);
             this.Controls.Add(this.cmbSelectEmployee);
-            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -174,7 +177,6 @@ namespace StoreManager.App
             this.Name = "UserDetails";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "UserDetails";
-            this.Load += new System.EventHandler(this.UserDetails_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -189,8 +191,8 @@ namespace StoreManager.App
         public System.Windows.Forms.TextBox txtIDValue;
         public System.Windows.Forms.TextBox txtUserNameValue;
         public System.Windows.Forms.TextBox txtPasswordValue;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label cmbSelectEmployee;
+        private System.Windows.Forms.ComboBox cmbSelectEmployee;
+        private System.Windows.Forms.Label lblSelectEmployee;
         private System.Windows.Forms.CheckBox ckBIsActive;
     }
 }

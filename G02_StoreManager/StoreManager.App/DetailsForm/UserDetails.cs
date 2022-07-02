@@ -89,9 +89,17 @@ namespace StoreManager.App
             }
             return true;
         }
-
-        private void UserDetails_Load(object sender, EventArgs e)
+        private void LoadSelectBox()
         {
+            cmbSelectEmployee.DataSource = _employeeService.GetEmployeesNotRegisteredUser().ToList();
+        }
+
+        private void cmbSelectEmployee_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbSelectEmployee.SelectedItem as Employee != null)
+            {
+                txtIDValue.Text = (cmbSelectEmployee.SelectedItem as Employee).ID.ToString();
+            }
         }
     }
 }
