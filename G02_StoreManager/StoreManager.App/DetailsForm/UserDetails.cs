@@ -11,12 +11,14 @@ namespace StoreManager.App
     public partial class UserDetails : Form, IDetailsForm<User>
     {
         private readonly UserService _userService;
+        private readonly EmployeeService _employeeService;
         private User _user;
         public UserDetails()
         {
             InitializeComponent();
             _user = new User();
             _userService = new UserService();
+            _employeeService = new EmployeeService();
         }
 
         public void LoadData(int id)
@@ -58,7 +60,7 @@ namespace StoreManager.App
             txtIDValue.Text = _user.ID.ToString();
             txtUserNameValue.Text = _user.Username.ToString();
             txtPasswordValue.Text = _user.Password.ToString();
-            cmbIsActiveValue.SelectedItem = _user.IsActive.ToString();
+            ckBIsActive.Checked = _user.IsActive;
         }
 
         private User SaveUserModel()
@@ -71,7 +73,7 @@ namespace StoreManager.App
             _user.ID = int.Parse(txtIDValue.Text);
             _user.Username = txtUserNameValue.Text;
             _user.Password = txtPasswordValue.Text;
-            _user.IsActive = Convert.ToBoolean(cmbIsActiveValue.SelectedItem);
+            _user.IsActive = ckBIsActive.Checked;
             return _user;
         }
 
@@ -85,8 +87,11 @@ namespace StoreManager.App
                     return false;
                 }
             }
-
             return true;
+        }
+
+        private void UserDetails_Load(object sender, EventArgs e)
+        {
         }
     }
 }
