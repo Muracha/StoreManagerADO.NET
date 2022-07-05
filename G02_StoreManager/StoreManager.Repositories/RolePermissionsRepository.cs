@@ -6,7 +6,7 @@ using StoreManager.Models;
 
 namespace StoreManager.Repositories
 {
-    public class RolePermissionsRepository : RepositoryBase<RolePermissions>
+    public class RolePermissionsRepository : RepositoryBase<RolePermission>
     {
         public IEnumerable<int> SelectRolePermissions(int userID)
         {

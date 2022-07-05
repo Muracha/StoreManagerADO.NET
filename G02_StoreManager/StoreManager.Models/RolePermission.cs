@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace StoreManager.Models
 {
-    public class RolePermissions
+    public class RolePermission
     {
         public int RoleID { get; set; }
         public int PermissionID { get; set; }

@@ -17,7 +17,7 @@ using StoreManager.Services;
 
 namespace StoreManager.App.ListForm
 {
-    public partial class PermissionList : Form, IListForm
+    public partial class PermissionList : Form, IListForm, IPermission
     {
         private ListHelper<PermissionDetails, Permission, PermissionRepository, PermissionService> _listHelper;
         public PermissionList()
@@ -33,5 +33,10 @@ namespace StoreManager.App.ListForm
         public void RefreshRecords() => _listHelper.RefreshRecords();
         public void SearchRecords(string text) => _listHelper.SearchRecords(text);
         private void grdPermission_CellClick(object sender, DataGridViewCellEventArgs e) => _listHelper.ClickedModelID = e.RowIndex;
+
+        public void LoadPermissions(int id = 0)
+        {
+            grdPermission.DataSource = _listHelper._service.GetRolePermissions(id).ToList();
+        }
     }
 }

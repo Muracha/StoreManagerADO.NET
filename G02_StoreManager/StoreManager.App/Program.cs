@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StoreManager.App.ListForm;
+using System;
 using System.Windows.Forms;
 
 namespace StoreManager.App
@@ -13,7 +14,6 @@ namespace StoreManager.App
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-
             var loginForm = new LoginForm();
             if (loginForm.ShowDialog() == DialogResult.OK)
                 Application.Run(new MainForm());

@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.grdPermission = new System.Windows.Forms.DataGridView();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PermissionName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PermissionCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IsDeleted = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.grdPermission)).BeginInit();
@@ -40,13 +40,14 @@
             // 
             // grdPermission
             // 
+            this.grdPermission.AllowUserToDeleteRows = false;
             this.grdPermission.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.grdPermission.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdPermission.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ID,
             this.PermissionName,
             this.PermissionCode,
             this.Description,
+            this.ID,
             this.CreateDate,
             this.IsDeleted});
             this.grdPermission.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -58,18 +59,11 @@
             this.grdPermission.TabIndex = 0;
             this.grdPermission.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdPermission_CellClick);
             // 
-            // ID
-            // 
-            this.ID.DataPropertyName = "ID";
-            this.ID.HeaderText = "ID";
-            this.ID.MinimumWidth = 6;
-            this.ID.Name = "ID";
-            // 
             // PermissionName
             // 
             this.PermissionName.DataPropertyName = "PermissionName";
             this.PermissionName.HeaderText = "Permission Name";
-            this.PermissionName.MinimumWidth = 6;
+            this.PermissionName.MinimumWidth = 3;
             this.PermissionName.Name = "PermissionName";
             // 
             // PermissionCode
@@ -86,19 +80,30 @@
             this.Description.MinimumWidth = 6;
             this.Description.Name = "Description";
             // 
+            // ID
+            // 
+            this.ID.DataPropertyName = "ID";
+            this.ID.HeaderText = "ID";
+            this.ID.MinimumWidth = 6;
+            this.ID.Name = "ID";
+            this.ID.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ID.Visible = false;
+            // 
             // CreateDate
             // 
             this.CreateDate.DataPropertyName = "CreateDate";
-            this.CreateDate.HeaderText = "Create Date";
+            this.CreateDate.HeaderText = "CreateDate";
             this.CreateDate.MinimumWidth = 6;
             this.CreateDate.Name = "CreateDate";
+            this.CreateDate.Visible = false;
             // 
             // IsDeleted
             // 
             this.IsDeleted.DataPropertyName = "IsDeleted";
-            this.IsDeleted.HeaderText = "Deleted";
+            this.IsDeleted.HeaderText = "IsDeleted";
             this.IsDeleted.MinimumWidth = 6;
             this.IsDeleted.Name = "IsDeleted";
+            this.IsDeleted.Visible = false;
             // 
             // PermissionList
             // 
@@ -116,10 +121,10 @@
         #endregion
 
         private System.Windows.Forms.DataGridView grdPermission;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn PermissionName;
         private System.Windows.Forms.DataGridViewTextBoxColumn PermissionCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn Description;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn IsDeleted;
     }

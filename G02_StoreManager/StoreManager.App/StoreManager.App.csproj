@@ -82,6 +82,12 @@
     <Compile Include="DetailsForm\PermissionDetails.Designer.cs">
       <DependentUpon>PermissionDetails.cs</DependentUpon>
     </Compile>
+    <Compile Include="DetailsForm\RoleDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DetailsForm\RoleDetails.Designer.cs">
+      <DependentUpon>RoleDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="G02_StoreDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -89,6 +95,8 @@
     </Compile>
     <Compile Include="Interfaces\IListForm.cs" />
     <Compile Include="Interfaces\IDetailsForm.cs" />
+    <Compile Include="Interfaces\IPermission.cs" />
+    <Compile Include="Interfaces\IRoles.cs" />
     <Compile Include="ListForm\ContactInfoList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +115,18 @@
     </Compile>
     <Compile Include="ListForm\PermissionList.Designer.cs">
       <DependentUpon>PermissionList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ListForm\RoleList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListForm\RoleList.Designer.cs">
+      <DependentUpon>RoleList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ListForm\RolePermissionList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListForm\RolePermissionList.Designer.cs">
+      <DependentUpon>RolePermissionList.cs</DependentUpon>
     </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
@@ -171,6 +191,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ListForm\PermissionList.resx">
       <DependentUpon>PermissionList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListForm\RoleList.resx">
+      <DependentUpon>RoleList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListForm\RolePermissionList.resx">
+      <DependentUpon>RolePermissionList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>

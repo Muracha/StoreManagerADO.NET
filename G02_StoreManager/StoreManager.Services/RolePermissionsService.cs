@@ -7,7 +7,7 @@ using StoreManager.Repositories;
 
 namespace StoreManager.Services
 {
-    public class RolePermissionsService : ServiceRepositoryBase<RolePermissions, RolePermissionsRepository>
+    public class RolePermissionsService : ServiceRepositoryBase<RolePermission, RolePermissionsRepository>
     {
         public IEnumerable<int> SelectRolePermissions(int userId)
         {

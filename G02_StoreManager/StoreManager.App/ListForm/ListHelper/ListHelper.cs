@@ -15,7 +15,7 @@ namespace StoreManager.App.ListForm.ListHelper
     {
         private int _id = 0;
 
-        private readonly TService _service;
+        public readonly TService _service;
         private readonly DataGridView _dataGridView;
 
         public int ClickedModelID
@@ -93,7 +93,7 @@ namespace StoreManager.App.ListForm.ListHelper
                 _dataGridView.DataSource = _service.Select(text).ToList();
         }
 
-        private bool ValidateSelection()
+        public bool ValidateSelection()
         {
             if (ClickedModelID > 0)
                 return true;
