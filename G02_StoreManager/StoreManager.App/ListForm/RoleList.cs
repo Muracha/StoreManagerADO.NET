@@ -19,13 +19,14 @@ namespace StoreManager.App.ListForm
     public partial class RoleList : Form, IListForm
     {
         private readonly ListHelper<RoleDetails, Role, RoleRepository, RoleService> _listHelper;
-        private List<RoleID> _roleID;
+        private List<Role> _roleIDList;
+
         private int _userID;
         public RoleList()
         {
             InitializeComponent();
             _listHelper = new ListHelper<RoleDetails, Role, RoleRepository, RoleService>(grdRoleList);
-            _roleID = new List<RoleID>();
+            _roleIDList = new List<Role>();
             RefreshRecords();
         }
 
@@ -54,54 +55,52 @@ namespace StoreManager.App.ListForm
             }
         }
 
-        private void RoleList_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            InsertRoleID();
-        }
 
         private void ManipulateRoleID()
         {
             bool isChecked = Convert.ToBoolean((grdRoleList.CurrentCell as DataGridViewCheckBoxCell).EditedFormattedValue);
 
-            foreach (var item in _roleID)
+            foreach (var item in _roleIDList)
             {
                 if (item.ID == _listHelper.ClickedModelID)
                 {
-                    _roleID.Remove(item);
+                    _roleIDList.Remove(item);
                     return;
                 }
             }
 
-            _roleID.Add(new RoleID { ID = _listHelper.ClickedModelID, Check = isChecked });
-        }
-
-        private void InsertRoleID()
-        {
-            if (Select.Visible == false)
-            {
-                return;
-            }
-
-            foreach (var item in _roleID)
-            {
-                if (item.Check)
-                    _listHelper._service.AssignUserToRole(_userID, item.ID);
-                else
-                    _listHelper._service.UnassignUserToRole(_userID, item.ID);
-            }
+            _roleIDList.Add(new Role { ID = _listHelper.ClickedModelID});
         }
 
         public void LoadRoles(int id = 0)
         {
             _userID = id;
             Select.Visible = true;
-
+            menuStrip.Visible = true;
         }
 
-        private class RoleID
+        private void addRoleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            public int ID { get; set; }
-            public bool Check { get; set; }
+            if (_roleIDList.Count == 0)
+            {
+                MessageBox.Show("Please select Roles.");
+                return;
+            }
+
+            foreach (var item in _roleIDList)
+            {
+                try
+                {
+                    _listHelper._service.AssignUserToRole(_userID, item.ID);
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+
+            MessageBox.Show("Succesfully Added.");
+            DialogResult = DialogResult.OK;
         }
     }
 }

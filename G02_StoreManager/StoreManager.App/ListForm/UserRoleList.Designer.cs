@@ -1,6 +1,6 @@
 ﻿namespace StoreManager.App.ListForm
 {
-    partial class CurrentUserRoles
+    partial class UserRoleList
     {
         /// <summary>
         /// Required designer variable.

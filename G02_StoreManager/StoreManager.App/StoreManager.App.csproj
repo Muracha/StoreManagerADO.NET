@@ -102,11 +102,11 @@
     <Compile Include="ListForm\ContactInfoList.Designer.cs">
       <DependentUpon>ContactInfoList.cs</DependentUpon>
     </Compile>
-    <Compile Include="ListForm\CurrentUserRoles.cs">
+    <Compile Include="ListForm\UserRoleList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ListForm\CurrentUserRoles.Designer.cs">
-      <DependentUpon>CurrentUserRoles.cs</DependentUpon>
+    <Compile Include="ListForm\UserRoleList.Designer.cs">
+      <DependentUpon>UserRoleList.cs</DependentUpon>
     </Compile>
     <Compile Include="ListForm\EmployeeList.cs">
       <SubType>Form</SubType>
@@ -185,8 +185,8 @@
     <EmbeddedResource Include="ListForm\ContactInfoList.resx">
       <DependentUpon>ContactInfoList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ListForm\CurrentUserRoles.resx">
-      <DependentUpon>CurrentUserRoles.cs</DependentUpon>
+    <EmbeddedResource Include="ListForm\UserRoleList.resx">
+      <DependentUpon>UserRoleList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ListForm\EmployeeList.resx">
       <DependentUpon>EmployeeList.cs</DependentUpon>

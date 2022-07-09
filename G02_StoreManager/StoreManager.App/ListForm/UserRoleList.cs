@@ -16,11 +16,11 @@ using StoreManager.App.DetailsForm;
 
 namespace StoreManager.App.ListForm
 {
-    public partial class CurrentUserRoles : Form
+    public partial class UserRoleList : Form
     {
         private readonly ListHelper<RoleDetails, Role, RoleRepository, RoleService> _listHelper;
         private int _userID;
-        public CurrentUserRoles()
+        public UserRoleList()
         {
             InitializeComponent();
             _listHelper = new ListHelper<RoleDetails, Role, RoleRepository, RoleService>(grdCurrentUserRoles);
@@ -43,6 +43,7 @@ namespace StoreManager.App.ListForm
             {
                 _listHelper._service.UnassignUserToRole(_userID, _listHelper.ClickedModelID);
             }
+
             RefreshRecords();
         }
 
@@ -50,8 +51,11 @@ namespace StoreManager.App.ListForm
         {
             RoleList roleList = new RoleList();
             roleList.LoadRoles(_userID);
-            roleList.ShowDialog();
-            RefreshRecords();
+
+            if (roleList.ShowDialog() == DialogResult.OK)
+            {
+                RefreshRecords();
+            }
         }
 
         private void grdCurrentUserRoles_CellClick(object sender, DataGridViewCellEventArgs e)

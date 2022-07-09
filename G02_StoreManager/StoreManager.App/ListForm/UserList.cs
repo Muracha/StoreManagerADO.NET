@@ -31,7 +31,7 @@ namespace StoreManager.App
         {
             if (_listHelper.ValidateSelection())
             {
-                CurrentUserRoles currentUserRoles = new CurrentUserRoles();
+                UserRoleList currentUserRoles = new UserRoleList();
                 currentUserRoles.Initialize(_listHelper.ClickedModelID);
                 currentUserRoles.ShowDialog();
             }
