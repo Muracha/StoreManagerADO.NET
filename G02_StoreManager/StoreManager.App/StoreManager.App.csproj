@@ -95,13 +95,18 @@
     </Compile>
     <Compile Include="Interfaces\IListForm.cs" />
     <Compile Include="Interfaces\IDetailsForm.cs" />
-    <Compile Include="Interfaces\IPermission.cs" />
-    <Compile Include="Interfaces\IRoles.cs" />
+    <Compile Include="Interfaces\ILoadRoles.cs" />
     <Compile Include="ListForm\ContactInfoList.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ListForm\ContactInfoList.Designer.cs">
       <DependentUpon>ContactInfoList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ListForm\CurrentUserRoles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListForm\CurrentUserRoles.Designer.cs">
+      <DependentUpon>CurrentUserRoles.cs</DependentUpon>
     </Compile>
     <Compile Include="ListForm\EmployeeList.cs">
       <SubType>Form</SubType>
@@ -121,12 +126,6 @@
     </Compile>
     <Compile Include="ListForm\RoleList.Designer.cs">
       <DependentUpon>RoleList.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ListForm\RolePermissionList.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ListForm\RolePermissionList.Designer.cs">
-      <DependentUpon>RolePermissionList.cs</DependentUpon>
     </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
@@ -186,6 +185,9 @@
     <EmbeddedResource Include="ListForm\ContactInfoList.resx">
       <DependentUpon>ContactInfoList.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ListForm\CurrentUserRoles.resx">
+      <DependentUpon>CurrentUserRoles.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ListForm\EmployeeList.resx">
       <DependentUpon>EmployeeList.cs</DependentUpon>
     </EmbeddedResource>
@@ -194,9 +196,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ListForm\RoleList.resx">
       <DependentUpon>RoleList.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ListForm\RolePermissionList.resx">
-      <DependentUpon>RolePermissionList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>

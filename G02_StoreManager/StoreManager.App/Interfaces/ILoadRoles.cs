@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace StoreManager.App.Interfaces
 {
-    internal interface IPermission
+    internal interface ILoadRoles
     {
-        void LoadPermissions(int id = 0);
+        void LoadRoles();
     }
 }

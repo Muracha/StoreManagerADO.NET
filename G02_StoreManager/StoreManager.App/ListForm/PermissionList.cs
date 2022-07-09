@@ -17,7 +17,7 @@ using StoreManager.Services;
 
 namespace StoreManager.App.ListForm
 {
-    public partial class PermissionList : Form, IListForm, IPermission
+    public partial class PermissionList : Form, IListForm
     {
         private ListHelper<PermissionDetails, Permission, PermissionRepository, PermissionService> _listHelper;
         public PermissionList()

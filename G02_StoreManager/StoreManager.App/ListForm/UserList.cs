@@ -10,7 +10,7 @@ using StoreManager.Services;
 
 namespace StoreManager.App
 {
-    public partial class UserList : Form, IListForm, IRoles
+    public partial class UserList : Form, IListForm, ILoadRoles
     {
         public ListHelper<UserDetails, User, UserRepository, UserService> _listHelper;
         public UserList()
@@ -27,13 +27,13 @@ namespace StoreManager.App
         public void SearchRecords(string text) => _listHelper.SearchRecords(text);
         private void GrdUserList_CellClick(object sender, DataGridViewCellEventArgs e) => _listHelper.ClickedModelID = e.RowIndex;
 
-        public void LoadRoles(int id = 0)
+        public void LoadRoles()
         {
             if (_listHelper.ValidateSelection())
             {
-                RoleList roles = new RoleList();
-                roles.LoadRoles(_listHelper.ClickedModelID);
-                roles.ShowDialog();
+                CurrentUserRoles currentUserRoles = new CurrentUserRoles();
+                currentUserRoles.Initialize(_listHelper.ClickedModelID);
+                currentUserRoles.ShowDialog();
             }
         }
     }

@@ -16,7 +16,7 @@ using StoreManager.App.DetailsForm;
 
 namespace StoreManager.App.ListForm
 {
-    public partial class RoleList : Form, IListForm, IRoles
+    public partial class RoleList : Form, IListForm
     {
         private readonly ListHelper<RoleDetails, Role, RoleRepository, RoleService> _listHelper;
         private List<RoleID> _roleID;
@@ -67,7 +67,7 @@ namespace StoreManager.App.ListForm
             {
                 if (item.ID == _listHelper.ClickedModelID)
                 {
-                    item.Check = isChecked;
+                    _roleID.Remove(item);
                     return;
                 }
             }
@@ -77,6 +77,11 @@ namespace StoreManager.App.ListForm
 
         private void InsertRoleID()
         {
+            if (Select.Visible == false)
+            {
+                return;
+            }
+
             foreach (var item in _roleID)
             {
                 if (item.Check)
@@ -90,6 +95,7 @@ namespace StoreManager.App.ListForm
         {
             _userID = id;
             Select.Visible = true;
+
         }
 
         private class RoleID

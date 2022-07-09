@@ -18,7 +18,7 @@ namespace StoreManager.Repositories
             {
                 foreach (DataRow rows in reader.Rows)
                 {
-                    yield return GetItem(rows);
+                    yield return base.GetItem(rows);
                 }
             }
         }

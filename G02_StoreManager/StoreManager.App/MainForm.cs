@@ -152,9 +152,9 @@ namespace StoreManager.App
 
         private void permissionsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (ActiveMdiChild != null && ActiveMdiChild is IRoles)
+            if (ActiveMdiChild != null && ActiveMdiChild is ILoadRoles)
             {
-                (ActiveMdiChild as IRoles).LoadRoles();
+                (ActiveMdiChild as ILoadRoles).LoadRoles();
             }
         }
     }
